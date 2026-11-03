@@ -300,6 +300,7 @@ body { margin: 0; background: var(--fc-page); }
         <a href="#items">Custom items</a>
         <a href="#crates">Crates</a>
         <a href="#recipes">Recipes</a>
+        <a href="#teams">Teams</a>
         <a href="#pvp">PvP &amp; combat</a>
         <a href="#classes">Classes</a>
       </nav>
@@ -503,6 +504,54 @@ body { margin: 0; background: var(--fc-page); }
 </article></div>
 
           <div class="fc-note warn" style="margin-top:16px"><span class="em">🚫</span><p><b>Respawn Anchors are disabled</b> and can't be crafted.</p></div>
+        </section>
+
+        <section class="fc-section" id="teams">
+          <h2>Teams</h2>
+          <p class="fc-lead">Team up with up to <b>3 friends</b>, which makes <b>4 players</b> per team. Your team gets a shared home, chests, ender chest and bank, plus its own chat.</p>
+          <div class="fc-steps">
+            <div class="fc-card fc-step"><b>Create a team</b><span><code>/team create &lt;name&gt;</code>. Names are 2–12 letters or numbers.</span></div>
+            <div class="fc-card fc-step"><b>Invite your friends</b><span><code>/team invite &lt;player&gt;</code>. They have <b>2 minutes</b> to accept with <code>/team join &lt;team&gt;</code>.</span></div>
+            <div class="fc-card fc-step"><b>Set a home</b><span><code>/team sethome</code> where you live, then anyone on the team can use <code>/team home</code>.</span></div>
+          </div>
+
+          <h3>What your team gets</h3>
+          <div class="fc-grid">
+            <div class="fc-card" style="padding:16px"><b>🛡 No friendly fire</b><p style="margin:6px 0 0;color:var(--muted)">You can't hurt your teammates, and your harmful potions don't affect them. You also don't bump into each other.</p></div>
+            <div class="fc-card" style="padding:16px"><b>💬 Team chat</b><p style="margin:6px 0 0;color:var(--muted)">Start a message with <code>!</code> to send it to your team only, or use <code>/team chat</code> to switch to team chat.</p></div>
+            <div class="fc-card" style="padding:16px"><b>🏠 Home &amp; warp</b><p style="margin:6px 0 0;color:var(--muted)"><code>/team home</code> takes you to your base after <b>3 seconds</b>, and you must stand still. Your team also gets 1 warp: <code>/team warp</code>.</p></div>
+            <div class="fc-card" style="padding:16px"><b>⚓ Respawn anchor</b><p style="margin:6px 0 0;color:var(--muted)"><code>/team anchor</code> makes you respawn at your team home when you die.</p></div>
+            <div class="fc-card" style="padding:16px"><b>📦 Shared storage</b><p style="margin:6px 0 0;color:var(--muted)">A shared team ender chest with <code>/team echest</code>, and up to <b>2 locked chests</b> only your team can open (<code>/team chest claim</code>).</p></div>
+            <div class="fc-card" style="padding:16px"><b>💰 Team bank</b><p style="margin:6px 0 0;color:var(--muted)">Pool money with <code>/team deposit &lt;amount&gt;</code>. Check it with <code>/team bal</code>. Only admins and owners can withdraw.</p></div>
+            <div class="fc-card" style="padding:16px"><b>🏆 Team score</b><p style="margin:6px 0 0;color:var(--muted)">Every player kill earns your team <b>1 point</b>. See the leaderboard with <code>/team top</code>.</p></div>
+            <div class="fc-card" style="padding:16px"><b>🏷 Name &amp; tag</b><p style="margin:6px 0 0;color:var(--muted)">Your team name shows in front of your name. Owners can set a tag (<code>/team tag</code>) and a colour (<code>/team color</code>).</p></div>
+            <div class="fc-card" style="padding:16px"><b>✚ Healer class</b><p style="margin:6px 0 0;color:var(--muted)">The Healer's aura heals the people on <b>your team</b>, so teaming up with a Healer pays off. <a href="classes/">Classes guide →</a></p></div>
+          </div>
+          <div class="fc-note" style="margin-top:16px"><span class="em">🤝</span><p><b>No alliances.</b> Teams can't ally with each other, so anyone outside your team is fair game.</p></div>
+
+          <h3>Ranks</h3>
+          <div class="fc-scroll"><table class="fc-table fc-card">
+            <thead><tr><th>Rank</th><th>What they can do</th></tr></thead>
+            <tbody>
+              <tr><td><b>Owner</b></td><td>Everything, plus rename, recolour, set a tag or description, promote and demote, and disband the team. A team can have up to 2 owners.</td></tr>
+              <tr><td><b>Admin</b></td><td>Invite, kick and ban players, set the home and warp, claim chests and withdraw from the bank.</td></tr>
+              <tr><td><b>Member</b></td><td>Use the home, warp, anchor, chests, ender chest and team chat, and deposit money.</td></tr>
+            </tbody>
+          </table></div>
+
+          <h3>Useful commands</h3>
+          <div class="fc-scroll"><table class="fc-table fc-card">
+            <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td><code>/team info [team]</code></td><td>Shows a team's members, score and more</td></tr>
+              <tr><td><code>/team list</code></td><td>Lists every team</td></tr>
+              <tr><td><code>/team top</code></td><td>Team leaderboard by score</td></tr>
+              <tr><td><code>/team leave</code></td><td>Leaves your team</td></tr>
+              <tr><td><code>/team kick &lt;player&gt;</code></td><td>Removes someone from the team (admins and owners)</td></tr>
+              <tr><td><code>/team promote &lt;player&gt;</code></td><td>Promotes a member to admin, or an admin to owner (owners)</td></tr>
+              <tr><td><code>/team disband</code></td><td>Deletes the team (owners)</td></tr>
+            </tbody>
+          </table></div>
         </section>
 
         <section class="fc-section" id="pvp">
