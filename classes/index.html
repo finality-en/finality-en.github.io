@@ -352,7 +352,7 @@ body { margin: 0; background: var(--fc-page); }
                 <li><b>+10%</b> damage</li>
                 <li>Bonus hearts reset when you die</li>
               </ul></div>
-              <span class="fc-lock"><span style="color:#5c8dff">Rare</span> · 🔒 unlock with a Class Roll</span>
+              <span class="fc-lock"><span style="color:#9aa3b2">Common</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="tank">
               <div class="fc-class-head"><div class="fc-icon">🗡️</div><div><h4>Knight</h4><span class="fc-tag special">Special</span></div></div>
@@ -361,7 +361,7 @@ body { margin: 0; background: var(--fc-page); }
                 <li><b>+15%</b> sword damage</li>
                 <li>Take <b>25% less</b> damage from maces</li>
               </ul></div>
-              <span class="fc-lock"><span style="color:#9aa3b2">Common</span> · 🔒 unlock with a Class Roll</span>
+              <span class="fc-lock"><span style="color:#5c8dff">Rare</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="team">
               <div class="fc-class-head"><div class="fc-icon">✚</div><div><h4>Healer</h4><span class="fc-tag special">Special</span></div></div>
@@ -378,7 +378,7 @@ body { margin: 0; background: var(--fc-page); }
               <p class="fc-desc">Strike, then disappear. Vanish and sprint away after a kill.</p>
               <div class="fc-ability"><ul>
                 <li>After a player kill: <b>2s invisibility</b></li>
-                <li>Plus <b>Speed III</b> for 5 seconds</li>
+                <li>Plus <b>Speed III</b> for 10 seconds</li>
                 <li>Your normal Speed comes back afterwards</li>
               </ul></div>
               <span class="fc-lock"><span style="color:#5c8dff">Rare</span> · 🔒 unlock with a Class Roll</span>
@@ -408,25 +408,27 @@ body { margin: 0; background: var(--fc-page); }
 
         <section class="fc-section" id="roll">
           <h2>🎰 KOTH Special Class Roll</h2>
-          <p class="fc-lead">Win the daily KOTH event to get a Special Class Roll. Spin it to unlock a special class.</p>
+          <p class="fc-lead">Win the daily KOTH event to get a Special Class Roll. Spin it for a 50/50 shot at a special class, or some trash.</p>
           <div class="fc-steps">
             <div class="fc-card fc-step"><b>Win KOTH</b><span>The winner of each daily KOTH gets a <b style="color:var(--accent)">Special Class Roll</b> (a glowing nether star).</span></div>
-            <div class="fc-card fc-step"><b>Right-click it</b><span>A roulette spins through the special classes, slows down, and lands on one.</span></div>
-            <div class="fc-card fc-step"><b>It's unlocked for the season</b><span>The class you land on is unlocked until the season ends, and the whole server sees what you rolled. Equip it from <code>/class</code>.</span></div>
+            <div class="fc-card fc-step"><b>Right-click it</b><span>A roulette spins through special classes and junk, slows down, and lands on one. Half of all rolls land on trash like a <i>Wet Stick</i> or <i>Pocket Lint</i>, which you keep as a souvenir.</span></div>
+            <div class="fc-card fc-step"><b>Win a class for the season</b><span>If you land on a class, it's unlocked until the season ends. The whole server and the Discord see what you rolled. Equip it from <code>/class</code>.</span></div>
           </div>
           <h3>Odds</h3>
           <div class="fc-scroll"><table class="fc-table fc-card">
-            <thead><tr><th>Rarity</th><th>Class</th><th>Chance</th></tr></thead>
+            <thead><tr><th>Rarity</th><th>Result</th><th>Chance</th></tr></thead>
             <tbody>
-              <tr><td><b style="color:#9aa3b2">Common</b></td><td>🗡️ Knight</td><td>25.7%</td></tr>
-              <tr><td><b style="color:#9aa3b2">Common</b></td><td>✚ Healer</td><td>25.7%</td></tr>
-              <tr><td><b style="color:#5c8dff">Rare</b></td><td>☠️ Assassin</td><td>17.1%</td></tr>
-              <tr><td><b style="color:#5c8dff">Rare</b></td><td>🪓 Berserker</td><td>17.1%</td></tr>
-              <tr><td><b style="color:#b46bff">Epic</b></td><td>🩸 Bloodlust</td><td>9.7%</td></tr>
-              <tr><td><b style="color:#f2b544">Legendary</b></td><td>⚡ Thor</td><td>4.6%</td></tr>
+              <tr><td><b style="color:#7a7a7a">Trash</b></td><td>🗑️ Junk item</td><td>50%</td></tr>
+              <tr><td><b style="color:#9aa3b2">Common</b></td><td>✚ Healer</td><td>12.9%</td></tr>
+              <tr><td><b style="color:#9aa3b2">Common</b></td><td>🪓 Berserker</td><td>12.9%</td></tr>
+              <tr><td><b style="color:#5c8dff">Rare</b></td><td>🗡️ Knight</td><td>8.6%</td></tr>
+              <tr><td><b style="color:#5c8dff">Rare</b></td><td>☠️ Assassin</td><td>8.6%</td></tr>
+              <tr><td><b style="color:#b46bff">Epic</b></td><td>🩸 Bloodlust</td><td>4.9%</td></tr>
+              <tr><td><b style="color:#f2b544">Legendary</b></td><td>⚡ Thor</td><td>2.3%</td></tr>
             </tbody>
           </table></div>
           <div class="fc-note warn"><span class="em">🎲</span><p><b>Duplicates are lost.</b> If you roll a class you already have, the roll is used up. If you already have <b>every</b> special class, the roll won't let you use it, so you can save it for next season. Check the current odds in-game with <code>/class roll odds</code>.</p></div>
+          <div class="fc-note"><span class="em">😩</span><p><b>So close...</b> When you land on trash, watch the next tile. A top class is often sitting right beside it.</p></div>
           <div class="fc-note"><span class="em">🚪</span><p>Closing the menu mid-spin just skips to the result. You can't escape a bad roll.</p></div>
         </section>
 
@@ -481,13 +483,13 @@ body { margin: 0; background: var(--fc-page); }
 
         <section class="fc-section" id="alerts">
           <h2>Ability alerts</h2>
-          <p class="fc-lead">You get a chat message whenever one of your abilities triggers.</p>
+          <p class="fc-lead">You get a chat message and a sound whenever one of your abilities triggers. Listen for the <b>ding</b> on a Thor strike.</p>
           <div class="fc-chat" aria-label="Example chat messages">
-            <div><span class="p">[</span><span class="g">Seasons</span><span class="p">]</span> <span class="a">⚡ Lightning strike!</span> <span class="p">(+2 damage on Steve)</span></div>
-            <div><span class="p">[</span><span class="g">Seasons</span><span class="p">]</span> <span class="d">☠ Vanished!</span> <span class="p">(invisible 2s · Speed III 5s)</span></div>
-            <div><span class="p">[</span><span class="g">Seasons</span><span class="p">]</span> <span class="r">🗡 Bloodlust x3</span> <span class="p">(+30% damage for 30s)</span></div>
-            <div><span class="p">[</span><span class="g">Seasons</span><span class="p">]</span> <span class="d">✚</span> <span class="gr">Healed by</span> <span class="w">Alex</span><span class="gr">.</span></div>
-            <div><span class="p">[</span><span class="g">Seasons</span><span class="p">]</span> <span class="r">+½ heart</span> <span class="p">·</span> <span class="gr">you now have</span> <span class="w">8½</span> <span class="gr">hearts.</span></div>
+            <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="a">⚡ Lightning strike!</span> <span class="p">(+2 damage on Steve)</span></div>
+            <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="d">☠ Vanished!</span> <span class="p">(invisible 2s · Speed III 10s)</span></div>
+            <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="r">🗡 Bloodlust x3</span> <span class="p">(+30% damage for 30s)</span></div>
+            <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="d">✚</span> <span class="gr">Healed by</span> <span class="w">Alex</span><span class="gr">.</span></div>
+            <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="r">+½ heart</span> <span class="p">·</span> <span class="gr">you now have</span> <span class="w">8½</span> <span class="gr">hearts.</span></div>
           </div>
         </section>
 
@@ -511,7 +513,8 @@ body { margin: 0; background: var(--fc-page); }
           <details><summary>Can I have two special classes?</summary><p>No, you can only have one special class at a time. You can switch between special classes whenever you like, with a 5 second cooldown.</p></details>
           <details><summary>Why didn't my kill count for Berserker or Bloodlust?</summary><p>Only real player kills count. Berserker uses the server's PvP stats, so kills the anti-farming system rejects don't give hearts.</p></details>
           <details><summary>I picked the wrong default class. What now?</summary><p>Use a <b>Class Reset Token</b>. It resets your default class and keeps your special class.</p></details>
-          <details><summary>How do I unlock special classes?</summary><p>Win the daily <b>KOTH</b> event. The winner gets a <b>Special Class Roll</b>, which unlocks a random special class for the rest of the season.</p></details>
+          <details><summary>How do I unlock special classes?</summary><p>Win the daily <b>KOTH</b> event. The winner gets a <b>Special Class Roll</b>, which has a 50% chance to unlock a random special class for the rest of the season.</p></details>
+          <details><summary>Why did I get a Wet Stick?</summary><p>Half of all Class Rolls land on trash. You keep the junk as a souvenir, and the roll is used up. Better luck at the next KOTH!</p></details>
           <details><summary>What if I roll a class I already have?</summary><p>Duplicates are lost, so that roll is used up. If you already own every special class, the roll won't let you use it, so save it for next season.</p></details>
           <details><summary>Do unlocked special classes last forever?</summary><p>They last for the current season. When a new season starts, everyone starts fresh.</p></details>
           <details><summary>Do potions still work?</summary><p>Yes. A stronger potion, such as Speed II on a Ninja, takes over while it lasts, and your class effect comes back when it runs out.</p></details>
