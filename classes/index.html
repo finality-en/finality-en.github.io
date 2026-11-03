@@ -322,7 +322,7 @@ body { margin: 0; background: var(--fc-page); }
             <article class="fc-card fc-class">
               <div class="fc-class-head"><div class="fc-icon">🔥</div><div><h4>Pharo</h4><span class="fc-tag default">Default</span></div></div>
               <p class="fc-desc">Born beneath the desert sun. Fire and lava hold no threat.</p>
-              <div class="fc-ability"><ul><li><b class="fc-lv">Lv I</b> Permanent <b>Fire Resistance</b></li><li><b class="fc-lv two">Lv II</b> Fire Resistance + <b>2× speed in lava</b></li></ul></div>
+              <div class="fc-ability"><ul><li><b class="fc-lv">Lv I</b> Permanent <b>Fire Resistance</b></li><li><b class="fc-lv two">Lv II</b> Fire Resistance + <b>2× speed in lava</b> (swimming up too)</li></ul></div>
             </article>
             <article class="fc-card fc-class">
               <div class="fc-class-head"><div class="fc-icon">🪶</div><div><h4>Ninja</h4><span class="fc-tag default">Default</span></div></div>
@@ -349,7 +349,7 @@ body { margin: 0; background: var(--fc-page); }
           <div class="fc-steps">
             <div class="fc-card fc-step"><b>Craft a token</b><span>Put a Nether Star in the middle, Diamond Blocks on the sides and Netherite Ingots in the corners (<a href="../#recipes">see the recipe</a>). Every token rolls its own <b>success chance</b> from <b>50% to 100%</b> when it's crafted, and it's written on the item.</span></div>
             <div class="fc-card fc-step"><b>Save up 35,000 XP</b><span>That's about <b>level 105</b>. The menu shows an XP bar so you can see how close you are.</span></div>
-            <div class="fc-card fc-step"><b>Right-click the token</b><span>Pick which of your default classes to upgrade. If it works, the XP is taken and your class becomes Level II.</span></div>
+            <div class="fc-card fc-step"><b>Right-click the token</b><span>Pick any of the 4 default classes to upgrade, even one you're not using right now. If it works, the XP is taken and your class becomes Level II.</span></div>
           </div>
           <div class="fc-note warn"><span class="em">🎲</span><p><b>Upgrades can fail.</b> If it fails, the token shatters, but <b>you keep your XP</b>. A higher-percentage token is worth more!</p></div>
           <div class="fc-note"><span class="em">📅</span><p>Upgrades last the whole season. You keep them if you swap classes with a Reset Token and swap back. They reset when a new season starts.</p></div>
@@ -387,7 +387,7 @@ body { margin: 0; background: var(--fc-page); }
                 <li>Take <b>25% less</b> damage from maces and <b>10% less</b> from other melee weapons</li>
                 <li><b>15%</b> chance per sword hit to make the enemy <b style="color:var(--bad)">bleed</b> for 1–5s</li>
                 <li><b>2%</b> chance of a <b style="color:var(--bad)">deep wound</b>: bleeding for 30s</li>
-                <li>Bleeding stacks up to 30s, ignores armour and <b>can kill</b></li>
+                <li>Bleeding deals <b>true damage</b> (½ heart every 2.5s, ignores armour), stacks up to 30s and <b>can kill</b></li>
               </ul></div>
               <span class="fc-lock"><span style="color:#5c8dff">Rare</span> · 🔒 unlock with a Class Roll</span>
             </article>
@@ -397,7 +397,7 @@ body { margin: 0; background: var(--fc-page); }
               <div class="fc-ability"><ul>
                 <li>Permanent <b>Regeneration I</b></li>
                 <li>Every <b>10 seconds</b>, teammates within <b>6 blocks</b> get Regeneration</li>
-                <li><b>Sanctuary</b> (sneak): heal <b>3× faster</b> and teammates nearby <b>1.5×</b>, but you get Slowness IV and deal <b>75% less</b> damage</li>
+                <li><b>Sanctuary</b> (sneak): heal <b>7.5× faster</b> and teammates nearby <b>3.75×</b>, but you get Slowness IV and deal <b>75% less</b> damage</li>
                 <li>Sanctuary lasts up to <b>10s</b> in total (stop sneaking to pause it) or until you're at full health, then has a <b>5 minute</b> cooldown</li>
               </ul></div>
               <span class="fc-lock"><span style="color:#b46bff">Epic</span> · 🔒 unlock with a Class Roll</span>
@@ -411,7 +411,7 @@ body { margin: 0; background: var(--fc-page); }
                 <li>Plus <b>Speed III</b> for 10 seconds. Your normal Speed comes back afterwards</li>
                 <li>Kills also <b>cleanse</b> you: removes bad effects, fire and bleeding (40s cooldown)</li>
               </ul></div>
-              <span class="fc-lock"><span style="color:#5c8dff">Rare</span> · 🔒 unlock with a Class Roll</span>
+              <span class="fc-lock"><span style="color:#f2b544">Legendary</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="fight">
               <div class="fc-class-head"><div class="fc-icon">⚡</div><div><h4>Thor</h4><span class="fc-tag special">Special</span></div></div>
@@ -422,19 +422,20 @@ body { margin: 0; background: var(--fc-page); }
                 <li>Full <b>mace smashes</b> strike for <b>+3</b> damage</li>
                 <li>The lightning doesn't set anything on fire</li>
               </ul></div>
-              <span class="fc-lock"><span style="color:#f2b544">Legendary</span> · 🔒 unlock with a Class Roll</span>
+              <span class="fc-lock"><span style="color:#b46bff">Epic</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="fight">
               <div class="fc-class-head"><div class="fc-icon">🩸</div><div><h4>Bloodlust</h4><span class="fc-tag special">Special</span></div></div>
               <p class="fc-desc">Every hit and kill makes you stronger and faster.</p>
               <div class="fc-ability"><ul>
-                <li><b>+10%</b> damage and <b>+5%</b> attack speed per kill, stacking up to <b>5×</b> (+50% / +25%)</li>
-                <li><b>Hit chains:</b> <b>+3%</b> damage per hit in a row, up to 5 hits (breaks after 3s)</li>
+                <li><b>+30%</b> damage and <b>+5%</b> attack speed per kill, stacking up to <b>5×</b> (+150% / +25%)</li>
+                <li><b>Hit chains:</b> <b>+9%</b> damage per hit in a row, up to 5 hits (breaks after 3s)</li>
+                <li>You and your target both get a chat alert when Bloodlust hits</li>
                 <li>Blood sprays from your target as your rage builds</li>
                 <li>Kill again within <b>30 seconds</b> to keep your stacks</li>
                 <li>Your action bar shows your stacks and time left</li>
               </ul></div>
-              <span class="fc-lock"><span style="color:#b46bff">Epic</span> · 🔒 unlock with a Class Roll</span>
+              <span class="fc-lock"><span style="color:#f2b544">Legendary</span> · 🔒 unlock with a Class Roll</span>
             </article>
           </div>
         </section>
@@ -452,12 +453,12 @@ body { margin: 0; background: var(--fc-page); }
             <thead><tr><th>Rarity</th><th>Result</th><th>Chance</th></tr></thead>
             <tbody>
               <tr><td><b style="color:#7a7a7a">Trash</b></td><td>🗑️ Junk item</td><td>50%</td></tr>
-              <tr><td><b style="color:#9aa3b2">Common</b></td><td>🪓 Berserker</td><td>15.3%</td></tr>
-              <tr><td><b style="color:#5c8dff">Rare</b></td><td>🗡️ Knight</td><td>10.2%</td></tr>
-              <tr><td><b style="color:#5c8dff">Rare</b></td><td>☠️ Assassin</td><td>10.2%</td></tr>
-              <tr><td><b style="color:#b46bff">Epic</b></td><td>✚ Healer</td><td>5.8%</td></tr>
-              <tr><td><b style="color:#b46bff">Epic</b></td><td>🩸 Bloodlust</td><td>5.8%</td></tr>
-              <tr><td><b style="color:#f2b544">Legendary</b></td><td>⚡ Thor</td><td>2.7%</td></tr>
+              <tr><td><b style="color:#9aa3b2">Common</b></td><td>🪓 Berserker</td><td>18.0%</td></tr>
+              <tr><td><b style="color:#5c8dff">Rare</b></td><td>🗡️ Knight</td><td>12.0%</td></tr>
+              <tr><td><b style="color:#b46bff">Epic</b></td><td>✚ Healer</td><td>6.8%</td></tr>
+              <tr><td><b style="color:#b46bff">Epic</b></td><td>⚡ Thor</td><td>6.8%</td></tr>
+              <tr><td><b style="color:#f2b544">Legendary</b></td><td>☠️ Assassin</td><td>3.2%</td></tr>
+              <tr><td><b style="color:#f2b544">Legendary</b></td><td>🩸 Bloodlust</td><td>3.2%</td></tr>
             </tbody>
           </table></div>
           <div class="fc-note warn"><span class="em">🎲</span><p><b>Duplicates are lost.</b> If you roll a class you already have, the roll is used up. If you already have <b>every</b> special class, the roll won't let you use it, so you can save it for next season. Check the current odds in-game with <code>/class roll odds</code>.</p></div>
