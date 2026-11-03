@@ -261,13 +261,15 @@ body { margin: 0; background: var(--fc-page); }
 .fc-recipes { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
 .fc-recipe { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
 .fc-recipe h4 { margin: 0; font-size: 16px; }
-.fc-recipe .row { display: flex; align-items: center; gap: 14px; }
+.fc-recipe { align-items: center; text-align: center; }
+.fc-recipe .row { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.fc-recipe .fc-key { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; }
 .fc-grid3 { display: grid; grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(3, 44px); gap: 4px; padding: 6px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; flex: none; }
-.fc-slot { border-radius: 6px; background: var(--bg); border: 1px solid var(--line); display: grid; place-items: center; font-weight: 800; font-size: 15px; color: var(--text); overflow: hidden; }
-.fc-slot img { width: 34px; height: 34px; image-rendering: pixelated; }
+.fc-slot { border-radius: 6px; background: var(--bg); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 0; min-width: 0; font-weight: 800; font-size: 15px; color: var(--text); overflow: hidden; }
+.fc-slot img { width: 34px; height: 34px; image-rendering: pixelated; display: block; flex: none; }
 .fc-arrow { color: var(--faint); font-size: 22px; }
 .fc-out { width: 64px; height: 64px; border-radius: 12px; display: grid; place-items: center; background: var(--panel-2); border: 1px solid var(--line); font-weight: 800; flex: none; }
-.fc-out img { width: 52px; height: 52px; image-rendering: pixelated; }
+.fc-out img { width: 52px; height: 52px; image-rendering: pixelated; display: block; }
 .fc-key { margin: 0; padding: 0; list-style: none; font-size: 13.5px; color: var(--muted); display: grid; gap: 3px; }
 .fc-key li { display: flex; align-items: center; gap: 8px; }
 .fc-key img { width: 22px; height: 22px; image-rendering: pixelated; }
@@ -533,15 +535,6 @@ body { margin: 0; background: var(--fc-page); }
           </div>
           <div class="fc-note" style="margin-top:16px"><span class="em">🤝</span><p><b>No alliances.</b> Teams can't ally with each other, so anyone outside your team is fair game.</p></div>
 
-          <h3>Ranks</h3>
-          <div class="fc-scroll"><table class="fc-table fc-card">
-            <thead><tr><th>Rank</th><th>What they can do</th></tr></thead>
-            <tbody>
-              <tr><td><b>Owner</b></td><td>Everything, plus rename, recolour, set a tag or description, promote and demote, and disband the team. A team can have up to 2 owners.</td></tr>
-              <tr><td><b>Admin</b></td><td>Invite, kick and ban players, set the home, claim chests and withdraw from the bank.</td></tr>
-              <tr><td><b>Member</b></td><td>Use the home, warp, anchor, team chests and team chat, set the team warp, and deposit money.</td></tr>
-            </tbody>
-          </table></div>
 
           <h3>Useful commands</h3>
           <div class="fc-scroll"><table class="fc-table fc-card">
@@ -551,9 +544,9 @@ body { margin: 0; background: var(--fc-page); }
               <tr><td><code>/team list</code></td><td>Lists every team</td></tr>
               <tr><td><code>/team top</code></td><td>Team leaderboard by score</td></tr>
               <tr><td><code>/team leave</code></td><td>Leaves your team</td></tr>
-              <tr><td><code>/team kick &lt;player&gt;</code></td><td>Removes someone from the team (admins and owners)</td></tr>
-              <tr><td><code>/team promote &lt;player&gt;</code></td><td>Promotes a member to admin, or an admin to owner (owners)</td></tr>
-              <tr><td><code>/team disband</code></td><td>Deletes the team (owners)</td></tr>
+              <tr><td><code>/team kick &lt;player&gt;</code></td><td>Removes someone from the team</td></tr>
+              <tr><td><code>/team promote &lt;player&gt;</code></td><td>Promotes a teammate</td></tr>
+              <tr><td><code>/team disband</code></td><td>Deletes the team</td></tr>
             </tbody>
           </table></div>
         </section>
@@ -622,7 +615,7 @@ body { margin: 0; background: var(--fc-page); }
           <h3>Chat &amp; players</h3>
           <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>/msg &lt;player&gt; &lt;message&gt;</code></td><td>Send a private message</td></tr><tr><td><code>/r &lt;message&gt;</code></td><td>Reply to your last message</td></tr><tr><td><code>/trade &lt;player&gt;</code></td><td>Trade items safely with another player</td></tr><tr><td><code>/ping</code></td><td>Check your ping</td></tr><tr><td><code>/playtime</code></td><td>See how long you've played</td></tr><tr><td><code>/playtimetop</code></td><td>Playtime leaderboard</td></tr><tr><td><code>/discord</code></td><td>Get the Discord link</td></tr></tbody></table></div>
           <h3>Gameplay</h3>
-          <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>/class</code></td><td>Open the class menu (<a href="classes/">Classes guide</a>)</td></tr><tr><td><code>/team</code></td><td>Team commands (see <a href="#teams">Teams</a>)</td></tr><tr><td><code>/koth</code></td><td>KOTH event info</td></tr><tr><td><code>/kit</code></td><td>Claim your kits</td></tr><tr><td><code>/shop</code></td><td>Buy and sell items</td></tr><tr><td><code>/coins top</code></td><td>Richest players</td></tr><tr><td><code>/recipe &lt;item&gt;</code></td><td>See how to craft any item</td></tr><tr><td><code>/vote</code></td><td>Vote for the server and get Vote Keys</td></tr><tr><td><code>/buy</code></td><td>Open the store</td></tr></tbody></table></div>
+          <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>/class</code></td><td>Open the class menu (<a href="classes/">Classes guide</a>)</td></tr><tr><td><code>/team</code></td><td>Team commands (see <a href="#teams">Teams</a>)</td></tr><tr><td><code>/koth</code></td><td>KOTH event info</td></tr><tr><td><code>/kit</code></td><td>Claim your kits</td></tr><tr><td><code>/shop</code></td><td>Buy particle and projectile cosmetics with coins</td></tr><tr><td><code>/coins top</code></td><td>Richest players</td></tr><tr><td><code>/recipe &lt;item&gt;</code></td><td>See how to craft any item</td></tr><tr><td><code>/vote</code></td><td>Vote for the server and get Vote Keys</td></tr><tr><td><code>/buy</code></td><td>Open the store</td></tr></tbody></table></div>
           <h3>Extras</h3>
           <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>/uc</code></td><td>Cosmetics: gadgets and suits</td></tr><tr><td><b>Voice chat</b></td><td>Proximity voice chat and groups work if you have the voice chat mod installed</td></tr></tbody></table></div>
         </section>
