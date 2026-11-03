@@ -385,9 +385,9 @@ body { margin: 0; background: var(--fc-page); }
               <div class="fc-ability"><ul>
                 <li><b>+20%</b> sword damage</li>
                 <li>Take <b>25% less</b> damage from maces and <b>10% less</b> from other melee weapons</li>
-                <li><b>15%</b> chance per sword hit to make the enemy <b style="color:var(--bad)">bleed</b> for 1–5s</li>
+                <li><b>15%</b> chance per sword hit to make the enemy <b style="color:var(--bad)">bleed</b> for 1–5s. Each bleed tick briefly slows them</li>
                 <li><b>2%</b> chance of a <b style="color:var(--bad)">deep wound</b>: bleeding for 30s</li>
-                <li>Bleeding deals <b>true damage</b> (½ heart every 2.5s, ignores armour), stacks up to 30s and <b>can kill</b></li>
+                <li>Bleeding deals <b>1 heart of true damage every 5s</b> (ignores armour), stacks up to 30s and <b>can kill</b></li>
               </ul></div>
               <span class="fc-lock"><span style="color:#5c8dff">Rare</span> · 🔒 unlock with a Class Roll</span>
             </article>
@@ -398,16 +398,17 @@ body { margin: 0; background: var(--fc-page); }
                 <li>Permanent <b>Regeneration I</b></li>
                 <li>Every <b>10 seconds</b>, teammates within <b>6 blocks</b> get Regeneration</li>
                 <li><b>Sanctuary</b> (sneak): heal <b>7.5× faster</b> and teammates nearby <b>3.75×</b>, but you get Slowness IV and deal <b>75% less</b> damage</li>
+                <li>Sanctuary also <b>repairs your armour</b> (about 80 Bottles o' Enchanting worth with Mending), and half that for teammates</li>
                 <li>Sanctuary lasts up to <b>10s</b> in total (stop sneaking to pause it) or until you're at full health, then has a <b>5 minute</b> cooldown</li>
               </ul></div>
               <span class="fc-lock"><span style="color:#b46bff">Epic</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="fight">
               <div class="fc-class-head"><div class="fc-icon">☠️</div><div><h4>Assassin</h4><span class="fc-tag special">Special</span></div></div>
-              <p class="fc-desc">Strike from the shadows. Vanish completely after a kill.</p>
+              <p class="fc-desc">Strike from the shadows. After a kill you are completely invisible to other players, armour and weapon included. Only your running trail shows.</p>
               <div class="fc-ability"><ul>
                 <li><b>Backstab:</b> <b>+20%</b> damage when you hit someone from behind</li>
-                <li>After a player kill: <b>3s full invisibility</b>, with your armour and weapon hidden too (only faint footsteps show)</li>
+                <li>After a player kill: <b>3s of complete invisibility</b>. Other players can't see you, your armour or your weapon, only a faint running trail</li>
                 <li>Plus <b>Speed III</b> for 10 seconds. Your normal Speed comes back afterwards</li>
                 <li>Kills also <b>cleanse</b> you: removes bad effects, fire and bleeding (40s cooldown)</li>
               </ul></div>
@@ -417,24 +418,24 @@ body { margin: 0; background: var(--fc-page); }
               <div class="fc-class-head"><div class="fc-icon">⚡</div><div><h4>Thor</h4><span class="fc-tag special">Special</span></div></div>
               <p class="fc-desc">Call down the storm with swords, axes, maces and bows.</p>
               <div class="fc-ability"><ul>
-                <li>Every <b>5th hit</b> on a player strikes lightning</li>
-                <li>Bonus: <b>+2</b> with swords, maces and bows · <b>+3</b> with axes</li>
-                <li>Full <b>mace smashes</b> strike for <b>+3</b> damage</li>
-                <li>The lightning doesn't set anything on fire</li>
-              </ul></div>
+                <li>Every <b>5th hit</b> on a player with a sword, axe, mace or bow calls lightning</li>
+                <li>A full <b>mace smash</b> calls it straight away</li>
+                <li>The lightning deals <b>2 hearts of true damage</b> (ignores armour)</li>
+                <li><b>30 second</b> cooldown between strikes</li>
+</ul></div>
               <span class="fc-lock"><span style="color:#b46bff">Epic</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="fight">
               <div class="fc-class-head"><div class="fc-icon">🩸</div><div><h4>Bloodlust</h4><span class="fc-tag special">Special</span></div></div>
-              <p class="fc-desc">Every hit and kill makes you stronger and faster.</p>
+              <p class="fc-desc">Chain your hits and kills for huge damage, but every chain hit costs you.</p>
               <div class="fc-ability"><ul>
-                <li><b>+30%</b> damage and <b>+5%</b> attack speed per kill, stacking up to <b>5×</b> (+150% / +25%)</li>
-                <li><b>Hit chains:</b> <b>+9%</b> damage per hit in a row, up to 5 hits (breaks after 3s)</li>
-                <li>You and your target both get a chat alert when Bloodlust hits</li>
-                <li>Blood sprays from your target as your rage builds</li>
-                <li>Kill again within <b>30 seconds</b> to keep your stacks</li>
-                <li>Your action bar shows your stacks and time left</li>
-              </ul></div>
+                <li><b>Kills:</b> <b>+30%</b> damage and <b>+5%</b> attack speed per kill, stacking up to <b>5×</b> for 30 seconds</li>
+                <li><b>Hit chains:</b> hit players again and again without a 3-second gap. The chain starts on your <b>3rd hit</b></li>
+                <li>Every chain hit adds <b>+9%</b> damage and <b>+3%</b> attack speed, with no limit. Great for trapping</li>
+                <li><b>The cost:</b> each chain hit deals <b>½ heart</b> of true damage to <i>you</i> (<b>1 heart</b> from chain 7), and you get growing <b>Weakness</b>. It can't take your last half heart</li>
+                <li>When the chain ends, the Weakness and the extra speed stop straight away</li>
+                <li>Blood sprays from your target, and you both get chat alerts</li>
+</ul></div>
               <span class="fc-lock"><span style="color:#f2b544">Legendary</span> · 🔒 unlock with a Class Roll</span>
             </article>
           </div>
@@ -528,8 +529,9 @@ body { margin: 0; background: var(--fc-page); }
           <h2>Ability alerts</h2>
           <p class="fc-lead">You get a chat message and a sound whenever one of your abilities triggers. Listen for the <b>ding</b> on a Thor strike.</p>
           <div class="fc-chat" aria-label="Example chat messages">
-            <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="a">⚡ Lightning strike!</span> <span class="p">(+2 damage on Steve)</span></div>
+            <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="a">⚡ Lightning strike!</span> <span class="p">(2 hearts true damage on Steve · 30s cooldown)</span></div>
             <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="d">🗡 Backstab!</span> <span class="p">(+20% damage)</span></div>
+            <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="r">🩸 Bloodlust</span> <span class="p">· +27% damage on Steve (chain 3)</span></div>
             <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="r">⚔ Steve is bleeding!</span> <span class="p">(4s)</span></div>
             <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="d">☠ Vanished!</span> <span class="p">(invisible 3s · Speed III 10s)</span></div>
             <div><span class="p">[</span><span class="g">Class</span><span class="p">]</span> <span class="r">🗡 Bloodlust x3</span> <span class="p">(+30% damage for 30s)</span></div>
