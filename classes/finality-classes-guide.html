@@ -278,6 +278,9 @@ body { margin: 0; background: var(--fc-page); }
         
         
         
+        
+        
+        
         <button class="fc-btn" id="fc-theme" type="button" title="Switch light / dark">◐ <span class="lbl">Theme</span></button>
         <button class="fc-btn primary" id="fc-download" type="button" title="Save this guide to your computer">⤓ <span class="lbl">Download guide</span></button>
       </div>
@@ -360,6 +363,7 @@ body { margin: 0; background: var(--fc-page); }
             </div>
             <p style="margin:10px 0 0;color:var(--muted)">Everyone starts with <b>2 slots</b>: one default class and one special class. An <a href="#tokens">Extra Class Token</a> adds a third slot for a second default class, so your count becomes <b>/3</b>.</p>
           </div>
+          <div class="fc-note" id="tags"><span class="em">🏷</span><p><b>Class tags.</b> Your classes show before your name, so everyone can see what you're running. One class shows as <code style="color:#FFAA00;background:#1d1d22;border-color:#1d1d22">[P]</code>, a default + special shows both, e.g. <code style="background:#1d1d22;border-color:#1d1d22"><span style="color:#FFAA00">[P</span><span style="color:#555">/</span><span style="color:#00AAAA">T]</span></code>.<br><code style="color:#FFAA00;background:#1d1d22;border-color:#1d1d22">[P]</code>&nbsp;Pharo <code style="color:#55FFFF;background:#1d1d22;border-color:#1d1d22">[N]</code>&nbsp;Ninja <code style="color:#FFFF55;background:#1d1d22;border-color:#1d1d22">[H]</code>&nbsp;Haste <code style="color:#FFFFFF;background:#1d1d22;border-color:#1d1d22">[W]</code>&nbsp;Webwalker <code style="color:#FF5555;background:#1d1d22;border-color:#1d1d22">[B]</code>&nbsp;Berserker <code style="color:#5555FF;background:#1d1d22;border-color:#1d1d22">[K]</code>&nbsp;Knight <code style="color:#FF55FF;background:#1d1d22;border-color:#1d1d22">[HL]</code>&nbsp;Healer <code style="color:#AA00AA;background:#1d1d22;border-color:#1d1d22">[A]</code>&nbsp;Assassin <code style="color:#00AAAA;background:#1d1d22;border-color:#1d1d22">[T]</code>&nbsp;Thor <code style="color:#AA0000;background:#1d1d22;border-color:#1d1d22">[BL]</code>&nbsp;Bloodlust</p></div>
         </section>
 
         <section class="fc-section" id="default">
@@ -369,22 +373,22 @@ body { margin: 0; background: var(--fc-page); }
             <article class="fc-card fc-class">
               <div class="fc-class-head"><div class="fc-icon">🔥</div><div><h4>Pharo</h4><span class="fc-tag default">Default</span></div></div>
               <p class="fc-desc">Born beneath the desert sun. Fire and lava hold no threat.</p>
-              <div class="fc-ability"><ul><li><b class="fc-lv">Lv I</b> Permanent <b>Fire Resistance</b></li><li><b class="fc-lv two">Lv II</b> Fire Resistance + <b>2× speed in lava</b> (swimming up too)</li></ul></div>
+              <div class="fc-ability"><ul><li><b class="fc-lv">Lv I</b> Permanent Fire Resistance I</li><li><b class="fc-lv two">Lv II</b> Permanent Fire Resistance I · <b>2x</b> speed in lava (swimming up too)</li></ul></div>
             </article>
             <article class="fc-card fc-class">
               <div class="fc-class-head"><div class="fc-icon">🪶</div><div><h4>Ninja</h4><span class="fc-tag default">Default</span></div></div>
               <p class="fc-desc">Light on your feet and always one step ahead.</p>
-              <div class="fc-ability"><ul><li><b class="fc-lv">Lv I</b> Permanent <b>Speed I</b></li><li><b class="fc-lv two">Lv II</b> <b>Speed II</b> + <b>20% less fall damage</b></li></ul></div>
+              <div class="fc-ability"><ul><li><b class="fc-lv">Lv I</b> Permanent Speed I</li><li><b class="fc-lv two">Lv II</b> Permanent Speed II · <b>20%</b> less fall damage</li></ul></div>
             </article>
             <article class="fc-card fc-class">
               <div class="fc-class-head"><div class="fc-icon">⛏️</div><div><h4>Haste</h4><span class="fc-tag default">Default</span></div></div>
               <p class="fc-desc">Tireless hands that cut through stone in moments.</p>
-              <div class="fc-ability"><ul><li><b class="fc-lv">Lv I</b> Permanent <b>Haste I</b></li><li><b class="fc-lv two">Lv II</b> <b>Haste II</b></li></ul></div>
+              <div class="fc-ability"><ul><li><b class="fc-lv">Lv I</b> Permanent Haste I</li><li><b class="fc-lv two">Lv II</b> Permanent Haste II</li></ul></div>
             </article>
             <article class="fc-card fc-class">
               <div class="fc-class-head"><div class="fc-icon">🕸️</div><div><h4>Webwalker</h4><span class="fc-tag default">Default</span></div></div>
               <p class="fc-desc">The ultimate escapist. Webs trap everyone but you.</p>
-              <div class="fc-ability"><ul><li><b class="fc-lv">Lv I</b> Moves through <b>cobwebs</b> much faster</li><li><b class="fc-lv two">Lv II</b> <b>10% faster</b> again in cobwebs</li></ul></div>
+              <div class="fc-ability"><ul><li><b class="fc-lv">Lv I</b> Webwalker I (faster in cobwebs)</li><li><b class="fc-lv two">Lv II</b> Webwalker II (<b>10%</b> faster in cobwebs)</li></ul></div>
             </article>
           </div>
           <div class="fc-note"><span class="em">⬆</span><p>Every default class has <b>2 levels</b>. Upgrade yours to <b>Level II</b> with a <a href="#upgrades">Class Upgrade Token</a>. The <code>/class</code> menu shows your level, an XP bar, and <b style="color:var(--good)">✔ Ready</b> when you can upgrade.</p></div>
@@ -417,72 +421,75 @@ body { margin: 0; background: var(--fc-page); }
           <div class="fc-grid" id="fc-special-grid">
             <article class="fc-card fc-class is-special" data-kind="fight">
               <div class="fc-class-head"><div class="fc-icon">🪓</div><div><h4>Berserker</h4><span class="fc-tag special">Special</span></div></div>
-              <p class="fc-desc">Fewer hearts, harder hits. Every kill earns an extra heart.</p>
+              <p class="fc-desc">Fewer hearts, harder hits. Every kill makes you tougher.</p>
               <div class="fc-ability"><ul>
-                <li>Start on <b>7 hearts</b></li>
-                <li><b>+½ heart</b> per player kill, up to <b>15 hearts</b></li>
-                <li><b>+10%</b> damage</li>
+                <li>Start with <b>7 hearts</b></li>
+                <li>+<b>½ heart</b> per player kill (max <b>15 hearts</b>)</li>
                 <li>Bonus hearts reset when you die</li>
+                <li><b>+10%</b> damage</li>
               </ul></div>
               <span class="fc-lock"><span style="color:#9aa3b2">Common</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="tank">
               <div class="fc-class-head"><div class="fc-icon">🗡️</div><div><h4>Knight</h4><span class="fc-tag special">Special</span></div></div>
-              <p class="fc-desc">Master of the sword. Shrugs off hits and leaves enemies bleeding.</p>
+              <p class="fc-desc">A sword master who shrugs off hits and makes enemies bleed.</p>
               <div class="fc-ability"><ul>
                 <li><b>+20%</b> sword damage</li>
-                <li>Take <b>25% less</b> damage from maces and <b>10% less</b> from other melee weapons</li>
-                <li><b>15%</b> chance per sword hit to make the enemy <b style="color:var(--bad)">bleed</b> for 1–5s. Each bleed tick briefly slows them</li>
-                <li><b>2%</b> chance of a <b style="color:var(--bad)">deep wound</b>: bleeding for 30s</li>
-                <li>Bleeding deals <b>1 heart of true damage every 5s</b> (ignores armour), stacks up to 30s and <b>can kill</b></li>
+                <li><b>25%</b> less damage from maces</li>
+                <li><b>10%</b> less damage from other melee weapons</li>
+                <li><b>15%</b> chance per sword hit to cause bleeding</li>
+                <li>Bleeding: <b>1 heart</b> every <b>5s</b> + brief slowness</li>
+                <li><b>2%</b> chance of a <b>30s</b> deep wound</li>
               </ul></div>
               <span class="fc-lock"><span style="color:#5c8dff">Rare</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="team">
               <div class="fc-class-head"><div class="fc-icon">✚</div><div><h4>Healer</h4><span class="fc-tag special">Special</span></div></div>
-              <p class="fc-desc">Keeps your team alive. Sneak to channel Sanctuary.</p>
+              <p class="fc-desc">Heals your team. Sneak to heal fast and repair your armour.</p>
               <div class="fc-ability"><ul>
-                <li>Permanent <b>Regeneration I</b></li>
-                <li>Every <b>10 seconds</b>, teammates within <b>6 blocks</b> get Regeneration</li>
-                <li><b>Sanctuary</b> (sneak): heal <b>7.5× faster</b> and teammates nearby <b>3.75×</b>, but you get Slowness IV and deal <b>75% less</b> damage</li>
-                <li>Sanctuary also <b>repairs your armour</b> (about 80 Bottles o' Enchanting worth with Mending), and half that for teammates</li>
-                <li>Sanctuary lasts up to <b>10s</b> in total (stop sneaking to pause it) or until you're at full health, then has a <b>5 minute</b> cooldown</li>
+                <li>Permanent Regeneration I</li>
+                <li>Heals teammates within <b>6</b> blocks every <b>10s</b></li>
+                <li>Sneak: heal <b>7.5x</b> faster and repair your armour</li>
+                <li>Teammates nearby heal and repair at half</li>
+                <li>While active: Slowness IV, <b>75%</b> less damage dealt</li>
+                <li>Lasts <b>10s</b> in total (or until healed and repaired)</li>
+                <li><b>5 minute</b> cooldown after that</li>
               </ul></div>
               <span class="fc-lock"><span style="color:#b46bff">Epic</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="fight">
               <div class="fc-class-head"><div class="fc-icon">☠️</div><div><h4>Assassin</h4><span class="fc-tag special">Special</span></div></div>
-              <p class="fc-desc">Strike from the shadows. After a kill you are completely invisible to other players, armour and weapon included. Only your running trail shows.</p>
+              <p class="fc-desc">After a kill you are completely invisible, armour and weapon too.</p>
               <div class="fc-ability"><ul>
-                <li><b>Backstab:</b> <b>+20%</b> damage when you hit someone from behind</li>
-                <li>After a player kill: <b>3s of complete invisibility</b>. Other players can't see you, your armour or your weapon, only a faint running trail</li>
-                <li>Plus <b>Speed III</b> for 10 seconds. Your normal Speed comes back afterwards</li>
-                <li>Kills also <b>cleanse</b> you: removes bad effects, fire and bleeding (40s cooldown)</li>
+                <li><b>+20%</b> melee damage when hitting from behind</li>
+                <li>On kill: completely invisible for <b>3s</b></li>
+                <li>Your armour and weapon are hidden too</li>
+                <li>On kill: Speed III for <b>10s</b></li>
+                <li>On kill: removes bad effects, fire and bleeding (<b>40s</b> cooldown)</li>
               </ul></div>
               <span class="fc-lock"><span style="color:#f2b544">Legendary</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="fight">
               <div class="fc-class-head"><div class="fc-icon">⚡</div><div><h4>Thor</h4><span class="fc-tag special">Special</span></div></div>
-              <p class="fc-desc">Call down the storm with swords, axes, maces and bows.</p>
+              <p class="fc-desc">Every 5th hit calls down lightning on your enemy.</p>
               <div class="fc-ability"><ul>
-                <li>Every <b>5th hit</b> on a player with a sword, axe, mace or bow calls lightning</li>
-                <li>A full <b>mace smash</b> calls it straight away</li>
-                <li>The lightning deals <b>2 hearts of true damage</b> (ignores armour)</li>
-                <li><b>30 second</b> cooldown between strikes</li>
-</ul></div>
+                <li>Every <b>5</b>th hit (sword, axe, mace or bow): lightning</li>
+                <li>Lightning deals <b>2 hearts</b> true damage</li>
+                <li>A mace smash calls it instantly</li>
+                <li><b>30s</b> cooldown between strikes</li>
+              </ul></div>
               <span class="fc-lock"><span style="color:#b46bff">Epic</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="fight">
               <div class="fc-class-head"><div class="fc-icon">🩸</div><div><h4>Bloodlust</h4><span class="fc-tag special">Special</span></div></div>
-              <p class="fc-desc">Chain your hits and kills for huge damage, but every chain hit costs you.</p>
+              <p class="fc-desc">Chain hits for huge damage, but you lose ½ heart every chain hit.</p>
               <div class="fc-ability"><ul>
-                <li><b>Kills:</b> <b>+30%</b> damage and <b>+5%</b> attack speed per kill, stacking up to <b>5×</b> for 30 seconds</li>
-                <li><b>Hit chains:</b> hit players again and again without a 3-second gap. The chain starts on your <b>3rd hit</b></li>
-                <li>Every chain hit adds <b>+9%</b> damage and <b>+3%</b> attack speed, with no limit. Great for trapping</li>
-                <li><b>The cost:</b> each chain hit deals <b>½ heart</b> of true damage to <i>you</i> (<b>1 heart</b> from chain 7). It can't take your last half heart</li>
-                <li>When the chain ends, the extra speed stops straight away</li>
-                <li>Blood sprays from your target, and you both get chat alerts</li>
-</ul></div>
+                <li>Per kill: <b>+30%</b> damage, <b>+5%</b> attack speed (x<b>5</b>, <b>30s</b>)</li>
+                <li>Hit <b>3</b> times in a row to start a chain</li>
+                <li>Each chain hit: <b>+9%</b> damage, <b>+3%</b> attack speed</li>
+                <li>Each chain hit costs you <b>½ heart</b> (<b>1 heart</b> from chain <b>7</b>)</li>
+                <li>Chains end after <b>3s</b> without a hit</li>
+              </ul></div>
               <span class="fc-lock"><span style="color:#f2b544">Legendary</span> · 🔒 unlock with a Class Roll</span>
             </article>
           </div>
