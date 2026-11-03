@@ -118,8 +118,8 @@
   width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
   background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: 13px;
 }
-.fc-step b { display: block; margin-bottom: 2px; }
-.fc-step span { color: var(--muted); }
+.fc-step > b { display: block; margin-bottom: 2px; }
+.fc-step > span { color: var(--muted); }
 
 .fc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
 
@@ -236,6 +236,7 @@ body { margin: 0; background: var(--fc-page); }
         <a href="#slots">Your class slots</a>
         <a href="#default">Default classes</a>
         <a href="#special">Special classes</a>
+        <a href="#roll">KOTH Class Roll</a>
         <a href="#switching">Switching specials</a>
         <a href="#tokens">Tokens</a>
         <a href="#players">Player lists</a>
@@ -252,7 +253,7 @@ body { margin: 0; background: var(--fc-page); }
             <span class="fc-chip">Permanent abilities</span>
             <span class="fc-chip">1 default + 1 special</span>
             <span class="fc-chip">Unlockable classes</span>
-            <span class="fc-chip">PvP-tested numbers</span>
+            <span class="fc-chip">Daily KOTH rolls</span>
           </div>
         </section>
 
@@ -262,7 +263,7 @@ body { margin: 0; background: var(--fc-page); }
           <div class="fc-steps">
             <div class="fc-card fc-step"><b>Join the server</b><span>The class menu opens on its own the first time you join. It stays open until you pick a class, and you can't be hurt while it's open.</span></div>
             <div class="fc-card fc-step"><b>Pick a default class</b><span>Left-click one of the default classes. Its ability switches on straight away and lasts the whole season, even through deaths and milk.</span></div>
-            <div class="fc-card fc-step"><b>Unlock a special class</b><span>Special classes sit on top of your default class, so you get both abilities. Unlock one by <span class="fc-placeholder">[how to unlock]</span>, then equip it from the same menu.</span></div>
+            <div class="fc-card fc-step"><b>Unlock a special class</b><span>Special classes sit on top of your default class, so you get both abilities. Win the daily <b>KOTH</b> event to get a <b>Special Class Roll</b>, spin it, and equip whatever you unlock from the same menu.</span></div>
           </div>
         </section>
 
@@ -332,7 +333,7 @@ body { margin: 0; background: var(--fc-page); }
         <section class="fc-section" id="special">
           <h2>Special classes</h2>
           <p class="fc-lead">Special classes glow in the menu and sit on top of your default class. You can have one at a time.</p>
-          <div class="fc-note warn"><span class="em">🔒</span><p>Special classes start <b style="color:var(--bad)">LOCKED</b>. Unlock them by <span class="fc-placeholder">[how to unlock]</span>. Once unlocked they show <b style="color:var(--good)">UNLOCKED</b> and you can equip them.</p></div>
+          <div class="fc-note warn"><span class="em">🔒</span><p>Special classes start <b style="color:var(--bad)">LOCKED</b>. Unlock them with a <a href="#roll">Special Class Roll</a> from winning <b>KOTH</b>. Once unlocked they show <b style="color:var(--good)">UNLOCKED</b> and you can equip them.</p></div>
 
           <div class="fc-tabs" role="tablist" aria-label="Filter classes">
             <button class="fc-tab" role="tab" aria-selected="true" data-filter="all">All</button>
@@ -351,7 +352,7 @@ body { margin: 0; background: var(--fc-page); }
                 <li><b>+10%</b> damage</li>
                 <li>Bonus hearts reset when you die</li>
               </ul></div>
-              <span class="fc-lock">🔒 Locked until unlocked</span>
+              <span class="fc-lock"><span style="color:#5c8dff">Rare</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="tank">
               <div class="fc-class-head"><div class="fc-icon">🗡️</div><div><h4>Knight</h4><span class="fc-tag special">Special</span></div></div>
@@ -360,7 +361,7 @@ body { margin: 0; background: var(--fc-page); }
                 <li><b>+15%</b> sword damage</li>
                 <li>Take <b>25% less</b> damage from maces</li>
               </ul></div>
-              <span class="fc-lock">🔒 Locked until unlocked</span>
+              <span class="fc-lock"><span style="color:#9aa3b2">Common</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="team">
               <div class="fc-class-head"><div class="fc-icon">✚</div><div><h4>Healer</h4><span class="fc-tag special">Special</span></div></div>
@@ -370,7 +371,7 @@ body { margin: 0; background: var(--fc-page); }
                 <li>Heals you too</li>
                 <li>Uses your team from <code>/team</code></li>
               </ul></div>
-              <span class="fc-lock">🔒 Locked until unlocked</span>
+              <span class="fc-lock"><span style="color:#9aa3b2">Common</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="fight">
               <div class="fc-class-head"><div class="fc-icon">☠️</div><div><h4>Assassin</h4><span class="fc-tag special">Special</span></div></div>
@@ -380,7 +381,7 @@ body { margin: 0; background: var(--fc-page); }
                 <li>Plus <b>Speed III</b> for 5 seconds</li>
                 <li>Your normal Speed comes back afterwards</li>
               </ul></div>
-              <span class="fc-lock">🔒 Locked until unlocked</span>
+              <span class="fc-lock"><span style="color:#5c8dff">Rare</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="fight">
               <div class="fc-class-head"><div class="fc-icon">⚡</div><div><h4>Thor</h4><span class="fc-tag special">Special</span></div></div>
@@ -390,7 +391,7 @@ body { margin: 0; background: var(--fc-page); }
                 <li>Full <b>mace smashes</b> strike for <b>+3</b> damage</li>
                 <li>The lightning doesn't set anything on fire</li>
               </ul></div>
-              <span class="fc-lock">🔒 Locked until unlocked</span>
+              <span class="fc-lock"><span style="color:#f2b544">Legendary</span> · 🔒 unlock with a Class Roll</span>
             </article>
             <article class="fc-card fc-class is-special" data-kind="fight">
               <div class="fc-class-head"><div class="fc-icon">🩸</div><div><h4>Bloodlust</h4><span class="fc-tag special">Special</span></div></div>
@@ -400,9 +401,33 @@ body { margin: 0; background: var(--fc-page); }
                 <li>Kill again within <b>30 seconds</b> to keep your stacks</li>
                 <li>Your action bar shows your stacks and time left</li>
               </ul></div>
-              <span class="fc-lock">🔒 Locked until unlocked</span>
+              <span class="fc-lock"><span style="color:#b46bff">Epic</span> · 🔒 unlock with a Class Roll</span>
             </article>
           </div>
+        </section>
+
+        <section class="fc-section" id="roll">
+          <h2>🎰 KOTH Special Class Roll</h2>
+          <p class="fc-lead">Win the daily KOTH event to get a Special Class Roll. Spin it to unlock a special class.</p>
+          <div class="fc-steps">
+            <div class="fc-card fc-step"><b>Win KOTH</b><span>The winner of each daily KOTH gets a <b style="color:var(--accent)">Special Class Roll</b> (a glowing nether star).</span></div>
+            <div class="fc-card fc-step"><b>Right-click it</b><span>A roulette spins through the special classes, slows down, and lands on one.</span></div>
+            <div class="fc-card fc-step"><b>It's unlocked for the season</b><span>The class you land on is unlocked until the season ends, and the whole server sees what you rolled. Equip it from <code>/class</code>.</span></div>
+          </div>
+          <h3>Odds</h3>
+          <div class="fc-scroll"><table class="fc-table fc-card">
+            <thead><tr><th>Rarity</th><th>Class</th><th>Chance</th></tr></thead>
+            <tbody>
+              <tr><td><b style="color:#9aa3b2">Common</b></td><td>🗡️ Knight</td><td>25.7%</td></tr>
+              <tr><td><b style="color:#9aa3b2">Common</b></td><td>✚ Healer</td><td>25.7%</td></tr>
+              <tr><td><b style="color:#5c8dff">Rare</b></td><td>☠️ Assassin</td><td>17.1%</td></tr>
+              <tr><td><b style="color:#5c8dff">Rare</b></td><td>🪓 Berserker</td><td>17.1%</td></tr>
+              <tr><td><b style="color:#b46bff">Epic</b></td><td>🩸 Bloodlust</td><td>9.7%</td></tr>
+              <tr><td><b style="color:#f2b544">Legendary</b></td><td>⚡ Thor</td><td>4.6%</td></tr>
+            </tbody>
+          </table></div>
+          <div class="fc-note warn"><span class="em">🎲</span><p><b>Duplicates are lost.</b> If you roll a class you already have, the roll is used up. If you already have <b>every</b> special class, the roll won't let you use it, so you can save it for next season. Check the current odds in-game with <code>/class roll odds</code>.</p></div>
+          <div class="fc-note"><span class="em">🚪</span><p>Closing the menu mid-spin just skips to the result. You can't escape a bad roll.</p></div>
         </section>
 
         <section class="fc-section" id="switching">
@@ -474,6 +499,7 @@ body { margin: 0; background: var(--fc-page); }
               <tr><td><code>/class</code></td><td>Opens the class menu</td></tr>
               <tr><td><code>/class info</code></td><td>Shows your classes and slots</td></tr>
               <tr><td><code>/class &lt;name&gt;</code></td><td>Picks or equips a class by name, e.g. <code>/class ninja</code></td></tr>
+              <tr><td><code>/class roll odds</code></td><td>Shows the chances for each special class in a Class Roll</td></tr>
               <tr><td><code>/class help</code></td><td>Lists the commands you can use</td></tr>
             </tbody>
           </table></div>
@@ -485,7 +511,9 @@ body { margin: 0; background: var(--fc-page); }
           <details><summary>Can I have two special classes?</summary><p>No, you can only have one special class at a time. You can switch between special classes whenever you like, with a 5 second cooldown.</p></details>
           <details><summary>Why didn't my kill count for Berserker or Bloodlust?</summary><p>Only real player kills count. Berserker uses the server's PvP stats, so kills the anti-farming system rejects don't give hearts.</p></details>
           <details><summary>I picked the wrong default class. What now?</summary><p>Use a <b>Class Reset Token</b>. It resets your default class and keeps your special class.</p></details>
-          <details><summary>How do I unlock special classes?</summary><p><span class="fc-placeholder">[how to unlock]</span></p></details>
+          <details><summary>How do I unlock special classes?</summary><p>Win the daily <b>KOTH</b> event. The winner gets a <b>Special Class Roll</b>, which unlocks a random special class for the rest of the season.</p></details>
+          <details><summary>What if I roll a class I already have?</summary><p>Duplicates are lost, so that roll is used up. If you already own every special class, the roll won't let you use it, so save it for next season.</p></details>
+          <details><summary>Do unlocked special classes last forever?</summary><p>They last for the current season. When a new season starts, everyone starts fresh.</p></details>
           <details><summary>Do potions still work?</summary><p>Yes. A stronger potion, such as Speed II on a Ninja, takes over while it lasts, and your class effect comes back when it runs out.</p></details>
         </section>
       </main>
