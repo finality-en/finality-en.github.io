@@ -211,6 +211,12 @@
 :root[data-theme="light"] { --fc-page: #f6f7f9; }
 html { scroll-behavior: smooth; background: var(--fc-page); }
 body { margin: 0; background: var(--fc-page); }
+
+.fc-tabs-site { display: flex; gap: 4px; margin-left: 18px; }
+.fc-tabs-site a { color: var(--muted); font-weight: 600; font-size: 14px; padding: 7px 12px; border-radius: 9px; }
+.fc-tabs-site a:hover { color: var(--text); background: var(--panel); text-decoration: none; }
+.fc-tabs-site a.on { color: var(--text); background: var(--panel-2); }
+@media (max-width: 560px) { .fc-logo .txt { display: none; } .fc-tabs-site { margin-left: 4px; } }
 </style>
 </head>
 <body>
@@ -218,7 +224,8 @@ body { margin: 0; background: var(--fc-page); }
 
   <header class="fc-top">
     <div class="fc-wrap">
-      <div class="fc-logo"><span class="fc-logo-mark">⚔</span> Finality Classes</div>
+      <div class="fc-logo"><span class="fc-logo-mark">⚔</span> <span class="txt">Finality</span></div>
+      <nav class="fc-tabs-site" aria-label="Site"><a href="../">Finality SMP</a><a class="on" href="./">Classes</a></nav>
       <div class="fc-top-actions">
         <button class="fc-btn" id="fc-theme" type="button" title="Switch light / dark">◐ <span class="lbl">Theme</span></button>
         <button class="fc-btn primary" id="fc-download" type="button" title="Save this guide to your computer">⤓ <span class="lbl">Download guide</span></button>
