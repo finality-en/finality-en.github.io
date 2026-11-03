@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finality Classes Guide</title>
+<meta name="description" content="How classes, special classes, tokens and abilities work on Finality.">
+<style>
+/* ------------------------------------------------------------------
+   Finality Classes — player guide
+   Everything is scoped to .fc-guide so this can be pasted into any
+   website without clashing with its styles. No external files needed.
+   ------------------------------------------------------------------ */
+.fc-guide {
+  --bg: #0f1115;
+  --panel: #161a21;
+  --panel-2: #1c212a;
+  --line: #2a313c;
+  --text: #e7e9ee;
+  --muted: #9aa3b2;
+  --faint: #6b7483;
+  --accent: #f2b544;
+  --accent-ink: #1b1405;
+  --special: #ffd34d;
+  --default: #5fb7ff;
+  --good: #63d387;
+  --bad: #ff6b6b;
+  --radius: 14px;
+  --shadow: 0 1px 0 rgba(255,255,255,.03) inset, 0 10px 30px rgba(0,0,0,.25);
+  color: var(--text);
+  background: var(--bg);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+@media (prefers-color-scheme: light) {
+  .fc-guide:not([data-theme="dark"]) {
+    --bg: #f6f7f9; --panel: #ffffff; --panel-2: #f1f3f6; --line: #e1e5eb;
+    --text: #151821; --muted: #4d5666; --faint: #7a8494;
+    --accent: #c98a12; --accent-ink: #fff; --special: #b98900; --default: #1f7ad6;
+    --good: #1d9a4c; --bad: #d23c3c; --shadow: 0 8px 24px rgba(20,30,50,.06);
+  }
+}
+.fc-guide[data-theme="light"] {
+  --bg: #f6f7f9; --panel: #ffffff; --panel-2: #f1f3f6; --line: #e1e5eb;
+  --text: #151821; --muted: #4d5666; --faint: #7a8494;
+  --accent: #c98a12; --accent-ink: #fff; --special: #b98900; --default: #1f7ad6;
+  --good: #1d9a4c; --bad: #d23c3c; --shadow: 0 8px 24px rgba(20,30,50,.06);
+}
+.fc-guide *, .fc-guide *::before, .fc-guide *::after { box-sizing: border-box; }
+.fc-guide a { color: var(--accent); text-decoration: none; }
+.fc-guide a:hover { text-decoration: underline; }
+.fc-guide code, .fc-guide kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .9em; background: var(--panel-2); border: 1px solid var(--line);
+  border-radius: 6px; padding: .1em .4em; white-space: nowrap;
+}
+
+/* Layout */
+.fc-wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+.fc-top {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+}
+.fc-top .fc-wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
+.fc-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .3px; }
+.fc-logo-mark {
+  width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--accent), #e0782c); color: var(--accent-ink); font-size: 16px;
+}
+.fc-top-actions { margin-left: auto; display: flex; gap: 8px; }
+.fc-btn {
+  appearance: none; border: 1px solid var(--line); background: var(--panel); color: var(--text);
+  border-radius: 10px; padding: 8px 12px; font: inherit; font-size: 14px; font-weight: 600;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+}
+.fc-btn:hover { border-color: var(--accent); }
+.fc-btn.primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+
+.fc-layout { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 36px; padding: 28px 0 80px; }
+.fc-nav { position: sticky; top: 84px; align-self: start; font-size: 14px; }
+.fc-nav p { margin: 0 0 8px; color: var(--faint); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+.fc-nav a { display: block; color: var(--muted); padding: 6px 10px; border-radius: 8px; border-left: 2px solid transparent; }
+.fc-nav a:hover { color: var(--text); background: var(--panel); text-decoration: none; }
+.fc-nav a.active { color: var(--text); border-left-color: var(--accent); background: var(--panel); }
+
+@media (max-width: 860px) {
+  .fc-layout { grid-template-columns: 1fr; gap: 0; }
+  .fc-nav { display: none; }
+  .fc-top-actions .fc-btn span.lbl { display: none; }
+}
+
+/* Hero */
+.fc-hero {
+  border: 1px solid var(--line); border-radius: 20px; padding: 36px 32px; margin-bottom: 32px;
+  background:
+    radial-gradient(600px 220px at 85% -10%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+    radial-gradient(500px 220px at 0% 120%, color-mix(in srgb, var(--default) 16%, transparent), transparent 70%),
+    var(--panel);
+  box-shadow: var(--shadow);
+}
+.fc-hero h1 { margin: 0 0 8px; font-size: clamp(28px, 4vw, 42px); line-height: 1.15; letter-spacing: -.02em; }
+.fc-hero p { margin: 0; color: var(--muted); max-width: 640px; font-size: 17px; }
+.fc-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.fc-chip { font-size: 13px; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: var(--panel-2); border: 1px solid var(--line); color: var(--muted); }
+
+/* Sections */
+.fc-section { scroll-margin-top: 80px; margin: 0 0 44px; }
+.fc-section > h2 { font-size: 24px; margin: 0 0 6px; letter-spacing: -.01em; }
+.fc-section > .fc-lead { color: var(--muted); margin: 0 0 18px; }
+.fc-section h3 { font-size: 17px; margin: 22px 0 8px; }
+
+.fc-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
+.fc-steps { counter-reset: s; display: grid; gap: 12px; }
+.fc-step { position: relative; padding-left: 52px; }
+.fc-step::before {
+  counter-increment: s; content: counter(s); position: absolute; left: 18px; top: 18px;
+  width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: 13px;
+}
+.fc-step b { display: block; margin-bottom: 2px; }
+.fc-step span { color: var(--muted); }
+
+.fc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+
+/* Class cards */
+.fc-class { position: relative; display: flex; flex-direction: column; gap: 10px; }
+.fc-class-head { display: flex; align-items: center; gap: 12px; }
+.fc-icon {
+  width: 44px; height: 44px; flex: none; border-radius: 10px; display: grid; place-items: center; font-size: 22px;
+  background: var(--panel-2); border: 1px solid var(--line);
+}
+.fc-class h4 { margin: 0; font-size: 18px; }
+.fc-tag { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; }
+.fc-tag.default { color: var(--default); background: color-mix(in srgb, var(--default) 14%, transparent); }
+.fc-tag.special { color: var(--special); background: color-mix(in srgb, var(--special) 16%, transparent); }
+.fc-class .fc-desc { color: var(--muted); margin: 0; }
+.fc-ability { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--panel-2); border: 1px solid var(--line); font-size: 14px; }
+.fc-ability li { margin: 2px 0; }
+.fc-ability ul { margin: 0; padding-left: 18px; }
+.fc-class.is-special { border-color: color-mix(in srgb, var(--special) 45%, var(--line)); }
+.fc-class.is-special::after {
+  content: ""; position: absolute; inset: -1px; border-radius: var(--radius); pointer-events: none;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--special) 25%, transparent), 0 0 24px color-mix(in srgb, var(--special) 12%, transparent);
+}
+.fc-lock { font-size: 12px; font-weight: 800; color: var(--bad); }
+
+/* Filter tabs */
+.fc-tabs { display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); margin-bottom: 16px; }
+.fc-tab { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600; padding: 7px 14px; border-radius: 9px; cursor: pointer; }
+.fc-tab[aria-selected="true"] { background: var(--panel-2); color: var(--text); box-shadow: inset 0 0 0 1px var(--line); }
+
+/* Callouts */
+.fc-note { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel); margin: 14px 0; }
+.fc-note .em { font-size: 20px; line-height: 1.3; }
+.fc-note.tip { border-color: color-mix(in srgb, var(--good) 40%, var(--line)); }
+.fc-note.warn { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+.fc-note p { margin: 0; color: var(--muted); }
+.fc-note b { color: var(--text); }
+.fc-placeholder { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--text); border-radius: 6px; padding: 0 .35em; font-weight: 700; }
+
+/* Slot meter */
+.fc-slots { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 4px; }
+.fc-slot { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px dashed var(--line); background: var(--panel); font-weight: 600; font-size: 14px; }
+.fc-slot.filled.default { border-style: solid; border-color: color-mix(in srgb, var(--default) 55%, var(--line)); }
+.fc-slot.filled.special { border-style: solid; border-color: color-mix(in srgb, var(--special) 60%, var(--line)); }
+.fc-slot small { color: var(--faint); font-weight: 600; }
+
+/* Menu mock */
+.fc-menu {
+  display: grid; grid-template-columns: repeat(9, 1fr); gap: 4px; padding: 10px; border-radius: 12px;
+  background: #1a1a1a; border: 1px solid #000; max-width: 470px;
+}
+.fc-menu div { aspect-ratio: 1; border-radius: 4px; background: #2b2b2b; display: grid; place-items: center; font-size: 18px; }
+.fc-menu .c { background: #3a3a3a; }
+.fc-menu .s { background: #3a3a3a; box-shadow: inset 0 0 0 2px #ffd34d88, 0 0 10px #ffd34d40; }
+.fc-menu .h { background: #3a3a3a; outline: 2px solid var(--accent); }
+.fc-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; font-size: 13px; color: var(--muted); }
+
+/* Tables */
+.fc-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.fc-table th, .fc-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.fc-table th { color: var(--faint); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+.fc-table tr:last-child td { border-bottom: 0; }
+.fc-scroll { overflow-x: auto; }
+
+/* Alerts preview */
+.fc-chat { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 14px; background: #111; color: #ddd; border-radius: 12px; padding: 14px 16px; border: 1px solid #000; line-height: 1.8; }
+.fc-chat .p { color: #777; } .fc-chat .g { color: #f6c343; } .fc-chat .w { color: #fff; }
+.fc-chat .a { color: #55ffff; } .fc-chat .d { color: #ff55ff; } .fc-chat .r { color: #ff5555; } .fc-chat .gr { color: #aaa; }
+
+/* FAQ */
+.fc-faq details { border: 1px solid var(--line); border-radius: 12px; background: var(--panel); margin-bottom: 10px; }
+.fc-faq summary { cursor: pointer; list-style: none; padding: 14px 16px; font-weight: 700; display: flex; justify-content: space-between; gap: 12px; }
+.fc-faq summary::-webkit-details-marker { display: none; }
+.fc-faq summary::after { content: "+"; color: var(--faint); font-weight: 800; }
+.fc-faq details[open] summary::after { content: "−"; }
+.fc-faq details p { margin: 0; padding: 0 16px 14px; color: var(--muted); }
+
+.fc-foot { border-top: 1px solid var(--line); padding: 22px 0 40px; color: var(--faint); font-size: 13px; }
+
+@media print {
+  .fc-top, .fc-nav, .fc-tabs { display: none !important; }
+  .fc-layout { display: block; }
+  .fc-guide { background: #fff; color: #000; }
+}
+/* Page background around the guide (not needed when pasted into another site) */
+:root { --fc-page: #0f1115; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --fc-page: #f6f7f9; } }
+:root[data-theme="dark"] { --fc-page: #0f1115; }
+:root[data-theme="light"] { --fc-page: #f6f7f9; }
+html { scroll-behavior: smooth; background: var(--fc-page); }
+body { margin: 0; background: var(--fc-page); }
+</style>
+</head>
+<body>
+<div class="fc-guide" id="fc-guide">
+
+  <header class="fc-top">
+    <div class="fc-wrap">
+      <div class="fc-logo"><span class="fc-logo-mark">⚔</span> Finality Classes</div>
+      <div class="fc-top-actions">
+        <button class="fc-btn" id="fc-theme" type="button" title="Switch light / dark">◐ <span class="lbl">Theme</span></button>
+        <button class="fc-btn primary" id="fc-download" type="button" title="Save this guide to your computer">⤓ <span class="lbl">Download guide</span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="fc-wrap">
+    <div class="fc-layout">
+
+      <nav class="fc-nav" aria-label="Guide sections">
+        <p>On this page</p>
+        <a href="#start">Getting started</a>
+        <a href="#menu">The class menu</a>
+        <a href="#slots">Your class slots</a>
+        <a href="#default">Default classes</a>
+        <a href="#special">Special classes</a>
+        <a href="#switching">Switching specials</a>
+        <a href="#tokens">Tokens</a>
+        <a href="#players">Player lists</a>
+        <a href="#alerts">Ability alerts</a>
+        <a href="#commands">Commands</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <main>
+        <section class="fc-hero">
+          <h1>Finality Classes Guide</h1>
+          <p>Choose your classes and earn permanent abilities for the whole season. This guide covers how to pick, unlock and switch classes, and what each one does.</p>
+          <div class="fc-chips">
+            <span class="fc-chip">Permanent abilities</span>
+            <span class="fc-chip">1 default + 1 special</span>
+            <span class="fc-chip">Unlockable classes</span>
+            <span class="fc-chip">PvP-tested numbers</span>
+          </div>
+        </section>
+
+        <section class="fc-section" id="start">
+          <h2>Getting started</h2>
+          <p class="fc-lead">It takes about a minute.</p>
+          <div class="fc-steps">
+            <div class="fc-card fc-step"><b>Join the server</b><span>The class menu opens on its own the first time you join. It stays open until you pick a class, and you can't be hurt while it's open.</span></div>
+            <div class="fc-card fc-step"><b>Pick a default class</b><span>Left-click one of the default classes. Its ability switches on straight away and lasts the whole season, even through deaths and milk.</span></div>
+            <div class="fc-card fc-step"><b>Unlock a special class</b><span>Special classes sit on top of your default class, so you get both abilities. Unlock one by <span class="fc-placeholder">[how to unlock]</span>, then equip it from the same menu.</span></div>
+          </div>
+        </section>
+
+        <section class="fc-section" id="menu">
+          <h2>The class menu</h2>
+          <p class="fc-lead">Type <code>/class</code> to open it at any time.</p>
+          <div class="fc-card">
+            <div class="fc-menu" aria-label="Example class menu layout">
+              <div></div><div></div><div></div><div></div><div class="c">📖</div><div></div><div></div><div></div><div></div>
+              <div></div><div class="c">🔥</div><div></div><div class="c">🪶</div><div></div><div class="c">⛏️</div><div></div><div class="c">🕸️</div><div></div>
+              <div></div><div></div><div class="s">🪓</div><div></div><div class="s">🗡️</div><div></div><div class="s">✚</div><div></div><div></div>
+              <div></div><div></div><div class="s">☠️</div><div></div><div class="s">⚡</div><div></div><div class="s">🩸</div><div></div><div></div>
+              <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div class="h">🙂</div>
+            </div>
+            <div class="fc-legend">
+              <span>📖 Info</span><span>Row 2: default classes</span><span>Gold glow: special classes</span><span>🙂 Your head (bottom-right)</span>
+            </div>
+          </div>
+          <div class="fc-grid" style="margin-top:14px">
+            <div class="fc-card"><b>Left-click</b><br><span style="color:var(--muted)">Pick, equip or switch a class.</span></div>
+            <div class="fc-card"><b>Right-click</b><br><span style="color:var(--muted)">See everyone who has that class, with their team and PvP stats.</span></div>
+            <div class="fc-card"><b>Your head</b><br><span style="color:var(--muted)">Shows your classes and stats. Click it to browse every player.</span></div>
+          </div>
+          <div class="fc-note tip"><span class="em">💡</span><p>Each class in the menu lists its <b>ability</b> and <b>how many players</b> have it, including how many of them are online right now.</p></div>
+        </section>
+
+        <section class="fc-section" id="slots">
+          <h2>Your class slots</h2>
+          <p class="fc-lead">The menu title shows how many classes you have, for example <b>(1/2)</b> or <b>(2/2)</b>.</p>
+          <div class="fc-card">
+            <div class="fc-slots">
+              <div class="fc-slot filled default">🔥 Default class <small>slot 1</small></div>
+              <div class="fc-slot filled special">⚡ Special class <small>slot 2</small></div>
+              <div class="fc-slot">➕ Second default <small>with an Extra Class Token</small></div>
+            </div>
+            <p style="margin:10px 0 0;color:var(--muted)">Everyone starts with <b>2 slots</b>: one default class and one special class. An <a href="#tokens">Extra Class Token</a> adds a third slot for a second default class, so your count becomes <b>/3</b>.</p>
+          </div>
+        </section>
+
+        <section class="fc-section" id="default">
+          <h2>Default classes</h2>
+          <p class="fc-lead">Your first pick. It lasts the whole season. Changing it needs a <a href="#tokens">Class Reset Token</a>.</p>
+          <div class="fc-grid">
+            <article class="fc-card fc-class">
+              <div class="fc-class-head"><div class="fc-icon">🔥</div><div><h4>Pharo</h4><span class="fc-tag default">Default</span></div></div>
+              <p class="fc-desc">Born beneath the desert sun. Fire and lava hold no threat.</p>
+              <div class="fc-ability"><ul><li>Permanent <b>Fire Resistance</b></li></ul></div>
+            </article>
+            <article class="fc-card fc-class">
+              <div class="fc-class-head"><div class="fc-icon">🪶</div><div><h4>Ninja</h4><span class="fc-tag default">Default</span></div></div>
+              <p class="fc-desc">Light on your feet and always one step ahead.</p>
+              <div class="fc-ability"><ul><li>Permanent <b>Speed</b></li></ul></div>
+            </article>
+            <article class="fc-card fc-class">
+              <div class="fc-class-head"><div class="fc-icon">⛏️</div><div><h4>Haste</h4><span class="fc-tag default">Default</span></div></div>
+              <p class="fc-desc">Tireless hands that cut through stone in moments.</p>
+              <div class="fc-ability"><ul><li>Permanent <b>Haste</b>, so you mine faster</li></ul></div>
+            </article>
+            <article class="fc-card fc-class">
+              <div class="fc-class-head"><div class="fc-icon">🕸️</div><div><h4>Weaver</h4><span class="fc-tag default">Default</span></div></div>
+              <p class="fc-desc">The ultimate escapist. Webs trap everyone but you.</p>
+              <div class="fc-ability"><ul><li>Moves through <b>cobwebs</b> much faster</li></ul></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="fc-section" id="special">
+          <h2>Special classes</h2>
+          <p class="fc-lead">Special classes glow in the menu and sit on top of your default class. You can have one at a time.</p>
+          <div class="fc-note warn"><span class="em">🔒</span><p>Special classes start <b style="color:var(--bad)">LOCKED</b>. Unlock them by <span class="fc-placeholder">[how to unlock]</span>. Once unlocked they show <b style="color:var(--good)">UNLOCKED</b> and you can equip them.</p></div>
+
+          <div class="fc-tabs" role="tablist" aria-label="Filter classes">
+            <button class="fc-tab" role="tab" aria-selected="true" data-filter="all">All</button>
+            <button class="fc-tab" role="tab" aria-selected="false" data-filter="fight">Damage</button>
+            <button class="fc-tab" role="tab" aria-selected="false" data-filter="team">Team</button>
+            <button class="fc-tab" role="tab" aria-selected="false" data-filter="tank">Defence</button>
+          </div>
+
+          <div class="fc-grid" id="fc-special-grid">
+            <article class="fc-card fc-class is-special" data-kind="fight">
+              <div class="fc-class-head"><div class="fc-icon">🪓</div><div><h4>Berserker</h4><span class="fc-tag special">Special</span></div></div>
+              <p class="fc-desc">Fewer hearts, harder hits. Every kill earns an extra heart.</p>
+              <div class="fc-ability"><ul>
+                <li>Start on <b>8 hearts</b></li>
+                <li><b>+½ heart</b> per player kill, up to <b>12 hearts</b></li>
+                <li><b>+10%</b> damage</li>
+                <li>Bonus hearts reset when you die</li>
+              </ul></div>
+              <span class="fc-lock">🔒 Locked until unlocked</span>
+            </article>
+            <article class="fc-card fc-class is-special" data-kind="tank">
+              <div class="fc-class-head"><div class="fc-icon">🗡️</div><div><h4>Knight</h4><span class="fc-tag special">Special</span></div></div>
+              <p class="fc-desc">Master of the sword. Shrugs off mace smashes.</p>
+              <div class="fc-ability"><ul>
+                <li><b>+15%</b> sword damage</li>
+                <li>Take <b>25% less</b> damage from maces</li>
+              </ul></div>
+              <span class="fc-lock">🔒 Locked until unlocked</span>
+            </article>
+            <article class="fc-card fc-class is-special" data-kind="team">
+              <div class="fc-class-head"><div class="fc-icon">✚</div><div><h4>Healer</h4><span class="fc-tag special">Special</span></div></div>
+              <p class="fc-desc">Keeps your team alive. Heals teammates near you.</p>
+              <div class="fc-ability"><ul>
+                <li>Every <b>10 seconds</b>, teammates within <b>6 blocks</b> get Regeneration</li>
+                <li>Heals you too</li>
+                <li>Uses your team from <code>/team</code></li>
+              </ul></div>
+              <span class="fc-lock">🔒 Locked until unlocked</span>
+            </article>
+            <article class="fc-card fc-class is-special" data-kind="fight">
+              <div class="fc-class-head"><div class="fc-icon">☠️</div><div><h4>Assassin</h4><span class="fc-tag special">Special</span></div></div>
+              <p class="fc-desc">Strike, then disappear. Vanish and sprint away after a kill.</p>
+              <div class="fc-ability"><ul>
+                <li>After a player kill: <b>2s invisibility</b></li>
+                <li>Plus <b>Speed III</b> for 5 seconds</li>
+                <li>Your normal Speed comes back afterwards</li>
+              </ul></div>
+              <span class="fc-lock">🔒 Locked until unlocked</span>
+            </article>
+            <article class="fc-card fc-class is-special" data-kind="fight">
+              <div class="fc-class-head"><div class="fc-icon">⚡</div><div><h4>Thor</h4><span class="fc-tag special">Special</span></div></div>
+              <p class="fc-desc">Call down the storm. Your hits summon lightning.</p>
+              <div class="fc-ability"><ul>
+                <li>Every <b>5th melee hit</b> strikes lightning for <b>+2</b> damage</li>
+                <li>Full <b>mace smashes</b> strike for <b>+3</b> damage</li>
+                <li>The lightning doesn't set anything on fire</li>
+              </ul></div>
+              <span class="fc-lock">🔒 Locked until unlocked</span>
+            </article>
+            <article class="fc-card fc-class is-special" data-kind="fight">
+              <div class="fc-class-head"><div class="fc-icon">🩸</div><div><h4>Bloodlust</h4><span class="fc-tag special">Special</span></div></div>
+              <p class="fc-desc">Every kill makes you stronger. Keep killing to keep the rage.</p>
+              <div class="fc-ability"><ul>
+                <li><b>+10%</b> damage per kill, stacking up to <b>5×</b> (+50%)</li>
+                <li>Kill again within <b>30 seconds</b> to keep your stacks</li>
+                <li>Your action bar shows your stacks and time left</li>
+              </ul></div>
+              <span class="fc-lock">🔒 Locked until unlocked</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="fc-section" id="switching">
+          <h2>Switching special classes</h2>
+          <p class="fc-lead">Switching special classes is free. You don't need a token.</p>
+          <div class="fc-scroll"><table class="fc-table fc-card">
+            <thead><tr><th>You click…</th><th>What happens</th></tr></thead>
+            <tbody>
+              <tr><td>A special class, with none equipped</td><td>It's <b>equipped</b> on top of your default class.</td></tr>
+              <tr><td>A different special class</td><td>You <b>switch</b> to it.</td></tr>
+              <tr><td>The special you already have</td><td>It's <b>unequipped</b>.</td></tr>
+            </tbody>
+          </table></div>
+          <div class="fc-note"><span class="em">⏱️</span><p>There's a short <b>5 second cooldown</b> between changes.</p></div>
+        </section>
+
+        <section class="fc-section" id="tokens">
+          <h2>Tokens</h2>
+          <p class="fc-lead">Special items that change your default class. Right-click to use them.</p>
+          <div class="fc-grid">
+            <article class="fc-card fc-class">
+              <div class="fc-class-head"><div class="fc-icon">🟠</div><div><h4>Class Reset Token</h4><span class="fc-tag default">Item</span></div></div>
+              <p class="fc-desc">Right-click, then confirm, to reset your <b>default</b> class and pick a new one straight away.</p>
+              <div class="fc-ability"><ul>
+                <li>Your <b>special class is kept</b></li>
+                <li>A green button confirms, a red one goes back</li>
+                <li>Uses one token</li>
+              </ul></div>
+            </article>
+            <article class="fc-card fc-class">
+              <div class="fc-class-head"><div class="fc-icon">💜</div><div><h4>Extra Class Token</h4><span class="fc-tag default">Item</span></div></div>
+              <p class="fc-desc">Right-click to add a <b>second default class</b>, so you could have Pharo, Ninja and a special at once.</p>
+              <div class="fc-ability"><ul>
+                <li>Only <b>default</b> classes can be picked</li>
+                <li>It <b>can't</b> be one you already have</li>
+                <li>Your slots become <b>/3</b></li>
+              </ul></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="fc-section" id="players">
+          <h2>Player lists</h2>
+          <p class="fc-lead">See who's playing what.</p>
+          <div class="fc-grid">
+            <div class="fc-card"><b>Right-click a class</b><p style="margin:6px 0 0;color:var(--muted)">Lists every player with that class, online players first. Hover over a head to see their team, kills, deaths, K/D and streak.</p></div>
+            <div class="fc-card"><b>Click your head</b><p style="margin:6px 0 0;color:var(--muted)">Lists <b>every player</b> with a class, A–Z. The filter switches between <i>All players</i>, <i>Special classes</i> and <i>Default classes only</i>.</p></div>
+            <div class="fc-card"><b>Colours</b><p style="margin:6px 0 0;color:var(--muted)">In player lists, default classes show in <b style="color:var(--default)">blue</b> and special classes in <b style="color:var(--special)">yellow ✦</b>.</p></div>
+          </div>
+        </section>
+
+        <section class="fc-section" id="alerts">
+          <h2>Ability alerts</h2>
+          <p class="fc-lead">You get a chat message whenever one of your abilities triggers.</p>
+          <div class="fc-chat" aria-label="Example chat messages">
+            <div><span class="p">[</span><span class="g">Seasons</span><span class="p">]</span> <span class="a">⚡ Lightning strike!</span> <span class="p">(+2 damage on Steve)</span></div>
+            <div><span class="p">[</span><span class="g">Seasons</span><span class="p">]</span> <span class="d">☠ Vanished!</span> <span class="p">(invisible 2s · Speed III 5s)</span></div>
+            <div><span class="p">[</span><span class="g">Seasons</span><span class="p">]</span> <span class="r">🗡 Bloodlust x3</span> <span class="p">(+30% damage for 30s)</span></div>
+            <div><span class="p">[</span><span class="g">Seasons</span><span class="p">]</span> <span class="d">✚</span> <span class="gr">Healed by</span> <span class="w">Alex</span><span class="gr">.</span></div>
+            <div><span class="p">[</span><span class="g">Seasons</span><span class="p">]</span> <span class="r">+½ heart</span> <span class="p">·</span> <span class="gr">you now have</span> <span class="w">8½</span> <span class="gr">hearts.</span></div>
+          </div>
+        </section>
+
+        <section class="fc-section" id="commands">
+          <h2>Commands</h2>
+          <div class="fc-scroll"><table class="fc-table fc-card">
+            <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td><code>/class</code></td><td>Opens the class menu</td></tr>
+              <tr><td><code>/class info</code></td><td>Shows your classes and slots</td></tr>
+              <tr><td><code>/class &lt;name&gt;</code></td><td>Picks or equips a class by name, e.g. <code>/class ninja</code></td></tr>
+              <tr><td><code>/class help</code></td><td>Lists the commands you can use</td></tr>
+            </tbody>
+          </table></div>
+        </section>
+
+        <section class="fc-section fc-faq" id="faq">
+          <h2>FAQ</h2>
+          <details><summary>Do I lose my ability when I die?</summary><p>No. Class abilities come back automatically after death, milk or effect clears. The only exception is Berserker's bonus hearts, which reset on death.</p></details>
+          <details><summary>Can I have two special classes?</summary><p>No, you can only have one special class at a time. You can switch between special classes whenever you like, with a 5 second cooldown.</p></details>
+          <details><summary>Why didn't my kill count for Berserker or Bloodlust?</summary><p>Only real player kills count. Berserker uses the server's PvP stats, so kills the anti-farming system rejects don't give hearts.</p></details>
+          <details><summary>I picked the wrong default class. What now?</summary><p>Use a <b>Class Reset Token</b>. It resets your default class and keeps your special class.</p></details>
+          <details><summary>How do I unlock special classes?</summary><p><span class="fc-placeholder">[how to unlock]</span></p></details>
+          <details><summary>Do potions still work?</summary><p>Yes. A stronger potion, such as Speed II on a Ninja, takes over while it lasts, and your class effect comes back when it runs out.</p></details>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer class="fc-foot">
+    <div class="fc-wrap">Finality · Classes guide · Abilities and numbers can change between seasons.</div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var root = document.getElementById("fc-guide");
+  if (!root) return;
+
+  // Theme toggle (remembered on this device only)
+  var KEY = "fc-guide-theme";
+  try {
+    var saved = localStorage.getItem(KEY);
+    if (saved) { root.setAttribute("data-theme", saved); document.documentElement.setAttribute("data-theme", saved); }
+  } catch (e) {}
+  var themeBtn = document.getElementById("fc-theme");
+  if (themeBtn) themeBtn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) cur = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    var next = cur === "light" ? "dark" : "light";
+    root.setAttribute("data-theme", next);
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+  });
+
+  // Download a copy of this exact page (hidden when shown inside an embedded viewer,
+  // where browsers block saving files — it works when opened directly or on your own site)
+  var dl = document.getElementById("fc-download");
+  var embedded = false;
+  try { embedded = window.self !== window.top; } catch (e) { embedded = true; }
+  if (dl && embedded) { dl.style.display = "none"; dl = null; }
+  if (dl) dl.addEventListener("click", function () {
+    var html = "<!doctype html>\n" + document.documentElement.outerHTML;
+    var blob = new Blob([html], { type: "text/html" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "finality-classes-guide.html";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  });
+
+  // Special class filter tabs
+  var tabs = root.querySelectorAll(".fc-tab");
+  var cards = root.querySelectorAll("#fc-special-grid .fc-class");
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      tabs.forEach(function (t) { t.setAttribute("aria-selected", t === tab ? "true" : "false"); });
+      var f = tab.getAttribute("data-filter");
+      cards.forEach(function (c) { c.style.display = (f === "all" || c.getAttribute("data-kind") === f) ? "" : "none"; });
+    });
+  });
+
+  // Highlight the current section in the sidebar
+  var links = root.querySelectorAll(".fc-nav a");
+  var map = {};
+  links.forEach(function (l) { map[l.getAttribute("href").slice(1)] = l; });
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && map[e.target.id]) {
+          links.forEach(function (l) { l.classList.remove("active"); });
+          map[e.target.id].classList.add("active");
+        }
+      });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    root.querySelectorAll(".fc-section").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
