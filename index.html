@@ -360,6 +360,7 @@ body { margin: 0; background: var(--fc-page); }
         <a href="#about">About Finality</a>
         <a href="#items">Custom items</a>
         <a href="#crates">Crates</a>
+        <a href="#challenges">Challenges</a>
         <a href="#recipes">Recipes</a>
         <a href="#teams">Teams</a>
         <a href="#pvp">PvP &amp; combat</a>
@@ -391,6 +392,7 @@ body { margin: 0; background: var(--fc-page); }
             <div class="fc-card fc-step"><b>Join</b><span>Connect to <code>FinalityMC.org</code> and accept the resource pack, so custom items look right.</span></div>
             <div class="fc-card fc-step"><b>Pick a default class</b><span>A menu opens on your first join. Pick one of 4 default classes. <a href="classes/#default">Compare them</a></span></div>
             <div class="fc-card fc-step"><b>Gear up</b><span>Craft Glacier and Astral gear and open crates.</span></div>
+            <div class="fc-card fc-step"><b>Win challenges</b><span>Top the daily and weekly <a href="#challenges">challenges</a> for shards, vouchers, coins and Class Upgrade Tokens.</span></div>
             <div class="fc-card fc-step"><b>Win KOTH</b><span>The winner gets a Special Class Roll, a shot at a powerful special class.</span></div>
             <div class="fc-card fc-step"><b>Level up</b><span>Craft a Class Upgrade Token and spend XP to take your default class to Level II.</span></div>
           </div>
@@ -520,6 +522,75 @@ body { margin: 0; background: var(--fc-page); }
   <div style="padding:0 18px 18px"><p style="color:var(--muted);margin-top:0">Elite gear, enchanted books, keys for other crates and everyday supplies.</p><div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Reward</th><th style="text-align:right">Rarity</th></tr></thead><tbody><tr><td>Elite gear: Sword, Axe, Pickaxe, Shovel, Helmet, Chestplate, Leggings, Boots (all Unbreaking III + Mending)</td><td style="text-align:right;white-space:nowrap"><b style="color:#9aa3b2">Common</b></td></tr><tr><td>Keys: Finality Key, Lifesteal Key, 2× Vote Key</td><td style="text-align:right;white-space:nowrap"><b style="color:#9aa3b2">Common</b></td></tr><tr><td>KOTH Key</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>Books: Mending, Wind Burst, Swift Sneak I, Soul Speed I</td><td style="text-align:right;white-space:nowrap"><b style="color:#9aa3b2">Common</b></td></tr><tr><td>Enchanted Golden Apple, 16× Golden Apple, Totem of Undying</td><td style="text-align:right;white-space:nowrap"><b style="color:#9aa3b2">Common</b></td></tr><tr><td>8× Diamond, 8× Gold Ingot, 1× Netherite Scrap, 32× Lapis</td><td style="text-align:right;white-space:nowrap"><b style="color:#9aa3b2">Common</b></td></tr><tr><td>Arrows: Slow Falling, Weakness, Poison, Slowness, Harming, Spectral (32 each)</td><td style="text-align:right;white-space:nowrap"><b style="color:#9aa3b2">Common</b></td></tr><tr><td>Utility: Crossbow (Multishot), Fishing Rod, Shears, Flint &amp; Steel, Lava/Water Bucket, 8× Ender Pearl, 32× Cobweb…</td><td style="text-align:right;white-space:nowrap"><b style="color:#9aa3b2">Common</b></td></tr></tbody></table></div></div>
 </details>
           <p style="color:var(--faint);font-size:13.5px">Some rows group several rewards of the same rarity.</p>
+        </section>
+
+        <section class="fc-section" id="challenges">
+          <h2>Challenges</h2>
+          <p class="fc-lead"><b>4 daily challenges</b> and <b>1 weekly challenge</b> run all the time. Finish in the <b>top 3</b> to win Finality items, class tokens, vouchers and coins.</p>
+          <div class="fc-steps">
+            <div class="fc-card fc-step"><b>Open the menu</b><span><code>/challenges</code> (or <code>/challenge</code>) shows the 4 daily challenges in blue and the weekly one in orange, with the current leader's head under each one.</span></div>
+            <div class="fc-card fc-step"><b>Just play</b><span>You don't have to sign up. Everything you do counts automatically, and you show on the leaderboard as soon as you score 1.</span></div>
+            <div class="fc-card fc-step"><b>Finish top 3</b><span>When the challenge ends, the top 3 get their rewards and the winners are announced to the whole server.</span></div>
+          </div>
+
+          <h3>How it works</h3>
+          <div class="fc-grid">
+            <div class="fc-card" style="padding:16px"><b>⏰ Daily reset</b><p style="margin:6px 0 0;color:var(--muted)">Daily challenges end at <b>00:00 UK time</b> every night. Then 4 new ones are picked at random, usually different from the day before.</p></div>
+            <div class="fc-card" style="padding:16px"><b>📅 Weekly reset</b><p style="margin:6px 0 0;color:var(--muted)">The weekly challenge runs all week and ends at <b>00:00 UK time on Sunday night</b>, going into Monday.</p></div>
+            <div class="fc-card" style="padding:16px"><b>👥 See who's competing</b><p style="margin:6px 0 0;color:var(--muted)"><b>Left-click</b> a challenge to see every player taking part, with their head, rank, score and team. You're always shown first.</p></div>
+            <div class="fc-card" style="padding:16px"><b>🎁 See the rewards</b><p style="margin:6px 0 0;color:var(--muted)"><b>Right-click</b> a challenge to see what 1st, 2nd and 3rd place win, and who's holding each spot right now.</p></div>
+            <div class="fc-card" style="padding:16px"><b>⚖ Ties</b><p style="margin:6px 0 0;color:var(--muted)">If two players have the same score, whoever got there <b>first</b> ranks higher.</p></div>
+            <div class="fc-card" style="padding:16px"><b>💤 Offline when it ends?</b><p style="margin:6px 0 0;color:var(--muted)">No problem. Your rewards are saved and given to you the next time you join.</p></div>
+          </div>
+
+          <h3>What you can be challenged on</h3>
+          <p style="color:var(--muted)">Every day 4 of these are picked. The weekly challenge is one of the bigger ones: blocks or ores mined, trees, blocks placed, mob or monster kills, player kills, distance, fish or XP.</p>
+          <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Challenge</th><th>What counts</th></tr></thead><tbody><tr><td><b>⛏ Blocks Mined</b></td><td>Breaking any block</td></tr><tr><td><b>💎 Ores Mined</b></td><td>Mining any ore, plus Nether Quartz and Ancient Debris</td></tr><tr><td><b>🪓 Trees Chopped</b></td><td>Breaking logs</td></tr><tr><td><b>🌾 Crops Harvested</b></td><td>Fully grown wheat, carrots, potatoes, beetroot, nether wart, cocoa, plus melons, pumpkins and sugar cane</td></tr><tr><td><b>🧱 Blocks Placed</b></td><td>Placing any block</td></tr><tr><td><b>⚔ Mob Kills</b></td><td>Killing any mob</td></tr><tr><td><b>👹 Monster Hunter</b></td><td>Killing hostile mobs</td></tr><tr><td><b>🧟 Zombies Killed</b></td><td>Zombies, zombie villagers, husks and drowned</td></tr><tr><td><b>💀 Skeletons Killed</b></td><td>Skeletons, strays, wither skeletons and bogged</td></tr><tr><td><b>💥 Creepers Killed</b></td><td>Creepers</td></tr><tr><td><b>🗡 Player Kills</b></td><td>Killing other players</td></tr><tr><td><b>👟 Distance Travelled</b></td><td>Walking, sprinting and swimming (not flying, elytra or riding)</td></tr><tr><td><b>🎣 Fish Caught</b></td><td>Anything caught with a fishing rod</td></tr><tr><td><b>🐄 Animals Bred</b></td><td>Breeding any animal</td></tr><tr><td><b>✨ XP Gained</b></td><td>Every XP point you pick up</td></tr><tr><td><b>🛠 Items Crafted</b></td><td>Every item you craft</td></tr><tr><td><b>🍖 Food Eaten</b></td><td>Eating or drinking anything</td></tr><tr><td><b>📖 Items Enchanted</b></td><td>Enchanting at an enchanting table</td></tr></tbody></table></div>
+          <div class="fc-note" style="margin-top:16px"><span class="em">🛡</span><p><b>Fair play.</b> Breaking blocks you placed yourself doesn't count (planted crops still count once they're fully grown). Mobs from spawners don't count, killing the same player again within 5 minutes doesn't count, and nothing counts in creative mode.</p></div>
+
+          <h3>Daily rewards</h3>
+          <p style="color:var(--muted)">For each of the 4 daily challenges.</p>
+          <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Place</th><th>Rewards</th></tr></thead><tbody><tr><td style="white-space:nowrap;vertical-align:top"><b style="color:#f2b544">🥇 1st</b></td><td><ul style="margin:0;padding-left:18px"><li><span class="g-astral">1× Astral Shard</span></li><li><span class="g-ice">2× Glacial Shard</span></li><li><b>500 coins</b></li><li><span class="g-astral">Astral Voucher</span></li></ul></td></tr><tr><td style="white-space:nowrap;vertical-align:top"><b style="color:#9aa4b2">🥈 2nd</b></td><td><ul style="margin:0;padding-left:18px"><li><span class="g-astral">2× Astral Crystal</span></li><li><span class="g-ice">1× Glacial Shard</span></li><li><b>250 coins</b></li><li><span class="g-ice">Glacier Voucher</span></li></ul></td></tr><tr><td style="white-space:nowrap;vertical-align:top"><b style="color:#e08a5a">🥉 3rd</b></td><td><ul style="margin:0;padding-left:18px"><li><span class="g-astral">1× Astral Crystal</span></li><li><b>100 coins</b></li></ul></td></tr></tbody></table></div>
+
+          <h3>Weekly rewards</h3>
+          <p style="color:var(--muted)">The big one. 1st place gets a guaranteed class upgrade.</p>
+          <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Place</th><th>Rewards</th></tr></thead><tbody><tr><td style="white-space:nowrap;vertical-align:top"><b style="color:#f2b544">🥇 1st</b></td><td><ul style="margin:0;padding-left:18px"><li><b style="color:#f2b544">Class Upgrade Token</b> with a <b>100% success chance</b></li><li><span class="g-astral">Relic Key</span> for the <a href="#crates">Relic Vault</a></li><li><span class="g-astral">3× Astral Shard</span></li><li><b>2,000 coins</b></li></ul></td></tr><tr><td style="white-space:nowrap;vertical-align:top"><b style="color:#9aa4b2">🥈 2nd</b></td><td><ul style="margin:0;padding-left:18px"><li><b style="color:#f2b544">Class Upgrade Token</b> (50–100% success, like a crafted one)</li><li><b>Class Voucher</b></li><li><span class="g-ice">4× Glacial Shard</span></li><li><b>1,000 coins</b></li></ul></td></tr><tr><td style="white-space:nowrap;vertical-align:top"><b style="color:#e08a5a">🥉 3rd</b></td><td><ul style="margin:0;padding-left:18px"><li><b>Special Class Roll</b></li><li><span class="g-demon">Demonic Voucher</span></li><li><span class="g-astral">4× Astral Crystal</span></li><li><b>500 coins</b></li></ul></td></tr></tbody></table></div>
+
+          <h3>Vouchers</h3>
+          <p style="color:var(--muted)">Some rewards are <b>vouchers</b>. Right-click one to roll for an item. If you don't win the item, you still get a small consolation prize. Wins are announced to the server. Tap a voucher to see its odds.</p>
+          <details class="fc-card fc-crate" style="padding:0;margin-bottom:12px">
+  <summary style="padding:16px 18px;cursor:pointer;list-style:none;display:flex;gap:14px;align-items:center">
+    <span style="font-size:26px">🔮</span>
+    <span style="flex:1"><b style="font-size:17px" class="g-astral">Astral Voucher</b><br><span style="color:var(--muted);font-size:14.5px">From: <b>Daily challenge 1st place</b></span></span>
+    <span style="color:var(--faint);font-size:13px;white-space:nowrap">View odds ▾</span>
+  </summary>
+  <div style="padding:0 18px 18px"><p style="color:var(--muted);margin-top:0">A shot at one of the Astral weapons.</p><div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Unlocks</th><th style="text-align:right">Chance</th></tr></thead><tbody><tr><td><span class="g-astral">Astral Riftblade</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">3%</b></td></tr><tr><td><span class="g-astral">Astral Starfall Bow</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">7%</b></td></tr><tr><td><span class="g-astral">Astral Dagger</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">7%</b></td></tr><tr><td><span style="color:var(--muted)">2× Astral Crystal</span> <span style="color:var(--faint)">(no luck)</span></td><td style="text-align:right;white-space:nowrap"><b style="color:var(--muted)">83%</b></td></tr></tbody></table></div></div>
+</details>
+<details class="fc-card fc-crate" style="padding:0;margin-bottom:12px">
+  <summary style="padding:16px 18px;cursor:pointer;list-style:none;display:flex;gap:14px;align-items:center">
+    <span style="font-size:26px">❄</span>
+    <span style="flex:1"><b style="font-size:17px" class="g-ice">Glacier Voucher</b><br><span style="color:var(--muted);font-size:14.5px">From: <b>Daily challenge 2nd place</b></span></span>
+    <span style="color:var(--faint);font-size:13px;white-space:nowrap">View odds ▾</span>
+  </summary>
+  <div style="padding:0 18px 18px"><p style="color:var(--muted);margin-top:0">A shot at Glacier gear.</p><div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Unlocks</th><th style="text-align:right">Chance</th></tr></thead><tbody><tr><td><span class="g-ice">Glacier Blade</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">8%</b></td></tr><tr><td><span class="g-ice">Glacier Pickaxe I</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">8%</b></td></tr><tr><td><span style="color:var(--muted)">1× Glacial Shard</span> <span style="color:var(--faint)">(no luck)</span></td><td style="text-align:right;white-space:nowrap"><b style="color:var(--muted)">84%</b></td></tr></tbody></table></div></div>
+</details>
+<details class="fc-card fc-crate" style="padding:0;margin-bottom:12px">
+  <summary style="padding:16px 18px;cursor:pointer;list-style:none;display:flex;gap:14px;align-items:center">
+    <span style="font-size:26px">🔥</span>
+    <span style="flex:1"><b style="font-size:17px" class="g-demon">Demonic Voucher</b><br><span style="color:var(--muted);font-size:14.5px">From: <b>Weekly challenge 3rd place</b></span></span>
+    <span style="color:var(--faint);font-size:13px;white-space:nowrap">View odds ▾</span>
+  </summary>
+  <div style="padding:0 18px 18px"><p style="color:var(--muted);margin-top:0">A shot at the Demonic Hellfire Cleaver.</p><div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Unlocks</th><th style="text-align:right">Chance</th></tr></thead><tbody><tr><td><span class="g-demon">Demonic Hellfire Cleaver</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">20%</b></td></tr><tr><td><span style="color:var(--muted)">1× Astral Shard</span> <span style="color:var(--faint)">(no luck)</span></td><td style="text-align:right;white-space:nowrap"><b style="color:var(--muted)">80%</b></td></tr></tbody></table></div></div>
+</details>
+<details class="fc-card fc-crate" style="padding:0;margin-bottom:12px">
+  <summary style="padding:16px 18px;cursor:pointer;list-style:none;display:flex;gap:14px;align-items:center">
+    <span style="font-size:26px">⭐</span>
+    <span style="flex:1"><b style="font-size:17px" class="">Class Voucher</b><br><span style="color:var(--muted);font-size:14.5px">From: <b>Weekly challenge 2nd place</b></span></span>
+    <span style="color:var(--faint);font-size:13px;white-space:nowrap">View odds ▾</span>
+  </summary>
+  <div style="padding:0 18px 18px"><p style="color:var(--muted);margin-top:0">A shot at a class item.</p><div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Unlocks</th><th style="text-align:right">Chance</th></tr></thead><tbody><tr><td><span class="">Extra Class Token</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">3%</b></td></tr><tr><td><span class="">Class Upgrade Token</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">10%</b></td></tr><tr><td><span class="">Class Reset Token</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">10%</b></td></tr><tr><td><span class="">Special Class Roll</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">20%</b></td></tr><tr><td><span style="color:var(--muted)">2× Glacial Shard</span> <span style="color:var(--faint)">(no luck)</span></td><td style="text-align:right;white-space:nowrap"><b style="color:var(--muted)">57%</b></td></tr></tbody></table></div></div>
+</details>
+
         </section>
 
         <section class="fc-section" id="recipes">
@@ -692,7 +763,7 @@ body { margin: 0; background: var(--fc-page); }
           <h3>Chat &amp; players</h3>
           <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>/msg &lt;player&gt; &lt;message&gt;</code></td><td>Send a private message</td></tr><tr><td><code>/r &lt;message&gt;</code></td><td>Reply to your last message</td></tr><tr><td><code>/trade &lt;player&gt;</code></td><td>Trade items safely with another player</td></tr><tr><td><code>/ping</code></td><td>Check your ping</td></tr><tr><td><code>/playtime</code></td><td>See how long you've played</td></tr><tr><td><code>/playtimetop</code></td><td>Playtime leaderboard</td></tr><tr><td><code>/discord</code></td><td>Get the Discord link</td></tr><tr><td><code>/guide [topic]</code></td><td>Get a link to this guide, e.g. <code>/guide recipes</code> or <code>/guide pvp</code></td></tr></tbody></table></div>
           <h3>Gameplay</h3>
-          <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>/class</code></td><td>Open the class menu (<a href="classes/">Classes guide</a>)</td></tr><tr><td><code>/team</code></td><td>Team commands (see <a href="#teams">Teams</a>)</td></tr><tr><td><code>/koth</code></td><td>KOTH event info</td></tr><tr><td><code>/kit</code></td><td>Claim your kits</td></tr><tr><td><code>/shop</code></td><td>Buy particle and projectile cosmetics with coins</td></tr><tr><td><code>/coins top</code></td><td>Richest players</td></tr><tr><td><code>/recipe &lt;item&gt;</code></td><td>See how to craft any item</td></tr><tr><td><code>/vote</code></td><td>Vote for the server and get Vote Keys</td></tr><tr><td><code>/buy</code></td><td>Open the store</td></tr></tbody></table></div>
+          <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>/class</code></td><td>Open the class menu (<a href="classes/">Classes guide</a>)</td></tr><tr><td><code>/team</code></td><td>Team commands (see <a href="#teams">Teams</a>)</td></tr><tr><td><code>/challenges</code></td><td>Daily and weekly challenges (see <a href="#challenges">Challenges</a>)</td></tr><tr><td><code>/koth</code></td><td>KOTH event info</td></tr><tr><td><code>/kit</code></td><td>Claim your kits</td></tr><tr><td><code>/shop</code></td><td>Buy particle and projectile cosmetics with coins</td></tr><tr><td><code>/coins top</code></td><td>Richest players</td></tr><tr><td><code>/recipe &lt;item&gt;</code></td><td>See how to craft any item</td></tr><tr><td><code>/vote</code></td><td>Vote for the server and get Vote Keys</td></tr><tr><td><code>/buy</code></td><td>Open the store</td></tr></tbody></table></div>
           <h3>Extras</h3>
           <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>/ke</code> or <code>/killeffects</code></td><td>Choose your kill effect (<a href="killeffects/">see them all</a>)</td></tr><tr><td><code>/uc</code></td><td>Cosmetics: gadgets and suits</td></tr><tr><td><b>Voice chat</b></td><td>Proximity voice chat and groups work if you have the voice chat mod installed</td></tr></tbody></table></div>
         </section>
