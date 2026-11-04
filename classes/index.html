@@ -271,6 +271,8 @@ body { margin: 0; background: var(--fc-page); }
 @keyframes fcFlash { 0%, 30% { box-shadow: 0 0 0 3px var(--accent); } 100% { box-shadow: 0 0 0 3px transparent; } }
 /* /fc-search-css */
 </style>
+<script>try{document.documentElement.setAttribute("data-skin",localStorage.getItem("fz-skin")||"frost")}catch(e){document.documentElement.setAttribute("data-skin","frost")}</script>
+<link rel="stylesheet" href="../assets/winter.css">
 </head>
 <body>
 <div class="fc-guide" id="fc-guide">
@@ -903,5 +905,6 @@ body { margin: 0; background: var(--fc-page); }
 })();
 </script>
 <!--/fc-search-->
+<script src="../assets/winter.js" data-base="../"></script>
 </body>
 </html>

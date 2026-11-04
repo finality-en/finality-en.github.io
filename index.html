@@ -338,6 +338,9 @@ body { margin: 0; background: var(--fc-page); }
 @keyframes fcFlash { 0%, 30% { box-shadow: 0 0 0 3px var(--accent); } 100% { box-shadow: 0 0 0 3px transparent; } }
 /* /fc-search-css */
 </style>
+<link rel="preconnect" href="https://mc-heads.net">
+<script>try{document.documentElement.setAttribute("data-skin",localStorage.getItem("fz-skin")||"frost")}catch(e){document.documentElement.setAttribute("data-skin","frost")}</script>
+<link rel="stylesheet" href="assets/winter.css">
 </head>
 <body>
 <div class="fc-guide" id="fc-guide">
@@ -354,9 +357,69 @@ body { margin: 0; background: var(--fc-page); }
   </header>
 
   <div class="fc-wrap">
+    <section class="fz-hero" aria-label="Finality SMP">
+      <span class="fz-crystal" style="left:6%;top:14%">❄</span>
+      <span class="fz-crystal" style="right:8%;top:10%;font-size:40px">❅</span>
+      <span class="fz-crystal" style="left:44%;bottom:12%;font-size:22px">❆</span>
+      <span class="fz-crystal" style="right:30%;top:58%;font-size:18px">❄</span>
+      <div class="fz-hero-inner">
+        <div>
+          <span class="fz-kicker"><span class="dot"></span>Winter season · FinalityMC.org</span>
+          <h1 class="fz-title"><span>Finality</span><span class="smp">SMP</span></h1>
+          <p class="fz-lead">Survival with custom weapons and armour, seasonal classes, daily KOTH, and PvP that actually matters.</p>
+          <div class="fz-cta"><button class="fc-btn primary" type="button" id="fc-copyip" title="Copy the server IP">⧉ <span>FinalityMC.org</span></button><a class="fc-btn" href="https://discord.gg/tmEXFTuJkz" target="_blank" rel="noopener">💬 Join the Discord</a><a class="fc-btn" href="#fz-top">🏆 Top players</a></div>
+          <div class="fc-chips">
+            <span class="fc-chip">IP: <b>FinalityMC.org</b></span>
+            <span class="fc-chip">Paper 1.21</span>
+            <span class="fc-chip">Custom items</span>
+            <span class="fc-chip">Seasonal classes</span>
+            <span class="fc-chip">KOTH daily · 9pm UK / 4pm ET</span>
+          </div>
+        </div>
+        <div class="fz-hero-stats">
+          <div class="fz-stat"><b data-fz="players">0</b><span>Players tracked</span></div>
+          <div class="fz-stat"><b data-fz="kills">0</b><span>Player kills</span></div>
+          <div class="fz-stat"><b data-fz="teams">0</b><span>Active teams</span></div>
+          <div class="fz-stat"><b>21:00</b><span>Daily KOTH (UK)</span></div>
+          <div class="fz-stat wide" tabindex="0" role="button"><span>Loading top killer…</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fz-admin" id="fz-admin" aria-label="Admin">
+      <h3>🛡 Admin panel</h3>
+      <p>You're logged in as <b>admin</b>. Player stats are a snapshot — ask Claude to refresh them.</p>
+      <div class="grid"></div>
+      <div class="row">
+        <button class="fc-btn" type="button" data-fz-snow>❄ Snow: on</button>
+        <button class="fc-btn" type="button" data-fz-skin="frost"><span class="fz-swatch frost"></span> Frost</button>
+        <button class="fc-btn" type="button" data-fz-skin="aurora"><span class="fz-swatch aurora"></span> Aurora</button>
+        <button class="fc-btn" type="button" data-fz-skin="ember"><span class="fz-swatch ember"></span> Ember</button>
+        <a class="fc-btn" href="https://github.com/finality-en/finality-en.github.io" target="_blank" rel="noopener">⌥ Website repo ↗</a>
+        <a class="fc-btn" href="backup/2026-11-04/" target="_blank">🗂 Old site backup</a>
+        <button class="fc-btn" type="button" data-fz-logout>Log out</button>
+      </div>
+    </section>
+
+    <section class="fz-top" id="fz-top" aria-label="Top players">
+      <div class="fz-top-head">
+        <div><h2>🏆 Top players</h2><p>PvP stats · updated <span data-fz-updated>…</span> · click anyone for their full stats</p></div>
+        <div class="fz-controls">
+          <div class="fz-search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" placeholder="Search any player…" autocomplete="off" spellcheck="false" aria-label="Search players"><ul class="fz-suggest" role="listbox"></ul></div>
+          <div class="fz-seg" role="tablist" aria-label="Sort by"><button type="button" class="on" data-sort="kills">Kills</button><button type="button" data-sort="kd">K/D</button><button type="button" data-sort="streak">Streak</button></div>
+        </div>
+      </div>
+      <div class="fz-podium"></div>
+      <div class="fz-rows"><p style="color:var(--faint)">Loading players…</p></div>
+      <div class="fz-more"><button class="fc-btn" type="button" data-fz-all>View all players</button></div>
+      <p class="fz-foot-note">K/D ranking needs 10+ kills. Skins from mc-heads.net.</p>
+    </section>
+
     <div class="fc-layout">
       <nav class="fc-nav" aria-label="Page sections">
         <p>On this page</p>
+        <a href="#fz-top">Top players</a>
         <a href="#about">About Finality</a>
         <a href="#items">Custom items</a>
         <a href="#crates">Crates</a>
@@ -370,18 +433,7 @@ body { margin: 0; background: var(--fc-page); }
       </nav>
 
       <main>
-        <section class="fc-hero">
-          <h1>Finality SMP</h1>
-          <p>Survival with custom weapons and armour, seasonal classes, daily KOTH, and PvP that actually matters.</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><button class="fc-btn primary" type="button" id="fc-copyip" title="Copy the server IP">⧉ <span>FinalityMC.org</span></button><a class="fc-btn" href="https://discord.gg/tmEXFTuJkz" target="_blank" rel="noopener">💬 Join the Discord</a></div>
-          <div class="fc-chips">
-            <span class="fc-chip">IP: <b>FinalityMC.org</b></span>
-            <span class="fc-chip">Paper 1.21</span>
-            <span class="fc-chip">Custom items</span>
-            <span class="fc-chip">Seasonal classes</span>
-            <span class="fc-chip">KOTH daily · 9pm UK / 4pm ET</span>
-          </div>
-        </section>
+        
 
         <section class="fc-section" id="about">
           <h2>About Finality</h2>
@@ -1044,5 +1096,6 @@ body { margin: 0; background: var(--fc-page); }
 })();
 </script>
 <!--/fc-search-->
+<script src="assets/winter.js"></script>
 </body>
 </html>
