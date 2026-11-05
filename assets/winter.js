@@ -86,7 +86,7 @@
     mx += (tx - mx) * 0.05; my += (ty - my) * 0.05;
     var dx = mx - 0.5, dy = my - 0.5;
     if (!reduce && finePointer) {
-      page.forEach(function (w) { w.style.transform = "translate3d(" + (-dx * 8).toFixed(2) + "px," + (-dy * 5).toFixed(2) + "px,0)"; });
+      page.forEach(function (w) { w.style.transform = "translate3d(" + (-dx * 14).toFixed(2) + "px," + (-dy * 9).toFixed(2) + "px,0)"; });
       orbs.forEach(function (o, i) { var k = (i + 1) * 18; o.style.transform = "translate3d(" + (-dx * k) + "px," + (-dy * k) + "px,0)"; });
       if (stars) stars.style.transform = "translate3d(" + (dx * 14) + "px," + (dy * 14) + "px,0)";
       if (hero && heroVisible) hero.style.transform = "rotateY(" + (dx * 6) + "deg) rotateX(" + (-dy * 5) + "deg)";
