@@ -83,10 +83,6 @@ html[data-skin="aurora"] .fz-sky::after { content: ""; position: absolute; left:
   background: linear-gradient(100deg, transparent 10%, rgba(93,255,180,.18) 30%, rgba(179,107,255,.16) 55%, transparent 80%);
   filter: blur(40px); transform: skewY(-8deg); animation: fzAurora 18s ease-in-out infinite alternate; }
 @keyframes fzAurora { from { transform: skewY(-8deg) translateX(-6%); opacity: .7; } to { transform: skewY(-4deg) translateX(6%); opacity: 1; } }
-/* Soft glow that follows the mouse */
-.fz-cursor { position: fixed; z-index: 1; width: 520px; height: 520px; margin: -260px 0 0 -260px; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(circle, var(--fz-glow), transparent 60%); left: 50%; top: 30%; will-change: transform;
-  transition: opacity .4s; }
 #fz-snow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 60; pointer-events: none; }
 
 html[data-skin] .fc-guide > .fc-wrap,
@@ -136,10 +132,7 @@ html[data-skin] .fc-card, html[data-skin] .fc-note, html[data-skin] .fc-faq deta
   border-radius: var(--radius);
 }
 /* Cards light up where the mouse is, and lift a little */
-.fz-glow { position: relative; isolation: isolate; transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .3s, box-shadow .35s; }
-.fz-glow::before { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1; opacity: 0; transition: opacity .3s;
-  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--fz-a) 16%, transparent), transparent 70%); }
-.fz-glow:hover::before { opacity: 1; }
+.fz-glow { position: relative; transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .3s, box-shadow .35s; }
 .fz-glow:hover { border-color: color-mix(in srgb, var(--fz-a) 40%, var(--line)); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
 
 html[data-skin] .fc-section > h2 { font-size: clamp(24px, 2.6vw, 32px); font-weight: 800; display: flex; align-items: center; gap: 12px; }
@@ -151,6 +144,9 @@ html[data-skin] .fc-table tr { transition: background .2s; }
 html[data-skin] .fc-table tbody tr:hover { background: var(--panel-2); }
 html[data-skin] code, html[data-skin] kbd { background: var(--panel-2); border-color: var(--line); }
 html[data-skin] .fc-foot { border-top-color: var(--line); background: transparent; }
+
+/* The page content drifts slightly with the mouse (set from winter.js) */
+.fz-drift { will-change: transform; }
 
 /* Scroll reveal */
 .fz-reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
@@ -352,6 +348,6 @@ html[data-skin] ::-webkit-scrollbar-track { background: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   .fz-reveal { opacity: 1; transform: none; transition: none; }
-  .fz-sky .orb, .fz-sky .stars, .fz-hero-inner, .fz-pod, .fz-crystal { transition: none !important; transform: none !important; }
+  .fz-sky .orb, .fz-sky .stars, .fz-hero-inner, .fz-pod, .fz-crystal, .fz-drift { transition: none !important; transform: none !important; }
   .fz-card-side img, .fz-title span.smp, html[data-skin="aurora"] .fz-sky::after { animation: none; }
 }

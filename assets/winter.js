@@ -37,10 +37,8 @@
 
   /* ---------------- Background layers ---------------- */
   var sky = el("div", "fz-sky", '<div class="stars"></div><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>');
-  var glow = el("div", "fz-cursor");
   var canvas = el("canvas"); canvas.id = "fz-snow"; canvas.setAttribute("aria-hidden", "true");
   root.insertBefore(sky, root.firstChild);
-  root.insertBefore(glow, sky.nextSibling);
   root.appendChild(canvas);
 
   /* ---------------- Toast ---------------- */
@@ -70,21 +68,25 @@
     loginBtn.addEventListener("click", function () { isAdmin() ? showAdmin(true, true) : openLogin(); });
   }
 
-  /* ---------------- Mouse: parallax, glow, tilt ---------------- */
-  var mx = 0.5, my = 0.35, tx = 0.5, ty = 0.35, px = 0, pvx = 0;
+  /* ---------------- Mouse: the whole page drifts with it ----------------
+     Layers move by different amounts so the page has depth: the sky moves most,
+     the page content a little the other way, and the hero tilts. Mouse only. */
+  var mx = 0.5, my = 0.5, tx = 0.5, ty = 0.5, px = 0, pvx = 0;
   var orbs = $$(".fz-sky .orb"), stars = $(".fz-sky .stars");
   var hero = $(".fz-hero-inner"), crystals = $$(".fz-crystal");
+  var page = $$(".fc-guide > .fc-wrap");
+  var finePointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  page.forEach(function (w) { w.classList.add("fz-drift"); });
   window.addEventListener("mousemove", function (e) {
     tx = e.clientX / window.innerWidth; ty = e.clientY / window.innerHeight;
     pvx = e.clientX - px; px = e.clientX;
-    var c = e.target.closest && e.target.closest(".fz-glow");
-    if (c) { var r = c.getBoundingClientRect(); c.style.setProperty("--mx", (e.clientX - r.left) + "px"); c.style.setProperty("--my", (e.clientY - r.top) + "px"); }
   }, { passive: true });
+  document.addEventListener("mouseleave", function () { tx = 0.5; ty = 0.5; });
   function frame() {
-    mx += (tx - mx) * 0.06; my += (ty - my) * 0.06;
+    mx += (tx - mx) * 0.05; my += (ty - my) * 0.05;
     var dx = mx - 0.5, dy = my - 0.5;
-    glow.style.transform = "translate3d(" + (mx * window.innerWidth - window.innerWidth / 2) + "px," + (my * window.innerHeight - window.innerHeight * 0.3) + "px,0)";
-    if (!reduce) {
+    if (!reduce && finePointer) {
+      page.forEach(function (w) { w.style.transform = "translate3d(" + (-dx * 8).toFixed(2) + "px," + (-dy * 5).toFixed(2) + "px,0)"; });
       orbs.forEach(function (o, i) { var k = (i + 1) * 18; o.style.transform = "translate3d(" + (-dx * k) + "px," + (-dy * k) + "px,0)"; });
       if (stars) stars.style.transform = "translate3d(" + (dx * 14) + "px," + (dy * 14) + "px,0)";
       if (hero && heroVisible) hero.style.transform = "rotateY(" + (dx * 6) + "deg) rotateX(" + (-dy * 5) + "deg)";
