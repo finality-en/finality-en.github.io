@@ -357,6 +357,7 @@ body { margin: 0; background: var(--fc-page); }
   </header>
 
   <div class="fc-wrap">
+    <div class="fz-hero-row">
     <section class="fz-hero" aria-label="Finality SMP">
       <span class="fz-crystal" style="left:6%;top:14%">❄</span>
       <span class="fz-crystal" style="right:8%;top:10%;font-size:40px">❅</span>
@@ -385,6 +386,26 @@ body { margin: 0; background: var(--fc-page); }
         </div>
       </div>
     </section>
+      <a class="ffa-promo" href="ffa/" aria-label="Finality FFA: practice server and live ELO leaderboard">
+        <span class="ffa-promo-ring" aria-hidden="true"></span>
+        <span class="ffa-promo-floor" aria-hidden="true"></span>
+        <span class="ffa-promo-art" aria-hidden="true">
+          <img class="w sword" src="img/items/netherite_sword.png" alt="">
+          <img class="w mace" src="img/items/mace.png" alt="">
+          <img class="f pearl" src="img/items/ender_pearl.png" alt="">
+          <img class="f totem" src="img/items/totem_of_undying.png" alt="">
+          <img class="f apple" src="img/items/golden_apple.png" alt="">
+          <img class="f pot" src="img/items/splash_potion.png" alt="">
+        </span>
+        <span class="ffa-promo-body">
+          <span class="ffa-live"><i></i>NEW · Practice server</span>
+          <span class="ffa-promo-title"><span>Finality</span><b>FFA</b></span>
+          <span class="ffa-promo-lead">24/7 free-for-all on the Finality network. Instant respawns, your own kit layout, and every kill moves your ELO.</span>
+          <span class="ffa-promo-top" data-ffa-top><span class="empty">Loading the ELO leaderboard…</span></span>
+          <span class="ffa-promo-go">Enter FFA <em>→</em></span>
+        </span>
+      </a>
+    </div>
 
     <section class="fz-admin" id="fz-admin" aria-label="Admin">
       <h3>🛡 Admin panel</h3>
@@ -1145,6 +1166,7 @@ body { margin: 0; background: var(--fc-page); }
 })();
 </script>
 <!--/fc-search-->
+<script src="assets/ffa.js" data-base=""></script>
 <script src="assets/winter.js"></script>
 </body>
 </html>

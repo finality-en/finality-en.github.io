@@ -5,6 +5,7 @@ Website for the Finality Minecraft server, hosted with GitHub Pages.
 - `/` — Finality SMP guide with the **winter redesign**: top players, player stat search, snow, mouse parallax
 - `/classes/` — Finality Classes player guide
 - `/killeffects/` — Kill effects showcase
+- `/ffa/` — Finality FFA: what the practice server is, arenas, and the live ELO leaderboard (`assets/ffa.js`)
 - `/backup/2026-11-04/` — the site exactly as it was before the winter redesign
 
 ## Winter redesign
@@ -25,3 +26,9 @@ Refresh it by regenerating that file from the server's current data.
 The **Login** button opens a staff login that shows the admin panel. The site is static and public,
 so this is a convenience, not real security: only a SHA-256 hash of `user:password` is stored in
 `assets/winter.js`, never the password itself. Don't put anything private behind it.
+
+## FFA stats
+`data/ffa.json` is written by the **FinalityFFA** plugin (`plugins/FinalityFFA/web/ffa.json`) and, when
+`website.github` is set up in its config, uploaded here automatically every 10 minutes (only when something changed).
+Format: `{updated, worlds:[{id, name, color, players:[{n, u, e (ELO), k, d, s (streak), bs (best streak)}]}]}`,
+players sorted by ELO. The big FFA button next to the home page hero shows the top 3 from the same file.

@@ -351,3 +351,129 @@ html[data-skin] ::-webkit-scrollbar-track { background: transparent; }
   .fz-sky .orb, .fz-sky .stars, .fz-hero-inner, .fz-pod, .fz-crystal, .fz-drift { transition: none !important; transform: none !important; }
   .fz-card-side img, .fz-title span.smp, html[data-skin="aurora"] .fz-sky::after { animation: none; }
 }
+
+/* ==================================================================
+   Finality FFA — promo button on the home page + the /ffa/ page
+   FFA keeps its own red accent on every theme.
+   ================================================================== */
+.fz-hero-row { position: relative; display: flow-root; }
+.ffa-promo { --ffa: #ff0048; --ffa-2: #ff7a3d; position: relative; z-index: 2; isolation: isolate; overflow: hidden;
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center; gap: 18px;
+  margin: 0 0 30px; padding: clamp(24px, 3vw, 40px); border-radius: 28px; color: var(--text); text-decoration: none;
+  border: 1px solid color-mix(in srgb, var(--ffa) 45%, transparent);
+  background: radial-gradient(110% 80% at 80% 0%, rgba(255,0,72,.30), transparent 62%),
+              radial-gradient(90% 70% at 0% 100%, rgba(255,122,61,.14), transparent 60%),
+              linear-gradient(165deg, #1c0812, #0d0a15 72%);
+  box-shadow: 0 30px 80px rgba(255,0,72,.18), var(--shadow);
+  transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s, border-color .4s; }
+.ffa-promo:hover, .ffa-promo:focus-visible { text-decoration: none; transform: translateY(-6px) scale(1.01);
+  border-color: color-mix(in srgb, var(--ffa) 80%, transparent); box-shadow: 0 40px 120px rgba(255,0,72,.35), var(--shadow); }
+.ffa-promo:focus-visible { outline: 3px solid var(--ffa); outline-offset: 4px; }
+/* spinning light behind the card */
+.ffa-promo-ring { position: absolute; inset: -60%; z-index: -2; opacity: .22; pointer-events: none;
+  background: conic-gradient(from 0deg, transparent 0 70%, var(--ffa) 80%, var(--ffa-2) 86%, transparent 92%);
+  animation: ffaSpin 9s linear infinite; }
+@keyframes ffaSpin { to { transform: rotate(1turn); } }
+/* arena floor grid */
+.ffa-promo-floor { position: absolute; left: -20%; right: -20%; bottom: -10%; height: 55%; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(rgba(255,0,72,.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,0,72,.35) 1px, transparent 1px);
+  background-size: 44px 44px; transform: perspective(420px) rotateX(62deg); transform-origin: bottom;
+  -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 85%); mask-image: linear-gradient(to top, #000 10%, transparent 85%);
+  animation: ffaFloor 3s linear infinite; }
+@keyframes ffaFloor { to { background-position: 0 44px, 0 0; } }
+
+.ffa-promo-art { position: relative; aspect-ratio: 1; width: 100%; max-width: 360px; justify-self: center; }
+.ffa-promo-art::before { content: ""; position: absolute; inset: 14%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,0,72,.55), rgba(255,0,72,.12) 45%, transparent 70%); filter: blur(6px);
+  animation: ffaPulse 2.6s ease-in-out infinite; }
+.ffa-promo-art::after { content: ""; position: absolute; inset: 8%; border-radius: 50%; border: 2px dashed rgba(255,0,72,.45);
+  animation: ffaSpin 24s linear infinite; }
+@keyframes ffaPulse { 50% { transform: scale(1.08); opacity: .75; } }
+.ffa-promo-art img { position: absolute; image-rendering: pixelated; pointer-events: none; }
+.ffa-promo-art .w { width: 62%; top: 19%; left: 19%; z-index: 2; filter: drop-shadow(0 10px 18px rgba(0,0,0,.6)) drop-shadow(0 0 16px rgba(255,0,72,.55));
+  transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.ffa-promo-art .w.sword { transform: rotate(0deg); }
+.ffa-promo-art .w.mace { transform: scaleX(-1); }
+.ffa-promo:hover .ffa-promo-art .w.sword { transform: rotate(-8deg) translate(-4%, 2%); }
+.ffa-promo:hover .ffa-promo-art .w.mace { transform: scaleX(-1) rotate(-8deg) translate(-4%, 2%); }
+.ffa-promo-art .f { width: 17%; z-index: 3; filter: drop-shadow(0 6px 10px rgba(0,0,0,.55)); animation: ffaFloat 4s ease-in-out infinite; }
+.ffa-promo-art .f.pearl { top: 4%; left: 8%; }
+.ffa-promo-art .f.totem { top: 2%; right: 6%; animation-delay: -1s; }
+.ffa-promo-art .f.apple { bottom: 6%; left: 4%; animation-delay: -2s; }
+.ffa-promo-art .f.pot { bottom: 4%; right: 8%; animation-delay: -3s; }
+@keyframes ffaFloat { 50% { transform: translateY(-12px) rotate(6deg); } }
+
+.ffa-promo-body { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; min-width: 0; }
+.ffa-live { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 800;
+  letter-spacing: .02em; color: #ffd0dc; background: rgba(255,0,72,.16); border: 1px solid rgba(255,0,72,.45); }
+.ffa-live i { width: 8px; height: 8px; border-radius: 50%; background: var(--ffa, #ff0048); box-shadow: 0 0 10px #ff0048; animation: fzPulse 1.4s infinite; }
+.ffa-promo-title { font-family: "Outfit", sans-serif; font-weight: 900; line-height: .9; letter-spacing: -.03em; font-size: clamp(46px, 5vw, 86px); }
+.ffa-promo-title span { display: block; font-size: .42em; letter-spacing: .32em; color: #fff; opacity: .9; margin-bottom: 4px; }
+.ffa-promo-title b { display: block; background: linear-gradient(180deg, #fff 0%, #ff4d7c 55%, #ff0048 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 8px 30px rgba(255,0,72,.55)); }
+.ffa-promo-lead { color: #d8cfdc; font-size: 15.5px; line-height: 1.5; max-width: 420px; }
+.ffa-promo-top { display: flex; flex-direction: column; gap: 6px; width: 100%; max-width: 420px; }
+.ffa-promo-top .r { display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 12px; background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.07); font-size: 14px; }
+.ffa-promo-top .r img { width: 26px; height: 26px; border-radius: 6px; image-rendering: pixelated; }
+.ffa-promo-top .r .p { font-family: "Outfit", sans-serif; font-weight: 900; width: 26px; color: #ffb3c6; }
+.ffa-promo-top .r:first-child .p { color: #f2b544; }
+.ffa-promo-top .r .n { flex: 1; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ffa-promo-top .r .e { font-weight: 800; color: #fff; }
+.ffa-promo-top .r .e small { color: #ff7a9b; font-weight: 700; margin-left: 3px; }
+.ffa-promo-top .empty { color: #b9adbd; font-size: 14px; }
+.ffa-promo-go { display: inline-flex; align-items: center; gap: 10px; margin-top: 4px; padding: 14px 22px; border-radius: 16px; font-weight: 800; font-size: 16px;
+  color: #fff; background: linear-gradient(90deg, #ff0048, #ff5a3d); box-shadow: 0 12px 30px rgba(255,0,72,.45); }
+.ffa-promo-go em { font-style: normal; transition: transform .3s; }
+.ffa-promo:hover .ffa-promo-go em { transform: translateX(5px); }
+
+/* Wide screens: the button fills the empty space to the right of the hero */
+@media (min-width: 1900px) {
+  .ffa-promo { position: absolute; top: 34px; bottom: 26px; left: calc(100% + 26px); margin: 0;
+    width: min(640px, calc((100vw - 100%) / 2 - 52px)); grid-template-columns: 1fr; align-content: end; }
+  .ffa-promo-art { position: absolute; top: -1%; right: -3%; width: 74%; max-width: 420px; z-index: 0; opacity: .95; }
+  .ffa-promo-body { position: relative; z-index: 1; }
+  .ffa-promo-body::before { content: ""; position: absolute; inset: -30px -40px -40px -40px; z-index: -1;
+    background: radial-gradient(120% 90% at 0% 100%, rgba(13,10,21,.95) 40%, transparent 75%); }
+}
+@media (max-width: 760px) {
+  .ffa-promo { grid-template-columns: 1fr; }
+  .ffa-promo-art { max-width: 220px; order: -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ffa-promo-ring, .ffa-promo-floor, .ffa-promo-art::before, .ffa-promo-art::after, .ffa-promo-art .f { animation: none; }
+}
+
+/* ---------- /ffa/ page ---------- */
+.ffa-page { --ffa: #ff0048; }
+.ffa-page .fz-hero { border-color: rgba(255,0,72,.35);
+  background: radial-gradient(90% 70% at 85% 0%, rgba(255,0,72,.22), transparent 60%), linear-gradient(160deg, color-mix(in srgb, var(--panel-2) 80%, transparent), color-mix(in srgb, var(--panel) 70%, transparent)); }
+.ffa-page .fz-kicker { color: #ff7a9b; background: rgba(255,0,72,.12); border-color: rgba(255,0,72,.35); }
+.ffa-page .fz-kicker .dot { background: #ff0048; box-shadow: 0 0 10px #ff0048; }
+.ffa-page .fz-title span.smp { background: linear-gradient(90deg, #ff0048, #ff7a3d, #ff0048); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; }
+.ffa-page .fc-btn.primary { background: linear-gradient(90deg, #ff0048, #ff5a3d); color: #fff; }
+.ffa-sec { position: relative; z-index: 2; margin: 0 0 44px; scroll-margin-top: 90px; }
+.ffa-sec > h2 { margin: 0 0 6px; font-family: "Outfit", sans-serif; font-weight: 800; font-size: clamp(26px, 3vw, 36px); }
+.ffa-sec > p.sub { margin: 0 0 18px; color: var(--muted); }
+.ffa-how { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.ffa-how .fc-card { display: flex; gap: 14px; align-items: flex-start; }
+.ffa-how .fc-card img { width: 40px; height: 40px; image-rendering: pixelated; flex: none; filter: drop-shadow(0 4px 8px rgba(0,0,0,.4)); }
+.ffa-how .fc-card b { display: block; font-family: "Outfit", sans-serif; font-size: 17px; margin-bottom: 3px; }
+.ffa-how .fc-card span { color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+.ffa-arenas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.ffa-arena { position: relative; overflow: hidden; }
+.ffa-arena h3 { margin: 0 0 4px; font-family: "Outfit", sans-serif; font-size: 24px; }
+.ffa-arena .tag { position: absolute; top: 16px; right: 16px; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 999px; background: rgba(255,0,72,.15); color: #ff7a9b; border: 1px solid rgba(255,0,72,.35); }
+.ffa-arena .tag.soon { background: var(--panel-2); color: var(--faint); border-color: var(--line); }
+.ffa-arena p { color: var(--muted); margin: 0 0 12px; }
+.ffa-kit { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 4px; max-width: 420px; }
+.ffa-kit span { position: relative; aspect-ratio: 1; border-radius: 6px; background: rgba(0,0,0,.3); border: 1px solid var(--line); display: grid; place-items: center; }
+.ffa-kit img { width: 78%; image-rendering: pixelated; }
+.ffa-kit small { position: absolute; right: 2px; bottom: 0; font-size: 10px; font-weight: 800; color: #fff; text-shadow: 1px 1px 0 #000; }
+.ffa-cmds { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.ffa-cmds .fc-card { padding: 14px 16px; }
+.ffa-cmds code { font-weight: 800; color: #ff7a9b; }
+.ffa-cmds span { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
+.ffa-page .fz-pod .elo, .ffa-page .fz-row .elo b { color: #ff7a9b; }
+.ffa-elo-big { font-family: "Outfit", sans-serif; font-weight: 900; font-size: 54px; line-height: 1; margin: 6px 0 10px;
+  background: linear-gradient(180deg, #fff, #ff0048); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ffa-elo-big small { font-size: 16px; letter-spacing: .2em; margin-left: 6px; -webkit-text-fill-color: #ff7a9b; }
