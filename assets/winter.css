@@ -93,7 +93,7 @@ html[data-skin] .fc-top { position: sticky; top: 0; z-index: 40; background: col
   backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%); border-bottom: 1px solid var(--line); }
 html[data-skin] .fc-logo .txt { font-family: "Outfit", sans-serif; font-weight: 800; font-size: 18px;
   background: linear-gradient(90deg, var(--text), var(--fz-a)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-html[data-skin] .fc-logo-img { box-shadow: 0 0 0 1px var(--line), 0 0 18px color-mix(in srgb, var(--fz-a) 35%, transparent); }
+html[data-skin] .fc-logo-img { box-shadow: none; filter: drop-shadow(0 0 8px color-mix(in srgb, var(--fz-a) 35%, transparent)); }
 html[data-skin] .fc-btn, html[data-skin] .fc-searchbtn { background: var(--panel); border-color: var(--line); border-radius: 12px;
   backdrop-filter: blur(8px); transition: transform .2s, border-color .2s, background .2s, box-shadow .2s; }
 html[data-skin] .fc-btn:hover, html[data-skin] .fc-searchbtn:hover { border-color: color-mix(in srgb, var(--accent) 70%, transparent);
