@@ -275,6 +275,7 @@ body { margin: 0; background: var(--fc-page); }
 .g-astral { background: linear-gradient(90deg,#6ad6ff,#b36bff); -webkit-background-clip: text; background-clip: text; color: transparent; } .demon { --glow: #ff3c7e; }
 .g-ice { background: linear-gradient(90deg,#1BACFF,#2DFFFF); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .g-demon { background: linear-gradient(90deg,#ff3c7e,#b036ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.g-cane { background: linear-gradient(90deg,#e3192b,#ff7a88,#e3192b); -webkit-background-clip: text; background-clip: text; color: transparent; } .cane { --glow: #ff3b4a; }
 .g-crown { background: linear-gradient(90deg,#FF4444,#B00000); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .fc-bonus { padding: 16px 18px; margin-top: 14px; display: flex; gap: 14px; align-items: flex-start; }
 .fc-bonus .em { font-size: 22px; line-height: 1; }
@@ -453,6 +454,7 @@ body { margin: 0; background: var(--fc-page); }
         <a href="#fz-top">Top players</a>
         <a href="#about">About Finality</a>
         <a href="#items">Custom items</a>
+        <a href="#boss">Evil Elf boss</a>
         <a href="#crates">Crates</a>
         <a href="#challenges">Challenges</a>
         <a href="#recipes">Recipes</a>
@@ -477,7 +479,8 @@ body { margin: 0; background: var(--fc-page); }
             <div class="fc-card fc-step"><b>Pick a default class</b><span>A menu opens on your first join. Pick one of 4 default classes. <a href="classes/#default">Compare them</a></span></div>
             <div class="fc-card fc-step"><b>Gear up</b><span>Craft Glacier and Astral gear and open crates.</span></div>
             <div class="fc-card fc-step"><b>Win challenges</b><span>Top the daily and weekly <a href="#challenges">challenges</a> for shards, vouchers, coins and Class Upgrade Tokens.</span></div>
-            <div class="fc-card fc-step"><b>Win KOTH</b><span>The winner gets a Special Class Roll, a shot at a powerful special class.</span></div>
+            <div class="fc-card fc-step"><b>Win KOTH</b><span>The winner gets <b>2 Finality Keys</b> and a Special Class Roll, a shot at a powerful special class.</span></div>
+            <div class="fc-card fc-step"><b>Beat the Evil Elf</b><span>A boss spawns every day at 19:00 UK. Top the damage board for keys, coins and a shot at the <a href="#boss">Elf Candy Cane</a>.</span></div>
             <div class="fc-card fc-step"><b>Level up</b><span>Craft a Class Upgrade Token and spend XP to take your default class to Level II.</span></div>
           </div>
         </section>
@@ -560,6 +563,58 @@ body { margin: 0; background: var(--fc-page); }
   <div class="fc-src"><span class="crate">⚔ Events</span></div>
 </article></div>
           <div class="fc-card fc-bonus"><span class="em">🔥</span><p><b style="color:var(--text)">Demonic set bonus:</b> wear all 4 Demonic armour pieces to get <b style="color:var(--text)">+8 hearts</b>, permanent <b style="color:var(--text)">Fire Resistance</b>, <b style="color:var(--text)">Saturation</b> and <b style="color:var(--text)">Speed II</b>.</p></div>
+          <div class="fc-set"><h3 class="g-cane">Boss loot</h3><span class="sub">Ripped from the <a href="#boss">Evil Elf</a></span></div>
+          <div class="fc-items"><article class="fc-card fc-item cane">
+  <div class="fc-item-head"><div class="fc-item-pic"><img alt="Elf Candy Cane" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PHBhdHRlcm4gaWQ9InAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDQ1KSI+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmZmIi8+PHJlY3Qgd2lkdGg9IjUiIGhlaWdodD0iMTAiIGZpbGw9IiNlMzE5MmIiLz48L3BhdHRlcm4+PC9kZWZzPjxwYXRoIGQ9Ik0yMiA1OCBWMjIgYTEwIDEwIDAgMCAxIDIwIDAgdjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzdhMGIxNCIgc3Ryb2tlLXdpZHRoPSIxMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTIyIDU4IFYyMiBhMTAgMTAgMCAwIDEgMjAgMCB2NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3ApIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg=="></div><div><h4><span class="g-cane">Elf Candy Cane</span></h4><div class="base">Netherite sword</div></div></div>
+  <ul><li><b>11</b> attack damage, as hard as the Astral Riftblade</li><li>Sharpness V, Unbreaking III</li><li>Normal netherite sword attack speed</li><li>Every swing leaves a <b>red-and-white candy stripe</b> arc</li><li><b>15% chance</b> on a fully charged hit to make your target <b>levitate for 2s</b> (4s cooldown)</li></ul>
+  <p class="flavour">Ripped from the tiny, sticky hands of the Evil Elf. Peppermint scented.</p>
+  <div class="fc-src"><span class="crate">🎁 Elf Candy Cane Voucher</span><span class="crate">🧝 Evil Elf boss</span></div>
+</article></div>
+        </section>
+
+        <section class="fc-section" id="boss">
+          <h2>🧝 Evil Elf boss</h2>
+          <p class="fc-lead">A world boss that flies into the warzone every day. Everyone who lands a hit gets paid, the top damagers win keys and a shot at the Elf Candy Cane, and five loot chests drop when it dies.</p>
+          <div class="fc-grid">
+            <div class="fc-card" style="padding:16px"><b>⏰ When</b><p style="margin:6px 0 0;color:var(--muted)">Every day at <b>19:00 UK time</b>. You get a countdown in chat at 15, 10, 5, 3 and 1 minutes, then 5-4-3-2-1 on screen.</p></div>
+            <div class="fc-card" style="padding:16px"><b>📍 Where</b><p style="margin:6px 0 0;color:var(--muted)">The <b>warzone right below spawn</b> (0, 63, 0). It flies down from the sky.</p></div>
+            <div class="fc-card" style="padding:16px"><b>🕊 PvP is off</b><p style="margin:6px 0 0;color:var(--muted)">PvP is turned <b>off in the warzone while it's alive</b>. When it dies you get a <b>20-second grace period</b> (with chat, title and countdown warnings), then PvP turns back on, so grab the loot fast.</p></div>
+            <div class="fc-card" style="padding:16px"><b>📊 Live damage board</b><p style="margin:6px 0 0;color:var(--muted)">A sidebar shows the top damagers live, plus a boss health bar. After the fight, chat shows the top damagers and hitters.</p></div>
+            <div class="fc-card" style="padding:16px"><b>🔔 Never miss a spawn</b><p style="margin:6px 0 0;color:var(--muted)">Follow the <a href="https://discord.com/channels/1457700925719314614/1572752313741746276" target="_blank" rel="noopener"><b>Finality Bosses</b></a> channel on Discord and turn on notifications. It has a live timer for the next spawn <b>in your own timezone</b>, countdown pings, a post when it spawns and the full results when it dies. Spawns and kills are also posted in the Minecraft chat channel.</p></div>
+          </div>
+
+          <h3>Damage rewards</h3>
+          <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Place</th><th>Rewards</th></tr></thead><tbody><tr><td style="white-space:nowrap;vertical-align:top"><b style="color:#f2b544">🥇 1st</b></td><td><ul style="margin:0;padding-left:18px"><li><span class="g-cane">Elf Candy Cane Voucher</span></li><li>2× Finality Key</li><li><span class="g-astral">Relic Key</span></li><li><b>300 coins</b></li></ul></td></tr><tr><td style="white-space:nowrap;vertical-align:top"><b style="color:#9aa4b2">🥈 2nd</b></td><td><ul style="margin:0;padding-left:18px"><li><span class="g-cane">Elf Candy Cane Voucher</span></li><li>2× Finality Key</li><li><b>200 coins</b></li></ul></td></tr><tr><td style="white-space:nowrap;vertical-align:top"><b style="color:#cd7f32">🥉 3rd</b></td><td><ul style="margin:0;padding-left:18px"><li><b>100 coins</b></li></ul></td></tr><tr><td style="white-space:nowrap;vertical-align:top"><b>⚔ Everyone who hit it</b></td><td><ul style="margin:0;padding-left:18px"><li><b>75 coins</b></li></ul></td></tr></tbody></table></div>
+
+          <h3>Loot chests</h3>
+          <p style="color:var(--muted)">When it dies, <b>5 chests</b> appear in a circle with a <b>Golden Present</b> chest in the middle. They vanish after <b>60 seconds</b> and it's first come, first served. Expect golden apples, diamonds, XP, ender pearls and totems, plus:</p>
+          <ul style="color:var(--muted)">
+            <li>a guaranteed <span class="g-cane">Elf Candy Cane Voucher</span> in one of the chests</li>
+            <li>a small chance of a <b>Finality Key</b></li>
+            <li><b>Special Class Rolls</b>, a regular find (roughly every 3rd kill), so everyone has a real shot at unlocking a special class</li>
+            <li>rarer class items: <b>Class Reset Token</b> (uncommon), <b>Class Upgrade Token</b> 50–80% (rare, Golden Present only) and <b>Extra Class Token</b> (extremely rare)</li>
+            <li>a chance of <b>Armor Repair Vouchers</b> (usually 0–1 per kill, sometimes 2, never two in the same chest)</li>
+          </ul>
+
+          <h3>Boss vouchers</h3>
+          <details class="fc-card fc-crate" style="padding:0;margin-bottom:12px">
+  <summary style="padding:16px 18px;cursor:pointer;list-style:none;display:flex;gap:14px;align-items:center">
+    <span style="font-size:26px">🍬</span>
+    <span style="flex:1"><b style="font-size:17px" class="g-cane">Elf Candy Cane Voucher</b><br><span style="color:var(--muted);font-size:14.5px">From: <b>top 2 damagers</b> on every Evil Elf kill, plus <b>one loot chest</b> every kill</span></span>
+    <span style="color:var(--faint);font-size:13px;white-space:nowrap">View odds ▾</span>
+  </summary>
+  <div style="padding:0 18px 18px"><p style="color:var(--muted);margin-top:0">Right-click for a shot at the Elf Candy Cane.</p><div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Unlocks</th><th style="text-align:right">Chance</th></tr></thead><tbody><tr><td><span class="g-cane">Elf Candy Cane</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">20%</b></td></tr><tr><td><span style="color:var(--muted)">2× Astral Crystal</span> <span style="color:var(--faint)">(no luck)</span></td><td style="text-align:right;white-space:nowrap"><b style="color:var(--muted)">80%</b></td></tr></tbody></table></div></div>
+</details>
+          <div class="fc-note"><span class="em">🛡</span><p><b>Armor Repair Voucher.</b> Right-click to fully repair every armour piece you're wearing or carrying. You can't use it in combat.</p></div>
+
+          <h3>Tips for the fight</h3>
+          <div class="fc-grid">
+            <div class="fc-card" style="padding:16px"><b>🍏 Bring golden apples</b><p style="margin:6px 0 0;color:var(--muted)">Its candy cane makes you bleed, and only golden apples cure it.</p></div>
+            <div class="fc-card" style="padding:16px"><b>🏃 Don't sprint away</b><p style="margin:6px 0 0;color:var(--muted)">It hunts down players who run.</p></div>
+            <div class="fc-card" style="padding:16px"><b>⚔ Hit back</b><p style="margin:6px 0 0;color:var(--muted)">Hitting it breaks up its combos.</p></div>
+            <div class="fc-card" style="padding:16px"><b>⭕ Dodge the red ring</b><p style="margin:6px 0 0;color:var(--muted)">Get out of the red ring before it goes off.</p></div>
+            <div class="fc-card" style="padding:16px"><b>💨 No wind charges in melee</b><p style="margin:6px 0 0;color:var(--muted)">Wind charges don't work while it's meleeing you.</p></div>
+          </div>
         </section>
 
         <section class="fc-section" id="crates">
@@ -609,7 +664,7 @@ body { margin: 0; background: var(--fc-page); }
           <details class="fc-card fc-crate" style="padding:0;margin-bottom:12px">
   <summary style="padding:16px 18px;cursor:pointer;list-style:none;display:flex;gap:14px;align-items:center">
     <span style="font-size:26px">🏆</span>
-    <span style="flex:1"><b style="font-size:17px" class="">KOTH Crate</b><br><span style="color:var(--muted);font-size:14.5px">Key: win <b>KOTH</b>, which runs <b>every day at 9pm UK</b> (4pm US East). Use <code>/koth</code> to get there.</span></span>
+    <span style="flex:1"><b style="font-size:17px" class="">KOTH Crate</b><br><span style="color:var(--muted);font-size:14.5px">Key: win <b>KOTH</b>, which runs <b>every day at 9pm UK</b> (4pm US East). The winner also gets <b>2 Finality Keys</b>. Use <code>/koth</code> to get there.</span></span>
     <span style="color:var(--faint);font-size:13px;white-space:nowrap">View rewards ▾</span>
   </summary>
   <div style="padding:0 18px 18px"><p style="color:var(--muted);margin-top:0">Custom swords, the Astral Starfall Bow and big stacks of loot. You never get the same reward twice in a row.</p><div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Reward</th><th style="text-align:right">Rarity</th></tr></thead><tbody><tr><td><span class="g-demon">Demonic Hellfire Cleaver</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td><span class="g-ice">Glacier Blade</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td><span class="g-astral">Astral Starfall Bow</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>KOTH Sword · Sharpness V, Unbreaking III</td><td style="text-align:right;white-space:nowrap"><b style="color:#9aa3b2">Common</b></td></tr><tr><td>64× Golden Apple</td><td style="text-align:right;white-space:nowrap"><b style="color:#9aa3b2">Common</b></td></tr><tr><td>Swift Sneak III book</td><td style="text-align:right;white-space:nowrap"><b style="color:#9aa3b2">Common</b></td></tr><tr><td>Finality Key</td><td style="text-align:right;white-space:nowrap"><b style="color:#9aa3b2">Common</b></td></tr><tr><td>Challenger Lootbox</td><td style="text-align:right;white-space:nowrap"><b style="color:#63d387">Uncommon</b></td></tr><tr><td>20× Ancient Debris</td><td style="text-align:right;white-space:nowrap"><b style="color:#63d387">Uncommon</b></td></tr><tr><td>Special Class Roll</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>Class Reset Token</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr></tbody></table></div></div>
@@ -617,7 +672,7 @@ body { margin: 0; background: var(--fc-page); }
           <details class="fc-card fc-crate" style="padding:0;margin-bottom:12px">
   <summary style="padding:16px 18px;cursor:pointer;list-style:none;display:flex;gap:14px;align-items:center">
     <span style="font-size:26px">💎</span>
-    <span style="flex:1"><b style="font-size:17px" class="g-ice">Finality Crate</b><br><span style="color:var(--muted);font-size:14.5px">Key: store only. Use <code>/buy</code>. Also a rare prize from the KOTH and Vote crates.</span></span>
+    <span style="flex:1"><b style="font-size:17px" class="g-ice">Finality Crate</b><br><span style="color:var(--muted);font-size:14.5px">Key: buy one in the store (<code>/buy</code>), win <b>KOTH</b> (2 keys), or place top 2 on the <a href="#boss">Evil Elf</a> (2 keys). Also a rare prize from the KOTH and Vote crates and the Evil Elf loot chests.</span></span>
     <span style="color:var(--faint);font-size:13px;white-space:nowrap">View rewards ▾</span>
   </summary>
   <div style="padding:0 18px 18px"><p style="color:var(--muted);margin-top:0">Maxed-out diamond gear, netherite tools and premium supplies, plus Glacial Shards, Astral Crystals and lootboxes.</p><div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Reward</th><th style="text-align:right">Rarity</th></tr></thead><tbody><tr><td>Diamond armour set · Protection IV, Unbreaking III, Mending (+ extras per piece)</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>Diamond Sword · Sharpness V, Fire Aspect II, Looting III, Sweeping Edge III, Unbreaking III, Mending</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>Netherite Pickaxe · Efficiency V, Fortune III, Unbreaking III, Mending</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>Netherite Shovel · Efficiency V, Unbreaking III, Mending</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>Diamond Pickaxe · Efficiency V, Fortune III</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>Trident · Impaling V, Riptide III, Unbreaking III, Mending</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>5× Enchanted Golden Apple</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>32× Golden Apple</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>Nether Star</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>Books: Looting III, Sweeping Edge III, Swift Sneak III</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>32× Breeze Rod</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>16× Ender Pearl</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>64× Bottle o' Enchanting</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>64× Golden Carrot</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>64× Slow Falling arrows</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>Turtle Master II splash potion</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td>Raiser armour trim</td><td style="text-align:right;white-space:nowrap"><b style="color:#5c8dff">Rare</b></td></tr><tr><td><span class="g-ice">2× Glacial Shard</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#57d38c">Uncommon</b></td></tr><tr><td><span class="g-astral">4× Astral Crystal</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#57d38c">Uncommon</b></td></tr><tr><td>Kill Effect Lootbox</td><td style="text-align:right;white-space:nowrap"><b style="color:#57d38c">Uncommon</b></td></tr><tr><td><span class="g-ice">Glacier Pickaxe I</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#b46bff">Epic</b></td></tr><tr><td><span class="g-ice">Glacier Armour Lootbox</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#f2b544">Legendary</b></td></tr><tr><td><span class="g-astral">Relic Key</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#f2b544">Legendary</b></td></tr></tbody></table></div></div>
