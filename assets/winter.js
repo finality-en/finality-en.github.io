@@ -375,6 +375,7 @@
       w.dataset.name = best.n;
       w.innerHTML = '<img alt="" src="' + head(best.n, 64) + '"><div><span>Top killer</span><b style="font-size:24px">' + esc(best.n) + '</b><span>' + fmt(best.k) + " kills · " + kdS(best) + " K/D</span></div>";
     }
+    if (!best && w) w.innerHTML = "<div><span>Top killer</span><b style=\"font-size:20px\">No kills yet</b><span>The first kill of the season takes the spot</span></div>";
     var up = $("[data-fz-updated]");
     if (up) up.textContent = new Date(DATA.updated * 1000).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
   }
