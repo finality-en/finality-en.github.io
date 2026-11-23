@@ -14,32 +14,72 @@
     leash-radius: 40
     idle-despawn-seconds: 300
     idle-range: 48
-    health: 600
-    scale: 2.5                   # how big he is (snow golem x2.5)
-    movement-speed: 0.22
-    knockback-resistance: 0.6
-    max-damage-per-hit: 30
-    damage-multiplier: 1.0
+    health: 2000
+    scale: 2.8                   # how big he is (snow golem x2.8)
+    movement-speed: 0.26
+    knockback-resistance: 0.75
+    max-damage-per-hit: 35
+    damage-multiplier: 1.0       # scale players' damage TO him
     invulnerability-ticks: 10
-    ability-interval-ticks: '90-140'
-    aura:                        # standing right next to him chills you
-      radius: 2.8
-      damage: 1.5
-    barrage:                     # snowball volleys: each hit stings + Slowness I
+    ability-interval-ticks: '70-110'
+    # All damage below is before armour. Enraged (under 30% HP) multiplies it by enrage.damage-multiplier.
+    punch:                       # anyone in arm's reach gets smacked + knocked back + Slowness II
+      reach: 3.4
+      damage: 8
+      knockback: 1.1
+      cooldown-ticks: 24
+    aura:                        # standing close chills you every second
+      radius: 4.5
+      damage: 2
+    barrage:                     # snowball volleys at up to 4 players, every hit stings + slows
       max-targets: 4
-      snowballs: 6
-      damage: 2.5
-    ice-slam:                    # jumps and slams, launching everyone close
-      radius: 6
-      damage: 5
-      push: 0.7
-      launch: 0.85
-      jump: 0.9
-    guards:                      # Frost Guards (strays) he summons
-      count: 3
-      max-alive: 3
-      health: 20
-      name: '&bFrost Guard'
+      snowballs: 8
+      damage: 3.5
+    ice-slam:                    # jumps and slams, launching everyone close (blue ring = warning)
+      radius: 7
+      damage: 10
+      push: 0.9
+      launch: 1.0
+      jump: 1.0
+    snowlings:                   # mini snowmen that chase you, bite, and burst into frost when they die
+      count: 4
+      max-alive: 6
+      health: 12
+      scale: 0.55
+      speed: 0.34
+      bite-damage: 3.5
+      bite-reach: 1.8
+      bite-cooldown-ticks: 16
+      burst-damage: 4
+      burst-radius: 2.8
+      life-seconds: 25
+      name: '&fSnowling'
+    icicle-rain:                 # marked circles under players, icicles land after the warning
+      per-player: 2
+      max-spots: 12
+      warning-ticks: 25
+      radius: 1.8
+      damage: 9
+    ice-prison:                  # freezes the furthest player in a block of ice
+      seconds: 2.5
+      shatter-damage: 5
+    avalanche:                   # telegraphed charge (blue line) that bowls over everyone in its path
+      windup-ticks: 22
+      speed: 1.1
+      hit-radius: 2.6
+      damage: 9
+      max-ticks: 30
+    whiteout:                    # at 66% and 33% HP: roar, then a shockwave ring - JUMP over it
+      health-triggers: [66, 33]
+      roar-ticks: 30
+      radius: 16
+      speed: 0.7
+      damage: 12
+    enrage:
+      at-percent: 30
+      damage-multiplier: 1.25
+      speed-bonus: 0.25
+      ability-interval-ticks: '45-75'
     sidebar:
       title: '&b&lFROST KING'
       range: 64
@@ -51,7 +91,8 @@
       hold-seconds: 60           # hold it this long IN A ROW to win
       max-seconds: 300           # nobody manages it in 5 min -> it melts
       arena-radius: 45           # leave this radius (from the spawn point) and it goes back to the middle
-      view-radius: 150
+      view-radius: 150           # these players see the holder's location on the action bar
+      kill-on-logout: true       # logging out with the crown = combat log (if PvPManager didn't already)
     rewards:
       crown:                     # whoever holds the crown for 60s
         - 'ac key give {player} finality 2'
@@ -66,6 +107,7 @@
       spawn: '{name} &7has appeared in the &cwarzone below spawn&7! &c&lPvP IS ON&7. Kill him and fight for his &b&lCROWN&7!'
       spawn-title: '&b&lFROST KING'
       spawn-subtitle: '&7PvP boss in the warzone - fight for the crown!'
+      enrage: '{name} &c&lis ENRAGED! &7He hits harder and faster!'
     schedule:
       enabled: true
       boss: frost_king

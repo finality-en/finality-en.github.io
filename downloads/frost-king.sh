@@ -14,13 +14,15 @@ ins_after(){ # file anchorRegex snippetFile
 
 echo "===== 1. FinalityBosses 1.2.0"
 for f in frost_king_block.yml frost_king_loot.yml frost_voucher.yml frostfang_nexo.yml weapon_effects_frostfang.yml frostfang.png; do curl -fsSL "$RAW/frost-king/$f" -o $T/$f || { no "download $f"; exit 1; }; done
-curl -fsSL $RAW/FinalityBosses-1.2.0.jar -o $T/fb.jar && echo "33417c52716b7d1706bf58277fe46a75b4468b74cac82fa9fb1596d9e55afc85  $T/fb.jar" | sha256sum -c --quiet - || { no "jar download/checksum"; exit 1; }
+curl -fsSL $RAW/FinalityBosses-1.2.0.jar -o $T/fb.jar && echo "fa74fc3484cda510bb01925db2599bdcb0aa2937b915b18b39087ddc1747f865  $T/fb.jar" | sha256sum -c --quiet - || { no "jar download/checksum"; exit 1; }
 for j in $P/FinalityBosses-*.jar; do [ -f "$j" ] && mv "$j" $BK/ && echo "  old $(basename $j) -> backup"; done
 cp $T/fb.jar $P/FinalityBosses-1.2.0.jar && chown $OWN $P/FinalityBosses-1.2.0.jar && ok "FinalityBosses-1.2.0.jar installed"
 
 echo "===== 2. Frost King config"
 C=$P/FinalityBosses/config.yml; bak $C
-if grep -q '^  frost_king:' $C; then ok "frost_king already in config.yml"; else ins_after $C '^bosses:[[:space:]]*$' $T/frost_king_block.yml; grep -q '^  frost_king:' $C && ok "frost_king added to config.yml" || no "couldn't add frost_king"; fi
+if grep -q '^  frost_king:' $C; then # replace an older Frost King block with the new one
+  awk '/^  frost_king:[[:space:]]*$/{skip=1; next} skip && (/^  [A-Za-z_]/ || /^[^ #\n]/){skip=0} !skip' $C > $T/x && cat $T/x > $C; echo "  (replacing the old frost_king settings)"; fi
+ins_after $C '^bosses:[[:space:]]*$' $T/frost_king_block.yml; grep -q '^  frost_king:' $C && ok "frost_king (2000 HP, new abilities) in config.yml" || no "couldn't add frost_king"
 if grep -q '^  frostfang:' $C; then ok "frostfang effects already there"; else ins_after $C '^weapon-effects:[[:space:]]*$' $T/weapon_effects_frostfang.yml; grep -q '^  frostfang:' $C && ok "Frostfang swing + freeze added" || no "couldn't add weapon-effects.frostfang"; fi
 L=$P/FinalityBosses/loot.yml; bak $L
 grep -q '^frost_king:' $L && ok "loot already there" || { cat $T/frost_king_loot.yml >> $L && ok "Frost King floor loot added"; }
