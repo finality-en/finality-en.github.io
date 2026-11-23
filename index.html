@@ -453,8 +453,9 @@ body { margin: 0; background: var(--fc-page); }
         <p>On this page</p>
         <a href="#fz-top">Top players</a>
         <a href="#about">About Finality</a>
+        <a href="#schedule">Daily schedule</a>
         <a href="#items">Custom items</a>
-        <a href="#boss">Evil Elf boss</a>
+        <a href="#boss">Bosses</a>
         <a href="#crates">Crates</a>
         <a href="#challenges">Challenges</a>
         <a href="#recipes">Recipes</a>
@@ -480,8 +481,20 @@ body { margin: 0; background: var(--fc-page); }
             <div class="fc-card fc-step"><b>Gear up</b><span>Craft Glacier and Astral gear and open crates.</span></div>
             <div class="fc-card fc-step"><b>Win challenges</b><span>Top the daily and weekly <a href="#challenges">challenges</a> for shards, vouchers, coins and Class Upgrade Tokens.</span></div>
             <div class="fc-card fc-step"><b>Win KOTH</b><span>The winner gets a KOTH Key, <b>4 Finality Keys</b>, a <b>Relic Key</b>, an <b>Astral Voucher</b>, <b>2 Special Class Rolls</b> and <b>25,000 XP</b>.</span></div>
-            <div class="fc-card fc-step"><b>Beat the Evil Elf</b><span>A boss spawns every day at 19:00 UK. Top the damage board for keys, coins and a shot at the <a href="#boss">Elf Candy Cane</a>.</span></div>
+            <div class="fc-card fc-step"><b>Beat the Evil Elf</b><span>Spawns at 13:00, 19:00 and 22:00 UK. Top the damage board for keys, coins and a shot at the <a href="#boss">Elf Candy Cane</a>.</span></div>
+            <div class="fc-card fc-step"><b>Claim the Frost Crown</b><span>The <a href="#frostking">Frost King</a> is a PvP boss 4 times a day. Kill him, then hold his crown for 60 seconds to win keys and a shot at <b>Frostfang</b>.</span></div>
             <div class="fc-card fc-step"><b>Level up</b><span>Craft a Class Upgrade Token and spend XP to take your default class to Level II.</span></div>
+          </div>
+        </section>
+
+
+        <section class="fc-section" id="schedule">
+          <h2>📅 Daily schedule</h2>
+          <p class="fc-lead">Something happens every couple of hours. Type <code>/bosstimer</code> in game to see exactly what's next, or check the timers in the <b>Finality Bosses</b> Discord channel (they show in your own timezone).</p>
+          <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>UK time</th><th>US East</th><th>Event</th><th>Warzone PvP</th></tr></thead><tbody><tr><td style="white-space:nowrap"><b>11:00</b></td><td style="white-space:nowrap;color:var(--muted)">6:00am</td><td><a href="#frostking">👑 Frost King</a></td><td><b style="color:var(--bad)">ON</b></td></tr><tr><td style="white-space:nowrap"><b>13:00</b></td><td style="white-space:nowrap;color:var(--muted)">8:00am</td><td><a href="#boss">🎄 Evil Elf</a></td><td><span style="color:var(--good)">off</span></td></tr><tr><td style="white-space:nowrap"><b>15:00</b></td><td style="white-space:nowrap;color:var(--muted)">10:00am</td><td><a href="#frostking">👑 Frost King</a></td><td><b style="color:var(--bad)">ON</b></td></tr><tr><td style="white-space:nowrap"><b>17:30</b></td><td style="white-space:nowrap;color:var(--muted)">12:30pm</td><td><a href="#crates">⛰️ KOTH</a></td><td><b style="color:var(--bad)">ON</b></td></tr><tr><td style="white-space:nowrap"><b>19:00</b></td><td style="white-space:nowrap;color:var(--muted)">2:00pm</td><td><a href="#boss">🎄 Evil Elf</a></td><td><span style="color:var(--good)">off</span></td></tr><tr><td style="white-space:nowrap"><b>20:00</b></td><td style="white-space:nowrap;color:var(--muted)">3:00pm</td><td><a href="#crates">⛰️ KOTH</a></td><td><b style="color:var(--bad)">ON</b></td></tr><tr><td style="white-space:nowrap"><b>21:00</b></td><td style="white-space:nowrap;color:var(--muted)">4:00pm</td><td><a href="#frostking">👑 Frost King</a></td><td><b style="color:var(--bad)">ON</b></td></tr><tr><td style="white-space:nowrap"><b>22:00</b></td><td style="white-space:nowrap;color:var(--muted)">5:00pm</td><td><a href="#boss">🎄 Evil Elf</a></td><td><span style="color:var(--good)">off</span></td></tr><tr><td style="white-space:nowrap"><b>00:00</b></td><td style="white-space:nowrap;color:var(--muted)">7:00pm</td><td><a href="#challenges">🗓️ Daily challenges reset</a></td><td>–</td></tr><tr><td style="white-space:nowrap"><b>00:30</b></td><td style="white-space:nowrap;color:var(--muted)">7:30pm</td><td><a href="#frostking">👑 Frost King</a></td><td><b style="color:var(--bad)">ON</b></td></tr></tbody></table></div>
+          <div class="fc-grid" style="margin-top:14px">
+            <div class="fc-card" style="padding:16px"><b>🔥 Nether Events</b><p style="margin:6px 0 0;color:var(--muted)">Random events in the Nether every <b>2–3 hours</b> (speed, haste, jump boost and more), announced 5 minutes before they start.</p></div>
+            <div class="fc-card" style="padding:16px"><b>🌌 The End opens</b><p style="margin:6px 0 0;color:var(--muted)"><b>Saturday 5 December at 20:00 UK</b> (3pm US East). The first hour is the <b>End Rush</b>: locator bar on, and a Finality Key for the first player in and for every Dragon Slayer.</p></div>
           </div>
         </section>
 
@@ -563,20 +576,27 @@ body { margin: 0; background: var(--fc-page); }
   <div class="fc-src"><span class="crate">⚔ Events</span></div>
 </article></div>
           <div class="fc-card fc-bonus"><span class="em">🔥</span><p><b style="color:var(--text)">Demonic set bonus:</b> wear all 4 Demonic armour pieces to get <b style="color:var(--text)">+8 hearts</b>, permanent <b style="color:var(--text)">Fire Resistance</b>, <b style="color:var(--text)">Saturation</b> and <b style="color:var(--text)">Speed II</b>.</p></div>
-          <div class="fc-set"><h3 class="g-cane">Boss loot</h3><span class="sub">Ripped from the <a href="#boss">Evil Elf</a></span></div>
+          <div class="fc-set"><h3 class="g-cane">Boss loot</h3><span class="sub">From the <a href="#boss">Evil Elf</a> and the <a href="#frostking">Frost King</a></span></div>
           <div class="fc-items"><article class="fc-card fc-item cane">
   <div class="fc-item-head"><div class="fc-item-pic"><img alt="Elf Candy Cane" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PHBhdHRlcm4gaWQ9InAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDQ1KSI+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmZmIi8+PHJlY3Qgd2lkdGg9IjUiIGhlaWdodD0iMTAiIGZpbGw9IiNlMzE5MmIiLz48L3BhdHRlcm4+PC9kZWZzPjxwYXRoIGQ9Ik0yMiA1OCBWMjIgYTEwIDEwIDAgMCAxIDIwIDAgdjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzdhMGIxNCIgc3Ryb2tlLXdpZHRoPSIxMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTIyIDU4IFYyMiBhMTAgMTAgMCAwIDEgMjAgMCB2NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3ApIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg=="></div><div><h4><span class="g-cane">Elf Candy Cane</span></h4><div class="base">Netherite sword</div></div></div>
   <ul><li><b>11</b> attack damage, as hard as the Astral Riftblade</li><li>Sharpness V, Unbreaking III</li><li>Normal netherite sword attack speed</li><li>Every swing leaves a <b>red-and-white candy stripe</b> arc</li><li><b>15% chance</b> on a fully charged hit to make your target <b>levitate for 2s</b> (4s cooldown)</li></ul>
   <p class="flavour">Ripped from the tiny, sticky hands of the Evil Elf. Peppermint scented.</p>
   <div class="fc-src"><span class="crate">🎁 Elf Candy Cane Voucher</span><span class="crate">🧝 Evil Elf boss</span></div>
+</article><article class="fc-card fc-item">
+  <div class="fc-item-head"><div class="fc-item-pic"><img alt="Frostfang" style="image-rendering:pixelated" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABTElEQVR4XmNgIAOIz3/zf8fDn/85PHL+M5KqH6Rx/s0fYG2+8mwMJBkAsnmhEy9Yc/y+zwzfLuxkYCLWBSCbHaRZGT7++g/W8nFlA8PnidHEOQDmZ5AhIDbI7zCL4S5oTuT6D8LoLgJpAtuIZPOPHVMwbfaxYPv/+Vw+2BCYQbz5S8G2YrMZwwUg8PraIoaC3FQwe8nN7/+5DNwZYCEO8jNWm5EByBX3lgiCXQLCIEPQ/YwOWDBEGBgYJkyeDRYuyGVgSFn5F6/NGIEBcoW5JsTcaGd2hqV7f4LZtfO/YY0ylHTAbhX+/3nxC4aT1/+Aw0JUKw5sCD4ANxWkmc08mOHH3jkMvy/tYgS5BKQR5hqQoVtO/MJwBQsoiqJ2vWP4//E1w5dFJWDNII1IijHSBgoQmv38f86hz/85fYrwK8QBWL5v7GaYi9eX+AEAuxy0w7m+IMoAAAAASUVORK5CYII="></div><div><h4><span class="g-ice">Frostfang</span></h4><div class="base">Netherite sword</div></div></div>
+  <ul><li><b>11</b> attack damage, same as the Elf Candy Cane</li><li>Sharpness V, Unbreaking III</li><li>Normal netherite sword attack speed</li><li>Every swing leaves an <b>icy blue and gold</b> arc</li><li><b>15% chance</b> on a fully charged hit to <b>freeze</b> your target (Slowness III for 1.5s, 8s cooldown per target)</li></ul>
+  <p class="flavour">Pried from the frozen grip of the Frost King. Cold to the touch.</p>
+  <div class="fc-src"><span class="crate">❄️ Frost King Voucher</span><span class="crate">👑 Frost King boss</span></div>
 </article></div>
         </section>
 
         <section class="fc-section" id="boss">
-          <h2>🧝 Evil Elf boss</h2>
-          <p class="fc-lead">A world boss that flies into the warzone every day. Everyone who lands a hit gets paid, the top damagers win keys and a shot at the Elf Candy Cane, and five loot chests drop when it dies.</p>
+          <h2>🧝 Bosses</h2>
+          <p class="fc-lead">Two world bosses fight over the warzone below spawn: the <b>Evil Elf</b>, where everyone teams up with PvP off, and the <a href="#frostking"><b>Frost King</b></a>, a PvP boss where you fight each other for his crown.</p>
+          <h3 style="margin-top:8px">🎄 Evil Elf <span style="color:var(--muted);font-weight:500">(PvP off)</span></h3>
+          <p style="color:var(--muted)">A world boss that flies into the warzone three times a day. Everyone who lands a hit gets paid, the top damagers win keys and a shot at the Elf Candy Cane, and five loot chests drop when it dies.</p>
           <div class="fc-grid">
-            <div class="fc-card" style="padding:16px"><b>⏰ When</b><p style="margin:6px 0 0;color:var(--muted)">Every day at <b>19:00 UK time</b>. You get a countdown in chat at 15, 10, 5, 3 and 1 minutes, then 5-4-3-2-1 on screen.</p></div>
+            <div class="fc-card" style="padding:16px"><b>⏰ When</b><p style="margin:6px 0 0;color:var(--muted)">Every day at <b>13:00, 19:00 and 22:00 UK time</b>. You get a countdown in chat at 15, 10, 5, 3 and 1 minutes, then 5-4-3-2-1 on screen. A minute before it spawns, the warzone is cleared and building is turned off until it's dead.</p></div>
             <div class="fc-card" style="padding:16px"><b>📍 Where</b><p style="margin:6px 0 0;color:var(--muted)">The <b>warzone right below spawn</b> (0, 63, 0). It flies down from the sky.</p></div>
             <div class="fc-card" style="padding:16px"><b>🕊 PvP is off</b><p style="margin:6px 0 0;color:var(--muted)">PvP is turned <b>off in the warzone while it's alive</b>. When it dies you get a <b>20-second grace period</b> (with chat, title and countdown warnings), then PvP turns back on, so grab the loot fast.</p></div>
             <div class="fc-card" style="padding:16px"><b>📊 Live damage board</b><p style="margin:6px 0 0;color:var(--muted)">A sidebar shows the top damagers live, plus a boss health bar. After the fight, chat shows the top damagers and hitters.</p></div>
@@ -614,6 +634,33 @@ body { margin: 0; background: var(--fc-page); }
             <div class="fc-card" style="padding:16px"><b>⚔ Hit back</b><p style="margin:6px 0 0;color:var(--muted)">Hitting it breaks up its combos.</p></div>
             <div class="fc-card" style="padding:16px"><b>⭕ Dodge the red ring</b><p style="margin:6px 0 0;color:var(--muted)">Get out of the red ring before it goes off.</p></div>
             <div class="fc-card" style="padding:16px"><b>💨 No wind charges in melee</b><p style="margin:6px 0 0;color:var(--muted)">Wind charges don't work while it's meleeing you.</p></div>
+          </div>
+        
+          <h2 id="frostking" style="margin-top:34px;scroll-margin-top:80px">👑 Frost King <span style="color:var(--muted);font-weight:500;font-size:.7em">(PvP boss)</span></h2>
+          <p class="fc-lead">An easier boss with a twist: <b>PvP stays on</b>. Killing him is only half of it. His <b>crown</b> drops, and whoever can hold it for <b>60 seconds</b> wins.</p>
+          <div class="fc-grid">
+            <div class="fc-card" style="padding:16px"><b>⏰ When</b><p style="margin:6px 0 0;color:var(--muted)">Every day at <b>11:00, 15:00, 21:00 and 00:30 UK time</b>, with a countdown at 10, 5 and 1 minutes. The warzone is cleared a minute before he spawns.</p></div>
+            <div class="fc-card" style="padding:16px"><b>📍 Where</b><p style="margin:6px 0 0;color:var(--muted)">The <b>warzone right below spawn</b>. <b style="color:var(--bad)">PvP stays ON</b> the whole time.</p></div>
+            <div class="fc-card" style="padding:16px"><b>❄ His moves</b><p style="margin:6px 0 0;color:var(--muted)">A giant snow golem with <b>600 HP</b>. Snowball volleys that sting and slow you, an <b>ice slam</b> that launches everyone close, a chilling aura, and <b>Frost Guards</b> he summons to help.</p></div>
+            <div class="fc-card" style="padding:16px"><b>👑 The crown</b><p style="margin:6px 0 0;color:var(--muted)">When he dies his crown drops with a beam of light. Pick it up and you <b>glow for everyone</b> with a 60-second timer. Die or log out and it drops for someone else, and the next holder starts from 0.</p></div>
+            <div class="fc-card" style="padding:16px"><b>🚫 Crown rules</b><p style="margin:6px 0 0;color:var(--muted)">While you hold it you <b>can't use ender pearls, teleport or fly with elytra</b>. Leave the warzone and it goes back to the middle. If nobody holds it for 60s within 5 minutes, it melts.</p></div>
+            <div class="fc-card" style="padding:16px"><b>🎁 Floor loot</b><p style="margin:6px 0 0;color:var(--muted)">He spills loot on the floor when he dies: golden apples (sometimes an enchanted one), XP bottles, gold, diamonds and ender pearls. Grab it while you fight for the crown.</p></div>
+          </div>
+          <h3>Frost King rewards</h3>
+          <div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>For</th><th>Rewards</th></tr></thead><tbody><tr><td style="white-space:nowrap;vertical-align:top"><b style="color:#f2b544">👑 Crown winner</b></td><td><ul style="margin:0;padding-left:18px"><li><span class="g-ice">Frost King Voucher</span></li><li>2× Finality Key</li><li>2× Glacial Shard</li><li><b>300 coins</b></li><li>25% chance of a <span class="g-astral">Relic Key</span></li></ul></td></tr><tr><td style="white-space:nowrap;vertical-align:top"><b>⚔ Killing blow</b></td><td><ul style="margin:0;padding-left:18px"><li><b>100 coins</b></li><li>1× Glacial Shard</li></ul></td></tr></tbody></table></div>
+          <details class="fc-card fc-crate" style="padding:0;margin:12px 0">
+  <summary style="padding:16px 18px;cursor:pointer;list-style:none;display:flex;gap:14px;align-items:center">
+    <span style="font-size:26px">❄️</span>
+    <span style="flex:1"><b style="font-size:17px" class="g-ice">Frost King Voucher</b><br><span style="color:var(--muted);font-size:14.5px">From: <b>holding the Frost Crown</b> for 60 seconds</span></span>
+    <span style="color:var(--faint);font-size:13px;white-space:nowrap">View odds ▾</span>
+  </summary>
+  <div style="padding:0 18px 18px"><p style="color:var(--muted);margin-top:0">Right-click for a shot at Frostfang.</p><div class="fc-scroll"><table class="fc-table fc-card"><thead><tr><th>Unlocks</th><th style="text-align:right">Chance</th></tr></thead><tbody><tr><td><span class="g-ice">Frostfang</span></td><td style="text-align:right;white-space:nowrap"><b style="color:#5fd38a">15%</b></td></tr><tr><td><span style="color:var(--muted)">1× Glacial Shard</span> <span style="color:var(--faint)">(no luck)</span></td><td style="text-align:right;white-space:nowrap"><b style="color:var(--muted)">85%</b></td></tr></tbody></table></div></div>
+</details>
+          <h3>Tips for the crown</h3>
+          <div class="fc-grid">
+            <div class="fc-card" style="padding:16px"><b>🛡 Protect your carrier</b><p style="margin:6px 0 0;color:var(--muted)">Bring your team. The holder can't run far, so guard them for 60 seconds.</p></div>
+            <div class="fc-card" style="padding:16px"><b>🍏 Gapples ready</b><p style="margin:6px 0 0;color:var(--muted)">Everyone can see the holder glowing. Expect to be focused.</p></div>
+            <div class="fc-card" style="padding:16px"><b>👀 Timing is everything</b><p style="margin:6px 0 0;color:var(--muted)">Let others tire each other out, then go for the crown.</p></div>
           </div>
         </section>
 
