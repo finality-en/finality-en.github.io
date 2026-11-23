@@ -1,0 +1,16 @@
+
+# Frost King: spilled on the floor when he dies (PvP boss - no chests, no keys on the floor)
+frost_king:
+  floor:
+    min-items: 6
+    entries:
+      - {material: GOLDEN_APPLE, amount: 2-4, chance: 80}
+      - {material: GOLDEN_APPLE, amount: 2-3, chance: 50}
+      - {material: ENCHANTED_GOLDEN_APPLE, amount: 1, chance: 12}
+      - {material: EXPERIENCE_BOTTLE, amount: 8-16, chance: 70}
+      - {material: EXPERIENCE_BOTTLE, amount: 8-16, chance: 40}
+      - {material: GOLD_INGOT, amount: 6-14, chance: 70}
+      - {material: DIAMOND, amount: 2-5, chance: 45}
+      - {material: ENDER_PEARL, amount: 2-6, chance: 50}
+      - {material: SNOWBALL, amount: 16, chance: 60, name: '&bKing''s Snowballs'}
+      - {material: PACKED_ICE, amount: 8-16, chance: 30}

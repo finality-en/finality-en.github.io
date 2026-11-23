@@ -1,0 +1,98 @@
+  # ============================================================
+  #  FROST KING - easy PvP boss. Warzone PvP stays ON the whole fight.
+  #  Kill him -> his Crown drops -> hold it for 60s in a row to win.
+  #  /fboss spawn frost_king   |   /fboss setspawn frost_king
+  # ============================================================
+  frost_king:
+    display-name: '&b&lFrost King'
+    pvp: true                    # PvP boss: no warzone lockdown
+    spawn:
+      world: world
+      x: 0.5
+      y: 63
+      z: 0.5
+    leash-radius: 40
+    idle-despawn-seconds: 300
+    idle-range: 48
+    health: 600
+    scale: 2.5                   # how big he is (snow golem x2.5)
+    movement-speed: 0.22
+    knockback-resistance: 0.6
+    max-damage-per-hit: 30
+    damage-multiplier: 1.0
+    invulnerability-ticks: 10
+    ability-interval-ticks: '90-140'
+    aura:                        # standing right next to him chills you
+      radius: 2.8
+      damage: 1.5
+    barrage:                     # snowball volleys: each hit stings + Slowness I
+      max-targets: 4
+      snowballs: 6
+      damage: 2.5
+    ice-slam:                    # jumps and slams, launching everyone close
+      radius: 6
+      damage: 5
+      push: 0.7
+      launch: 0.85
+      jump: 0.9
+    guards:                      # Frost Guards (strays) he summons
+      count: 3
+      max-alive: 3
+      health: 20
+      name: '&bFrost Guard'
+    sidebar:
+      title: '&b&lFROST KING'
+      range: 64
+    bossbar:
+      text: '{name} &8| &b{hp}&7/&b{max} ❤ &8| &cPvP ON'
+    floor-loot:
+      max-items: 18              # rolled from loot.yml -> frost_king.floor, spills on the floor
+    crown:
+      hold-seconds: 60           # hold it this long IN A ROW to win
+      max-seconds: 300           # nobody manages it in 5 min -> it melts
+      arena-radius: 45           # leave this radius (from the spawn point) and it goes back to the middle
+      view-radius: 150
+    rewards:
+      crown:                     # whoever holds the crown for 60s
+        - 'ac key give {player} finality 2'
+        - 'coins give {player} 300'
+        - 'challenge give {player} glacial_shard 2'
+        - 'challenge voucher give {player} frost_voucher 1'
+        - 'chance 25 ac key give {player} relic 1'
+      killing-blow:
+        - 'coins give {player} 100'
+        - 'challenge give {player} glacial_shard 1'
+    messages:
+      spawn: '{name} &7has appeared in the &cwarzone below spawn&7! &c&lPvP IS ON&7. Kill him and fight for his &b&lCROWN&7!'
+      spawn-title: '&b&lFROST KING'
+      spawn-subtitle: '&7PvP boss in the warzone - fight for the crown!'
+    schedule:
+      enabled: true
+      boss: frost_king
+      timezone: Europe/London
+      times: ['11:00', '15:00', '21:00', '00:30']
+      days: []
+      min-players: 0
+      pre-spawn:
+        enabled: true
+        seconds: 60
+        commands: ['clearblocks', 'ar regen warzone']
+      countdown-minutes: [10, 5, 1]
+      countdown-seconds: [5, 4, 3, 2, 1]
+      discord-countdown-minutes: [10]
+      banner: banner_frost_king.png
+      messages:
+        title: '&b&lFROST KING'
+        title-1min: '&7spawns in &e1 minute &7- &cPvP stays ON&7!'
+        incoming: '&b&lFrost King &7incoming... &cPvP ON'
+        countdown-minutes: '&b&lFrost King &7spawns in the &cwarzone &7in &e&l{m} {unit}&7! &cPvP stays ON &7- fight for his crown!'
+        pre-spawn: '&b&lFROST KING INCOMING &7- the warzone has been cleared. &c&lPvP STAYS ON&7. Kill him, grab the crown, hold it for 60s!'
+        skipped: '&7Not enough players online - the Frost King stays home.'
+      discord:
+        timer-message: true
+        timer-template: "# 👑 The Frost King\n{status}\n-# PvP boss · kill him, then hold his crown for 60s to win · {schedule}"
+        timer-alive: "## 🔴 LIVE RIGHT NOW\nThe Frost King (or his crown) is in the warzone. **PvP is ON.**"
+        countdown: "⏰ **The Frost King spawns in {m} {unit}!** PvP stays on — kill him and fight for the crown."
+        spawn-boss: "👑 **THE FROST KING HAS SPAWNED!**\nHe's in the warzone below spawn. **PvP is ON** — kill him, grab his crown and hold it for 60 seconds to win."
+        spawn-chat: "👑 **The Frost King has spawned in the warzone!** PvP is on — fight for his crown."
+        despawn: "💨 The Frost King melted away without being defeated."

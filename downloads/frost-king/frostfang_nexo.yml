@@ -1,0 +1,31 @@
+
+# The Frost King's blade. Players win it from the Frost King Voucher
+# (the Frost Crown winner gets a voucher, 15% to unlock). Same stats as the Elf Candy Cane.
+# Swing particles + 15% freeze on hit: FinalityBosses (weapon-effects.frostfang).
+frostfang:
+  itemname: <b><gradient:#5BC8FF:#E6F7FF:#F2C14E>ꜰʀᴏꜱᴛꜰᴀɴɢ</gradient></b>
+  material: NETHERITE_SWORD
+  Enchantments:
+    sharpness: 5
+    unbreaking: 3
+  AttributeModifiers:
+  - attribute: GENERIC_ATTACK_DAMAGE
+    amount: 11
+    operation: ADD_NUMBER
+    slot: MAINHAND
+  - attribute: GENERIC_ATTACK_SPEED
+    amount: -2.4
+    operation: ADD_NUMBER
+    slot: MAINHAND
+  lore:
+  - <#5BC8FF>+11 Attack Damage
+  - <#E6F7FF>15% chance to freeze your target
+  - ''
+  - <gray>Pried from the frozen grip
+  - <gray>of the <aqua>Frost King</aqua>. Cold to the touch.
+  Pack:
+    parent_model: item/handheld
+    texture: finality_bosses/frostfang
+  Components:
+    tooltip_display:
+    - minecraft:attribute_modifiers

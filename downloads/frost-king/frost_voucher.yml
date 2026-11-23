@@ -1,0 +1,21 @@
+  frost_voucher:
+    material: PAPER
+    glow: true
+    name: "&#5BC8FF&lFrost King Voucher"
+    broadcast-wins: true
+    lore:
+      - "&7Won by holding the &#5BC8FFFrost Crown&7."
+      - "&7A chance to unlock &#5BC8FFFrostfang&7."
+      - ""
+      - "{odds}"
+      - ""
+      - "&eRight-click to roll"
+    outcomes:
+      frostfang:
+        name: "&#5BC8FF&lFrostfang"
+        chance: 15
+        commands: ["nexo give {player} frostfang 1"]
+    consolation:
+      name: "&#7fdfff1x Glacial Shard"
+      commands: ["challenge give {player} glacial_shard 1"]
+

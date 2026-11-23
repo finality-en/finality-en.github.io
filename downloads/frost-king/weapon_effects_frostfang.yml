@@ -1,0 +1,12 @@
+  frostfang:
+    style: frost                 # icy blue/white arc with gold sparks
+    swing-particles: true
+    radius: 1.6
+    swing-sound: true
+    freeze:                      # full-strength hits only
+      enabled: true
+      chance: 15
+      seconds: 1.5
+      slowness-level: 3
+      cooldown-seconds: 8        # same target can't be frozen again for this long
+      message: '&b&lFROZEN! &7by &f{player}&7''s Frostfang'
