@@ -12,11 +12,11 @@ bak(){ [ -f "$1" ] && cp -p "$1" "$BK/$(echo ${1#$P/} | tr / _)"; }
 ins_after(){ # file anchorRegex snippetFile
   awk -v f="$3" -v a="$2" '{print} $0 ~ a && !d {while((getline l < f)>0) print l; d=1}' "$1" > $T/x && cat $T/x > "$1"; }
 
-echo "===== 1. FinalityBosses 1.2.0"
+echo "===== 1. FinalityBosses 1.2.1"
 for f in frost_king_block.yml frost_king_loot.yml frost_voucher.yml frostfang_nexo.yml weapon_effects_frostfang.yml frostfang.png; do curl -fsSL "$RAW/frost-king/$f" -o $T/$f || { no "download $f"; exit 1; }; done
-curl -fsSL $RAW/FinalityBosses-1.2.0.jar -o $T/fb.jar && echo "fa74fc3484cda510bb01925db2599bdcb0aa2937b915b18b39087ddc1747f865  $T/fb.jar" | sha256sum -c --quiet - || { no "jar download/checksum"; exit 1; }
+curl -fsSL $RAW/FinalityBosses-1.2.1.jar -o $T/fb.jar && echo "e17c115616f24edacb5d5a24ed0fe1ec7d2c39d56ee7e2fc524e49879b0ab2f5  $T/fb.jar" | sha256sum -c --quiet - || { no "jar download/checksum"; exit 1; }
 for j in $P/FinalityBosses-*.jar; do [ -f "$j" ] && mv "$j" $BK/ && echo "  old $(basename $j) -> backup"; done
-cp $T/fb.jar $P/FinalityBosses-1.2.0.jar && chown $OWN $P/FinalityBosses-1.2.0.jar && ok "FinalityBosses-1.2.0.jar installed"
+cp $T/fb.jar $P/FinalityBosses-1.2.1.jar && chown $OWN $P/FinalityBosses-1.2.1.jar && ok "FinalityBosses-1.2.1.jar installed"
 
 echo "===== 2. Frost King config"
 C=$P/FinalityBosses/config.yml; bak $C

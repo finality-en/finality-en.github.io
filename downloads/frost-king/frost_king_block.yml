@@ -19,13 +19,35 @@
     movement-speed: 0.26
     knockback-resistance: 0.75
     max-damage-per-hit: 35
+    mace: immune                 # immune = maces do nothing to him | no-smash = mace hits capped at mace-max-damage (no fall bonus) | normal
+    mace-max-damage: 7
     damage-multiplier: 1.0       # scale players' damage TO him
     invulnerability-ticks: 10
     ability-interval-ticks: '70-110'
     # All damage below is before armour. Enraged (under 30% HP) multiplies it by enrage.damage-multiplier.
+    frost-nova:                  # ANTI-GANK: 3+ players within 6 blocks -> 1s warning (closing ring), then a big blast
+      enabled: true
+      trigger-radius: 6
+      min-players: 3
+      radius: 8
+      windup-ticks: 20
+      damage: 8                  # +1.5 for every extra player caught in it, max 18
+      damage-per-extra-player: 1.5
+      max-damage: 18
+      push: 1.6
+      launch: 0.8
+      slow-seconds: 2            # Slowness IV + Mining Fatigue
+      cooldown-ticks: 170
+      enraged-cooldown-ticks: 120
+    frozen-armour:               # ANTI-GANK: more than 3 players near him -> each hit does 6% less per extra player (max 40%)
+      enabled: true
+      radius: 12
+      free-players: 3
+      reduction-per-player-percent: 6
+      max-reduction-percent: 40
     punch:                       # anyone in arm's reach gets smacked + knocked back + Slowness II
       reach: 3.4
-      damage: 8
+      damage: 9
       knockback: 1.1
       cooldown-ticks: 24
     aura:                        # standing close chills you every second
@@ -37,7 +59,7 @@
       damage: 3.5
     ice-slam:                    # jumps and slams, launching everyone close (blue ring = warning)
       radius: 7
-      damage: 10
+      damage: 11
       push: 0.9
       launch: 1.0
       jump: 1.0
