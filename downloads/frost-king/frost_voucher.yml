@@ -14,7 +14,7 @@
       frostfang:
         name: "&#5BC8FF&lFrostfang"
         chance: 15
-        commands: ["nexo give {player} frostfang 1"]
+        commands: ["challenge give {player} frostfang 1"]
     consolation:
       name: "&#7fdfff1x Glacial Shard"
       commands: ["challenge give {player} glacial_shard 1"]
