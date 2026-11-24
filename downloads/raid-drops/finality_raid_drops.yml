@@ -5,8 +5,7 @@ krampus_chain:
   itemname: <b><#C21A1A>Krampus' Chain</b>
   material: NETHERITE_SWORD
   Pack:
-    parent_model: item/handheld
-    texture: finality_bosses/krampus_chain
+    model: finality_bosses/krampus_chain
 yeti_hide:
   itemname: <b><#7FD4FF>Yeti Hide</b>
   material: NETHERITE_CHESTPLATE
@@ -17,17 +16,14 @@ nutcracker_sabre:
   itemname: <b><#E0303A>Nutcracker's Sabre</b>
   material: NETHERITE_SWORD
   Pack:
-    parent_model: item/handheld
-    texture: finality_bosses/nutcracker_sabre
+    model: finality_bosses/nutcracker_sabre
 hex_wand:
   itemname: <b><#A45CF0>Hex Wand</b>
   material: BLAZE_ROD
   Pack:
-    parent_model: item/handheld
-    texture: finality_bosses/hex_wand
+    model: finality_bosses/hex_wand
 soulreaper:
   itemname: <b><#BFFAFF>Soulreaper</b>
   material: NETHERITE_AXE
   Pack:
-    parent_model: item/handheld
-    texture: finality_bosses/soulreaper
+    model: finality_bosses/soulreaper

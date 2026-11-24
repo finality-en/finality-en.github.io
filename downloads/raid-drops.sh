@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Finality SMP - custom textures for the 5 raid boss drops (FinalityBosses 1.3.1 + Nexo items/textures).
+# Finality SMP - raid boss drops get 3D models + textures, FinalityBosses 1.3.1 (/fboss test, safer commands),
+# pvpmanager reload after warzone PvP returns, CMI mob/player health bars off.
 # Run as root on the game machine with the SMP STOPPED.
 set -u
 V=/var/lib/pterodactyl/volumes/9b618852-57d9-4326-b2ae-506798142a97; P=$V/plugins
@@ -8,26 +9,37 @@ BK=/root/raiddrops-backup-$(date +%F-%H%M); mkdir -p $BK; T=$(mktemp -d)
 ok(){ echo "✅ $*"; }; no(){ echo "❌ $*"; }
 if docker ps --format '{{.Names}}' | grep -q 9b618852-57d9-4326-b2ae-506798142a97; then echo "!! Stop the SMP in the panel first, then run this again."; exit 1; fi
 OWN=$(stat -c %u:%g $P)
-IDS="krampus_chain yeti_hide nutcracker_sabre hex_wand soulreaper"
-for f in finality_raid_drops.yml $(for i in $IDS; do echo $i.png; done); do curl -fsSL "$RAW/raid-drops/$f" -o $T/$f || { no "download $f"; exit 1; }; done
-curl -fsSL $RAW/FinalityBosses-1.3.1.jar -o $T/fb.jar && echo "c926af42a26d7f5a622b5b2d11efa0c8ed9d3cd8cdb99eca4ba3fbe593fc1c48  $T/fb.jar" | sha256sum -c --quiet - || { no "jar download/checksum"; exit 1; }
+W3D="krampus_chain nutcracker_sabre hex_wand soulreaper"
+FILES="finality_raid_drops.yml rename.sed yeti_hide.png"; for i in $W3D; do FILES="$FILES $i.png $i.json"; done
+for f in $FILES; do curl -fsSL "$RAW/raid-drops/$f" -o $T/$f || { no "download $f"; exit 1; }; done
+curl -fsSL $RAW/FinalityBosses-1.3.1.jar -o $T/fb.jar && echo "53f1cbd0a7cc2d9ac1733c48c1bd3ee2e003b9b767fd0fbe837b6afe1016e6fd  $T/fb.jar" | sha256sum -c --quiet - || { no "jar download/checksum"; exit 1; }
 
-echo "===== FinalityBosses 1.3.1"
+echo "===== 1. FinalityBosses 1.3.1"
 for j in $P/FinalityBosses-*.jar; do [ -f "$j" ] && mv "$j" $BK/ && echo "  old $(basename $j) -> backup"; done
 cp $T/fb.jar $P/FinalityBosses-1.3.1.jar && chown $OWN $P/FinalityBosses-1.3.1.jar && ok "FinalityBosses-1.3.1.jar installed"
 
-echo "===== Link the drops to their textures (FinalityBosses config)"
+echo "===== 2. FinalityBosses config: drops linked to their models + new names, pvpmanager reload"
 C=$P/FinalityBosses/config.yml; cp -p $C $BK/
-for i in $IDS; do
+for i in krampus_chain yeti_hide nutcracker_sabre hex_wand soulreaper; do
   if awk -v id="  $i:" '$0==id{f=1;next} f&&/^  [a-z]/{exit} f&&/nexo-id:/{found=1} END{exit !found}' $C; then ok "$i already linked"
-  else sed -i "/^  $i:[[:space:]]*$/a\    nexo-id: $i                 # custom texture (Nexo item of the same id)" $C; grep -q "nexo-id: $i " $C && ok "$i linked" || no "$i not found in config.yml boss-items"; fi
+  else sed -i "/^  $i:[[:space:]]*$/a\\    nexo-id: $i                 # custom model (Nexo item of the same id)" $C; grep -q "nexo-id: $i " $C && ok "$i linked" || no "$i not found in boss-items"; fi
 done
+sed -i -f $T/rename.sed $C && ok "drop names restyled"
+grep -q "pvpmanager reload" $C && ok "pvpmanager reload already there" || { sed -i "/^  enable-commands:/ s/\]\s*$/, 'pvpmanager reload']/" $C; grep -q "pvpmanager reload" $C && ok "pvpmanager reload runs when warzone PvP comes back" || no "add pvpmanager reload to pvp-toggle.enable-commands by hand"; }
 
-echo "===== Nexo items + textures"
+echo "===== 3. Nexo: items, 3D models, textures"
 NI=$(grep -rl '^elf_candy_cane:' $P/Nexo/items 2>/dev/null | head -1)
-if [ -z "$NI" ]; then no "couldn't find the Nexo items folder"; else cp $T/finality_raid_drops.yml "$(dirname $NI)/finality_raid_drops.yml" && ok "Nexo items -> ${NI%/*}/finality_raid_drops.yml"; fi
 TX=$(find $P/Nexo -name 'elf_candy_cane.png' -path '*textures*' 2>/dev/null | head -1)
-if [ -z "$TX" ]; then no "couldn't find the Nexo textures folder"; else for i in $IDS; do cp $T/$i.png "$(dirname $TX)/$i.png"; done; ok "5 textures -> $(dirname ${TX#$P/})"; fi
-chown -R $OWN $P/FinalityBosses $P/Nexo
+if [ -z "$NI" ] || [ -z "$TX" ]; then no "couldn't find the Nexo items/textures folders"; else
+  cp $T/finality_raid_drops.yml "$(dirname $NI)/finality_raid_drops.yml" && ok "Nexo items -> ${NI#$P/}"
+  TD=$(dirname $TX); MD=$(dirname $(dirname $TD))/models/finality_bosses; mkdir -p $MD
+  cp $T/yeti_hide.png $TD/; for i in $W3D; do cp $T/$i.png $TD/; cp $T/$i.json $MD/; done
+  ok "4 models -> ${MD#$P/}"; ok "5 textures -> ${TD#$P/}"
+fi
+
+echo "===== 4. CMI health bars over mobs/players off"
+CM=$P/CMI/config.yml; cp -p $CM $BK/; sed -i "s/^  HpBarEnabled: true/  HpBarEnabled: false/" $CM; grep -q "^  HpBarEnabled: false" $CM && ok "CMI HP bars off" || no "check CMI HpBarEnabled"
+
+chown -R $OWN $P/FinalityBosses $P/Nexo $P/CMI
 echo; echo "DONE. Backups: $BK"
 echo "Now: start the SMP, then in console:  nexo reload all"

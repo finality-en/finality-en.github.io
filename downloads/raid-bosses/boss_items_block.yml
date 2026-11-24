@@ -10,7 +10,7 @@ boss-items:
   krampus_chain:
     nexo-id: krampus_chain                 # custom texture (Nexo item of the same id)
     material: NETHERITE_SWORD
-    name: '&4&lKrampus'' Chain'
+    name: '&#FF3B2F&lᴋ&#F4382C&lʀ&#E8342A&lᴀ&#DD3127&lᴍ&#D12D25&lᴘ&#C62A22&lᴜ&#BB2620&lꜱ&#AF231D&l'' &#991C18&lᴄ&#8D1816&lʜ&#821513&lᴀ&#761111&lɪ&#6B0E0E&lɴ'
     lore: ['&7Torn from the hands of Krampus.', '', '&c⛓ Chain Pull &8- &7Full-strength hits have', '&7  a &f20% &7chance to drag your target in.', '&8Raid boss drop']
     enchants: {sharpness: 5, unbreaking: 3, fire_aspect: 2, looting: 3, mending: 1}
     on-hit:
@@ -18,7 +18,7 @@ boss-items:
   yeti_hide:
     nexo-id: yeti_hide                 # custom texture (Nexo item of the same id)
     material: NETHERITE_CHESTPLATE
-    name: '&b&lYeti Hide'
+    name: '&#E6F7FF&lʏ&#D5F1FF&lᴇ&#C3EBFF&lᴛ&#B2E5FF&lɪ &#8FDAFF&lʜ&#7ED4FF&lɪ&#6CCEFF&lᴅ&#5BC8FF&lᴇ'
     lore: ['&7Thick white fur over netherite.', '', '&b❤ +2 Hearts', '&b🛡 Extra knockback resistance', '&8Raid boss drop']
     enchants: {protection: 4, unbreaking: 3, mending: 1}
     attributes:
@@ -29,7 +29,7 @@ boss-items:
   nutcracker_sabre:
     nexo-id: nutcracker_sabre                 # custom texture (Nexo item of the same id)
     material: NETHERITE_SWORD
-    name: '&c&lNutcracker''s Sabre'
+    name: '&#FF4B5C&lɴ&#FF535B&lᴜ&#FF5B5A&lᴛ&#FF6359&lᴄ&#FF6B58&lʀ&#FF7357&lᴀ&#FF7B56&lᴄ&#FF8355&lᴋ&#FF8B54&lᴇ&#FF9252&lʀ&#FF9A51&l''&#FFA250&lꜱ &#FFB24E&lꜱ&#FFBA4D&lᴀ&#FFC24C&lʙ&#FFCA4B&lʀ&#FFD24A&lᴇ'
     lore: ['&7The General''s parade sword.', '', '&6💥 CRACK &8- &7Full-strength hits have a &f15%', '&7  chance to deal &f+4 &7damage and Weakness.', '&8Raid boss drop']
     enchants: {sharpness: 5, unbreaking: 3, sweeping_edge: 3, looting: 3, mending: 1}
     on-hit:
@@ -37,7 +37,7 @@ boss-items:
   hex_wand:
     nexo-id: hex_wand                 # custom texture (Nexo item of the same id)
     material: BLAZE_ROD
-    name: '&5&lHex Wand'
+    name: '&#D9A0FF&lʜ&#C98FFA&lᴇ&#B97FF4&lx &#9A5DE9&lᴡ&#8A4CE4&lᴀ&#7A3CDE&lɴ&#6A2BD9&lᴅ'
     lore: ['&7Still crackling with frost magic.', '', '&5☠ Hits wither your target', '&d✦ Right click: &fHex Bolt &8(12s cooldown)', '&8Raid boss drop']
     enchants: {unbreaking: 3}
     attributes:
@@ -53,7 +53,7 @@ boss-items:
   soulreaper:
     nexo-id: soulreaper                 # custom texture (Nexo item of the same id)
     material: NETHERITE_AXE
-    name: '&f&lSoulreaper'
+    name: '&#D8FDFF&lꜱ&#C5F5F9&lᴏ&#B2EEF3&lᴜ&#9EE6ED&lʟ&#8BDEE7&lʀ&#78D7E1&lᴇ&#65CFDB&lᴀ&#51C7D5&lᴘ&#3EC0CF&lᴇ&#2BB8C9&lʀ'
     lore: ['&7The Hollow King''s axe.', '', '&3♥ Lifesteal &8- &7Heals you for &f15% &7of', '&7  the damage you deal &8(max 1.5 hearts a hit)', '&8Raid boss drop']
     enchants: {sharpness: 5, unbreaking: 3, efficiency: 5, mending: 1}
     on-hit:
