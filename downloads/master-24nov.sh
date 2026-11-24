@@ -18,12 +18,13 @@ curl -fsSL $RAW/raid-drops.sh -o /root/raid-drops.sh && bash /root/raid-drops.sh
 
 echo "===== 5. Santa Hat (FinalityItems 1.1.0 + Nexo pack files)"
 for f in santa_hat.png santa_hat.json santa_hat_item.json; do curl -fsSL "$RAW/santa-hat/$f" -o $T/$f || { no "download $f"; exit 1; }; done
-curl -fsSL $RAW/FinalityItems-1.1.0.jar -o $T/fi.jar && echo "a1f0cc80c73deca707df7d46997f0a1844318b4bd50b284931896fd7c437f1d6  $T/fi.jar" | sha256sum -c --quiet - || { no "FinalityItems download/checksum"; exit 1; }
+curl -fsSL $RAW/FinalityItems-1.1.0.jar -o $T/fi.jar && echo "6269bf7d499b356a4a825097da7c584fe29ab3acfb2abeb19ed68b4df39ca2a4  $T/fi.jar" | sha256sum -c --quiet - || { no "FinalityItems download/checksum"; exit 1; }
 for j in $P/FinalityItems-*.jar; do [ -f "$j" ] && mv "$j" $BK/ && echo "  old $(basename $j) -> backup"; done
 cp $T/fi.jar $P/FinalityItems-1.1.0.jar && ok "FinalityItems-1.1.0.jar installed"
 A=$P/Nexo/pack/assets/finality; mkdir -p $A/items $A/models/item $A/textures/item
 cp $T/santa_hat_item.json $A/items/santa_hat.json; cp $T/santa_hat.json $A/models/item/santa_hat.json; cp $T/santa_hat.png $A/textures/item/santa_hat.png
 ok "Santa Hat model -> Nexo/pack/assets/finality"
+FIC=$P/FinalityItems/config.yml; [ -f $FIC ] && grep -q "^  hearts:" $FIC && sed -i "s/^  hearts: [0-9.]*/  hearts: 2/" $FIC; ok "Santa Hat gives +2 hearts"
 
 echo "===== 6. Challenges: spawner mobs count"
 C=$P/FinalityChallenges/config.yml; cp -p $C $BK/; sed -i "s/ignore-spawner-mobs: true/ignore-spawner-mobs: false/" $C
