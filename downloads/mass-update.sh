@@ -2,6 +2,7 @@
 # Finality SMP - mass update. Run as root on the game machine with the SMP STOPPED.
 #  1. Frost King: FinalityBosses 1.2.1 + latest settings (mace immunity, Frost Nova, Frozen Armour, 2000 HP...)
 #  2. Mob farms: Leaf spawn throttle off for hostile mobs (pillager farms)
+#  4. CMI: riptide allowed in the rain again
 #  3. FinalityBosses 1.3.0: 5 raid bosses (manual only) + drops, /fboss menu, MSPT fixes
 set -u
 V=/var/lib/pterodactyl/volumes/9b618852-57d9-4326-b2ae-506798142a97
@@ -14,5 +15,10 @@ L=$V/config/leaf-global.yml; cp -p $L /root/leaf-global.$(date +%F-%H%M).yml
 sed -i '/throttle-mob-spawning:/,/creature:/ s/spawn-chance: 25.0/spawn-chance: 100.0/' $L
 grep -A4 'throttle-mob-spawning:' $L | grep -q 'spawn-chance: 100.0' && echo "✅ monster spawn throttle off" || echo "❌ check leaf-global.yml throttle-mob-spawning"
 curl -fsSL $RAW/raid-bosses.sh -o /root/raid-bosses.sh && bash /root/raid-bosses.sh || echo "❌ raid boss part failed"
+
+echo "===== 8. Riptide in the rain (CMI blocks it when your personal weather is rain but the world is sunny)"
+CM=$V/plugins/CMI/config.yml; cp -p $CM /root/cmi-config.$(date +%F-%H%M).yml
+sed -i '/pweather set to rain while players world is in sunny state/{n;s/Riptide: true/Riptide: false/}' $CM
+grep -A1 'pweather set to rain while players world is in sunny state' $CM | grep -q 'Riptide: false' && echo "✅ riptide works in the rain again" || echo "❌ check CMI config.yml Riptide"
 
 echo; echo "ALL DONE -> start the SMP, then in console: nexo reload all"
