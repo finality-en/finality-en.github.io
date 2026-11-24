@@ -1,0 +1,284 @@
+
+  # ==========================================================================================
+  #  RAID BOSSES - manual spawn only (never scheduled). /fboss menu or /fboss spawn <id> [here]
+  #  They spawn at their own spawn point if you set one (/fboss setspawn <id>), otherwise at the
+  #  Evil Elf's warzone spawn. Warzone PvP turns OFF while one is alive (same as the Elf).
+  #  Health over 2048 works even with spigot.yml's cap (damage gets scaled to match).
+  #  Every ability: abilities.<name>.weight (0 = off), .damage, .cooldown-ticks
+  #  Rewards support 'chance N <command>' (e.g. 'chance 25 fboss item krampus_chain {player}').
+  # ==========================================================================================
+  krampus:
+    display-name: '&4&lKrampus'
+    icon: WITHER_SKELETON_SKULL
+    health: 2600
+    scale: 1.7
+    movement-speed: 0.28
+    knockback-resistance: 0.9
+    invulnerability-ticks: 10
+    max-damage-per-hit: 30
+    mace: no-smash
+    mace-max-damage: 9
+    damage-to-players-multiplier: 1.0
+    leash-radius: 40
+    idle-despawn-seconds: 300
+    ability-interval-ticks: 60-100
+    melee: {damage: 13, reach: 3.0, cooldown-ticks: 20, knockback: 0.6}
+    enrage: {at-percent: 30, damage-multiplier: 1.3, speed-bonus: 0.25, ability-interval-ticks: 40-70}
+    abilities:
+      chain-hook: {weight: 25, damage: 6, range: 22}
+      naughty-list: {weight: 20, damage: 14, targets: 2, delay-ticks: 50}
+      coal-barrage: {weight: 20, damage: 6}
+      switch-flurry: {weight: 18, damage: 7}
+      imps: {weight: 12, count: 3, health: 8, max-alive: 6}
+      sack-slam: {weight: 15, damage: 10}
+      fire-aura: {damage: 2}
+    sidebar: {title: '&4&lKRAMPUS', range: 64}
+    bossbar: {text: '{name} &8| &c{hp}&7/&c{max} ❤'}
+    messages:
+      spawn: '{name} &7has come for the &cnaughty&7! &7Warzone below spawn - &aPvP is OFF&7 until he dies!'
+      spawn-title: '&4&lKRAMPUS'
+      spawn-subtitle: '&7Raid boss - bring your team'
+      enrage: '{name} &c&lis ENRAGED! &7He''s on fire!'
+    discord:
+      spawn-boss: "⛓️ **RAID BOSS: KRAMPUS HAS BEEN SUMMONED!**\nHe's in the **warzone below spawn** - PvP is **OFF** there until he dies. Chain hooks, hellfire marks and imps. Bring your best gear!"
+      spawn-chat: "⛓️ **Krampus has been summoned in the warzone!** PvP is off there until he's dead."
+      kill-boss: "💀 **KRAMPUS HAS BEEN DEFEATED!**"
+    chests:
+      ring-count: 5
+      radius: 4
+      center-chest: true
+      ring-name: '&4&lKrampus'' Sack'
+      center-name: '&c&lNaughty Hoard'
+      despawn-seconds: 60
+      guaranteed:
+        - {crate-key: finality, amount: 1}
+      spread:
+        - {boss-item: krampus_chain, amount: 1, count: 1, chance: 25}
+        - {repair-voucher: true, amount: 1, count: 2, chance: 35}
+    rewards:
+      rank:
+        1: ['ac key give {player} finality 2', 'ac key give {player} relic 1', 'coins give {player} 350', 'chance 20 fboss item krampus_chain {player}']
+        2: ['ac key give {player} finality 2', 'coins give {player} 250']
+        3: ['ac key give {player} finality 1', 'coins give {player} 175']
+      participation-min-percent: 2
+      participation: ['coins give {player} 50', 'minecraft:xp add {player} 5000 points']
+
+  yeti:
+    display-name: '&b&lThe Yeti'
+    icon: SNOW_BLOCK
+    health: 3400
+    scale: 3.0
+    movement-speed: 0.30
+    knockback-resistance: 1.0
+    invulnerability-ticks: 10
+    max-damage-per-hit: 30
+    mace: no-smash
+    mace-max-damage: 9
+    leash-radius: 40
+    idle-despawn-seconds: 300
+    ability-interval-ticks: 70-110
+    phases: [50]
+    melee: {damage: 15, reach: 2.8, cooldown-ticks: 26, knockback: 1.0}
+    enrage: {at-percent: 25, damage-multiplier: 1.3, speed-bonus: 0.2, ability-interval-ticks: 50-80}
+    abilities:
+      boulder-toss: {weight: 25, damage: 16}
+      ground-pound: {weight: 25, damage: 7}
+      roar: {weight: 15, damage: 4, radius: 14}
+      frenzy-leap: {weight: 20, damage: 15}
+      icicle-spikes: {weight: 15, damage: 8}
+      blizzard: {damage: 2.5}
+    sidebar: {title: '&b&lTHE YETI', range: 64}
+    bossbar: {text: '{name} &8| &b{hp}&7/&b{max} ❤'}
+    messages:
+      spawn: '{name} &7has stomped into the warzone! &aPvP is OFF&7 there until it dies!'
+      spawn-title: '&b&lTHE YETI'
+      spawn-subtitle: '&7Raid boss - stay together'
+      enrage: '{name} &c&lis ENRAGED!'
+    discord:
+      spawn-boss: "🦍 **RAID BOSS: THE YETI HAS BEEN SUMMONED!**\nIt's in the **warzone below spawn** - PvP is **OFF** there until it dies. Huge, slow and brutal - jump its shockwaves and stay together in the blizzard!"
+      spawn-chat: "🦍 **The Yeti has been summoned in the warzone!** PvP is off there until it's dead."
+      kill-boss: "💀 **THE YETI HAS BEEN DEFEATED!**"
+    chests:
+      ring-count: 5
+      radius: 4
+      center-chest: true
+      ring-name: '&b&lYeti''s Cave'
+      center-name: '&f&lFrozen Hoard'
+      despawn-seconds: 60
+      guaranteed:
+        - {crate-key: finality, amount: 1}
+      spread:
+        - {boss-item: yeti_hide, amount: 1, count: 1, chance: 20}
+        - {repair-voucher: true, amount: 1, count: 2, chance: 35}
+    rewards:
+      rank:
+        1: ['ac key give {player} finality 2', 'ac key give {player} relic 1', 'coins give {player} 400', 'chance 15 fboss item yeti_hide {player}']
+        2: ['ac key give {player} finality 2', 'coins give {player} 275']
+        3: ['ac key give {player} finality 1', 'coins give {player} 200']
+      participation-min-percent: 2
+      participation: ['coins give {player} 50', 'minecraft:xp add {player} 5000 points']
+
+  nutcracker:
+    display-name: '&c&lThe Nutcracker General'
+    icon: IRON_SWORD
+    health: 2800
+    scale: 2.1
+    movement-speed: 0.30
+    knockback-resistance: 0.9
+    invulnerability-ticks: 10
+    max-damage-per-hit: 30
+    mace: no-smash
+    mace-max-damage: 9
+    leash-radius: 40
+    idle-despawn-seconds: 300
+    ability-interval-ticks: 60-100
+    phases: [50]
+    melee: {damage: 12, reach: 3.0, cooldown-ticks: 18, knockback: 0.5}
+    enrage: {at-percent: 30, damage-multiplier: 1.25, speed-bonus: 0.25, ability-interval-ticks: 40-70}
+    abilities:
+      cannon-volley: {weight: 25, damage: 12}
+      bayonet-charge: {weight: 22, damage: 13}
+      toy-soldiers: {weight: 15, count: 4, health: 24, max-alive: 8, shield-at: 3, shield-multiplier: 0.5}
+      crack: {weight: 20, damage: 20}
+      drum-march: {weight: 12}
+    sidebar: {title: '&c&lNUTCRACKER', range: 64}
+    bossbar: {text: '{name} &8| &c{hp}&7/&c{max} ❤'}
+    messages:
+      spawn: '{name} &7has marched into the warzone with his army! &aPvP is OFF&7 there until he falls!'
+      spawn-title: '&c&lTHE NUTCRACKER GENERAL'
+      spawn-subtitle: '&7Raid boss - kill his soldiers first'
+      enrage: '{name} &c&lis ENRAGED!'
+    discord:
+      spawn-boss: "🪖 **RAID BOSS: THE NUTCRACKER GENERAL HAS BEEN SUMMONED!**\nHe's in the **warzone below spawn** with his toy army - PvP is **OFF** there until he falls. He's guarded while 3+ soldiers are alive, so kill them first!"
+      spawn-chat: "🪖 **The Nutcracker General has been summoned in the warzone!** PvP is off there until he's dead."
+      kill-boss: "💀 **THE NUTCRACKER GENERAL HAS BEEN DEFEATED!**"
+    chests:
+      ring-count: 5
+      radius: 4
+      center-chest: true
+      ring-name: '&c&lWar Chest'
+      center-name: '&6&lGeneral''s Treasury'
+      despawn-seconds: 60
+      guaranteed:
+        - {crate-key: finality, amount: 1}
+      spread:
+        - {boss-item: nutcracker_sabre, amount: 1, count: 1, chance: 25}
+        - {repair-voucher: true, amount: 1, count: 2, chance: 35}
+    rewards:
+      rank:
+        1: ['ac key give {player} finality 2', 'ac key give {player} relic 1', 'coins give {player} 350', 'chance 20 fboss item nutcracker_sabre {player}']
+        2: ['ac key give {player} finality 2', 'coins give {player} 250']
+        3: ['ac key give {player} finality 1', 'coins give {player} 175']
+      participation-min-percent: 2
+      participation: ['coins give {player} 50', 'minecraft:xp add {player} 5000 points']
+
+  blizzard_witch:
+    display-name: '&5&lThe Blizzard Witch'
+    icon: BLAZE_ROD
+    health: 2200
+    scale: 1.6
+    movement-speed: 0.30
+    knockback-resistance: 0.6
+    invulnerability-ticks: 10
+    max-damage-per-hit: 30
+    mace: no-smash
+    mace-max-damage: 9
+    leash-radius: 40
+    idle-despawn-seconds: 300
+    ability-interval-ticks: 50-80
+    phases: [50]
+    melee: {damage: 9, reach: 2.6, cooldown-ticks: 20, knockback: 0.8}
+    enrage: {at-percent: 30, damage-multiplier: 1.3, speed-bonus: 0.2, ability-interval-ticks: 35-60}
+    abilities:
+      hex-bolts: {weight: 30, damage: 7, max-targets: 8}
+      blink: {weight: 20, damage: 5}
+      frost-spirits: {weight: 15, count: 3, health: 10, max-alive: 6}
+      cauldron-curse: {weight: 20, damage: 2.5, radius: 3.5, seconds: 7}
+      frost-lance: {weight: 15, damage: 15}
+    mirror-images: {count: 4, health: 30}
+    sidebar: {title: '&5&lBLIZZARD WITCH', range: 64}
+    bossbar: {text: '{name} &8| &d{hp}&7/&d{max} ❤'}
+    messages:
+      spawn: '{name} &7has descended on the warzone! &aPvP is OFF&7 there until she dies!'
+      spawn-title: '&5&lTHE BLIZZARD WITCH'
+      spawn-subtitle: '&7Raid boss - don''t stand still'
+      enrage: '{name} &c&lis ENRAGED! &7Darkness falls...'
+    discord:
+      spawn-boss: "🧙 **RAID BOSS: THE BLIZZARD WITCH HAS BEEN SUMMONED!**\nShe's in the **warzone below spawn** - PvP is **OFF** there until she dies. Homing hexes, curse zones and mirror images - keep moving!"
+      spawn-chat: "🧙 **The Blizzard Witch has been summoned in the warzone!** PvP is off there until she's dead."
+      kill-boss: "💀 **THE BLIZZARD WITCH HAS BEEN DEFEATED!**"
+    chests:
+      ring-count: 5
+      radius: 4
+      center-chest: true
+      ring-name: '&5&lWitch''s Cauldron'
+      center-name: '&d&lHex Hoard'
+      despawn-seconds: 60
+      guaranteed:
+        - {crate-key: finality, amount: 1}
+      spread:
+        - {boss-item: hex_wand, amount: 1, count: 1, chance: 25}
+        - {repair-voucher: true, amount: 1, count: 2, chance: 35}
+    rewards:
+      rank:
+        1: ['ac key give {player} finality 2', 'ac key give {player} relic 1', 'coins give {player} 350', 'chance 20 fboss item hex_wand {player}']
+        2: ['ac key give {player} finality 2', 'coins give {player} 250']
+        3: ['ac key give {player} finality 1', 'coins give {player} 175']
+      participation-min-percent: 2
+      participation: ['coins give {player} 50', 'minecraft:xp add {player} 5000 points']
+
+  hollow_king:
+    display-name: '&f&lThe Hollow King'
+    icon: SKELETON_SKULL
+    health: 4200
+    scale: 2.4
+    movement-speed: 0.29
+    knockback-resistance: 1.0
+    invulnerability-ticks: 10
+    max-damage-per-hit: 30
+    mace: no-smash
+    mace-max-damage: 9
+    leash-radius: 40
+    idle-despawn-seconds: 360
+    ability-interval-ticks: 55-90
+    phases: [50]
+    melee: {damage: 16, reach: 3.2, cooldown-ticks: 22, knockback: 0.7}
+    enrage: {at-percent: 25, damage-multiplier: 1.35, speed-bonus: 0.25, ability-interval-ticks: 35-60}
+    abilities:
+      soul-cleave: {weight: 25, damage: 18, range: 7}
+      bone-prison: {weight: 15, seconds: 3}
+      hollow-knights: {weight: 12, count: 3, health: 40, max-alive: 6}
+      soul-drain: {weight: 15, damage: 3, heal-per-tick-hp: 15}
+      executioner: {weight: 18, damage: 22}
+      skull-volley: {weight: 15, damage: 8}
+    sidebar: {title: '&f&lTHE HOLLOW KING', range: 64}
+    bossbar: {text: '{name} &8| &f{hp}&7/&f{max} ❤'}
+    messages:
+      spawn: '{name} &7has risen in the warzone! &aPvP is OFF&7 there until he falls. &cThe hardest raid boss.'
+      spawn-title: '&f&lTHE HOLLOW KING'
+      spawn-subtitle: '&cThe hardest raid boss on Finality'
+      enrage: '{name} &c&lis ENRAGED!'
+    discord:
+      spawn-boss: "💀 **RAID BOSS: THE HOLLOW KING HAS RISEN!**\nHe's in the **warzone below spawn** - PvP is **OFF** there until he falls. The hardest boss on Finality: cleaves, bone prisons, soul drain and he **executes** whoever is lowest. Full team only!"
+      spawn-chat: "💀 **The Hollow King has risen in the warzone!** PvP is off there until he's dead."
+      kill-boss: "👑 **THE HOLLOW KING HAS FALLEN!**"
+    chests:
+      ring-count: 6
+      radius: 4
+      center-chest: true
+      ring-name: '&f&lHollow Tomb'
+      center-name: '&6&lKing''s Sarcophagus'
+      despawn-seconds: 75
+      guaranteed:
+        - {crate-key: finality, amount: 2}
+        - {crate-key: relic, amount: 1}
+      spread:
+        - {boss-item: soulreaper, amount: 1, count: 1, chance: 25}
+        - {repair-voucher: true, amount: 1, count: 3, chance: 40}
+    rewards:
+      rank:
+        1: ['ac key give {player} finality 3', 'ac key give {player} relic 1', 'coins give {player} 500', 'chance 20 fboss item soulreaper {player}']
+        2: ['ac key give {player} finality 2', 'ac key give {player} relic 1', 'coins give {player} 350']
+        3: ['ac key give {player} finality 2', 'coins give {player} 250']
+      participation-min-percent: 2
+      participation: ['coins give {player} 75', 'minecraft:xp add {player} 7500 points']

@@ -1,0 +1,55 @@
+
+# ============================================================
+#  Raid boss drops. /fboss item <id> [player] [amount]   |   loot.yml: {boss-item: <id>}
+#  attributes: '<attribute> <amount> <add_number|add_scalar|multiply> <slot group>'
+#  (setting any attribute replaces the item's vanilla ones, so weapons list damage + speed)
+#  on-hit effects: pull, crack, wither, lifesteal, freeze, ignite (chance %, cooldown-seconds)
+#  on-use (right click): type hex-bolt | fire-bolt, damage, effects, cooldown-seconds
+# ============================================================
+boss-items:
+  krampus_chain:
+    material: NETHERITE_SWORD
+    name: '&4&lKrampus'' Chain'
+    lore: ['&7Torn from the hands of Krampus.', '', '&c⛓ Chain Pull &8- &7Full-strength hits have', '&7  a &f20% &7chance to drag your target in.', '&8Raid boss drop']
+    enchants: {sharpness: 5, unbreaking: 3, fire_aspect: 2, looting: 3, mending: 1}
+    on-hit:
+      pull: {chance: 20, cooldown-seconds: 6, strength: 0.9, slow-seconds: 1.5}
+  yeti_hide:
+    material: NETHERITE_CHESTPLATE
+    name: '&b&lYeti Hide'
+    lore: ['&7Thick white fur over netherite.', '', '&b❤ +2 Hearts', '&b🛡 Extra knockback resistance', '&8Raid boss drop']
+    enchants: {protection: 4, unbreaking: 3, mending: 1}
+    attributes:
+      - 'armor 8 add_number chest'
+      - 'armor_toughness 3 add_number chest'
+      - 'knockback_resistance 0.15 add_number chest'
+      - 'max_health 4 add_number chest'
+  nutcracker_sabre:
+    material: NETHERITE_SWORD
+    name: '&c&lNutcracker''s Sabre'
+    lore: ['&7The General''s parade sword.', '', '&6💥 CRACK &8- &7Full-strength hits have a &f15%', '&7  chance to deal &f+4 &7damage and Weakness.', '&8Raid boss drop']
+    enchants: {sharpness: 5, unbreaking: 3, sweeping_edge: 3, looting: 3, mending: 1}
+    on-hit:
+      crack: {chance: 15, cooldown-seconds: 8, bonus-damage: 4, seconds: 3}
+  hex_wand:
+    material: BLAZE_ROD
+    name: '&5&lHex Wand'
+    lore: ['&7Still crackling with frost magic.', '', '&5☠ Hits wither your target', '&d✦ Right click: &fHex Bolt &8(12s cooldown)', '&8Raid boss drop']
+    enchants: {unbreaking: 3}
+    attributes:
+      - 'attack_damage 6 add_number mainhand'
+      - 'attack_speed -2.2 add_number mainhand'
+    on-hit:
+      wither: {chance: 30, cooldown-seconds: 4, seconds: 3, level: 2}
+    on-use:
+      type: hex-bolt
+      damage: 6
+      effects: 'wither:60:1,slowness:40:1'
+      cooldown-seconds: 12
+  soulreaper:
+    material: NETHERITE_AXE
+    name: '&f&lSoulreaper'
+    lore: ['&7The Hollow King''s axe.', '', '&3♥ Lifesteal &8- &7Heals you for &f15% &7of', '&7  the damage you deal &8(max 1.5 hearts a hit)', '&8Raid boss drop']
+    enchants: {sharpness: 5, unbreaking: 3, efficiency: 5, mending: 1}
+    on-hit:
+      lifesteal: {percent: 15, max-heal: 3, full-swing-only: true, sound: false}

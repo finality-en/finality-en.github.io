@@ -1,0 +1,129 @@
+
+# ============================================================
+#  Raid bosses (manual spawn only)
+# ============================================================
+krampus:
+  ring:
+    min-items: 2
+    entries:
+      - {material: GOLDEN_APPLE, amount: 2-4, chance: 60}
+      - {material: COAL_BLOCK, amount: 2-6, chance: 40, name: '&8Naughty Coal'}
+      - {material: DIAMOND, amount: 2-5, chance: 40}
+      - {material: EXPERIENCE_BOTTLE, amount: 8-16, chance: 55}
+      - {material: ENDER_PEARL, amount: 2-6, chance: 40}
+      - {material: TOTEM_OF_UNDYING, amount: 1, chance: 8}
+      - {crate-key: finality, amount: 1, chance: 4}
+      - {class-item: roll, amount: 1, chance: 5}
+      - {class-item: reset, amount: 1, chance: 2}
+  center:
+    min-items: 4
+    entries:
+      - {material: ENCHANTED_GOLDEN_APPLE, amount: 1, chance: 35}
+      - {material: GOLDEN_APPLE, amount: 4-8, chance: 90}
+      - {material: NETHERITE_SCRAP, amount: 1-2, chance: 30}
+      - {material: DIAMOND, amount: 4-10, chance: 70}
+      - {material: TOTEM_OF_UNDYING, amount: 1, chance: 25}
+      - {crate-key: finality, amount: 1, chance: 10}
+      - {class-item: roll, amount: 1, chance: 15}
+      - {class-item: upgrade, upgrade-chance: 50-80, amount: 1, chance: 4}
+      - {class-item: extra, amount: 1, chance: 1}
+yeti:
+  ring:
+    min-items: 2
+    entries:
+      - {material: GOLDEN_APPLE, amount: 2-4, chance: 60}
+      - {material: BLUE_ICE, amount: 8-16, chance: 35}
+      - {material: DIAMOND, amount: 2-5, chance: 40}
+      - {material: EXPERIENCE_BOTTLE, amount: 8-16, chance: 55}
+      - {material: COOKED_BEEF, amount: 16-32, chance: 40, name: '&fYeti Jerky'}
+      - {material: TOTEM_OF_UNDYING, amount: 1, chance: 8}
+      - {crate-key: finality, amount: 1, chance: 4}
+      - {class-item: roll, amount: 1, chance: 5}
+      - {class-item: reset, amount: 1, chance: 2}
+  center:
+    min-items: 4
+    entries:
+      - {material: ENCHANTED_GOLDEN_APPLE, amount: 1, chance: 35}
+      - {material: GOLDEN_APPLE, amount: 4-8, chance: 90}
+      - {material: NETHERITE_SCRAP, amount: 1-2, chance: 30}
+      - {material: DIAMOND, amount: 4-10, chance: 70}
+      - {material: TOTEM_OF_UNDYING, amount: 1, chance: 25}
+      - {crate-key: finality, amount: 1, chance: 10}
+      - {class-item: roll, amount: 1, chance: 15}
+      - {class-item: upgrade, upgrade-chance: 50-80, amount: 1, chance: 4}
+      - {class-item: extra, amount: 1, chance: 1}
+nutcracker:
+  ring:
+    min-items: 2
+    entries:
+      - {material: GOLDEN_APPLE, amount: 2-4, chance: 60}
+      - {material: FIREWORK_ROCKET, amount: 16-32, chance: 45}
+      - {material: DIAMOND, amount: 2-5, chance: 40}
+      - {material: EXPERIENCE_BOTTLE, amount: 8-16, chance: 55}
+      - {material: ARROW, amount: 32-64, chance: 40}
+      - {material: TOTEM_OF_UNDYING, amount: 1, chance: 8}
+      - {crate-key: finality, amount: 1, chance: 4}
+      - {class-item: roll, amount: 1, chance: 5}
+      - {class-item: reset, amount: 1, chance: 2}
+  center:
+    min-items: 4
+    entries:
+      - {material: ENCHANTED_GOLDEN_APPLE, amount: 1, chance: 35}
+      - {material: GOLDEN_APPLE, amount: 4-8, chance: 90}
+      - {material: NETHERITE_SCRAP, amount: 1-2, chance: 30}
+      - {material: DIAMOND, amount: 4-10, chance: 70}
+      - {material: TOTEM_OF_UNDYING, amount: 1, chance: 25}
+      - {crate-key: finality, amount: 1, chance: 10}
+      - {class-item: roll, amount: 1, chance: 15}
+      - {class-item: upgrade, upgrade-chance: 50-80, amount: 1, chance: 4}
+      - {class-item: extra, amount: 1, chance: 1}
+blizzard_witch:
+  ring:
+    min-items: 2
+    entries:
+      - {material: GOLDEN_APPLE, amount: 2-4, chance: 60}
+      - {material: GLOWSTONE_DUST, amount: 8-16, chance: 35}
+      - {material: DIAMOND, amount: 2-5, chance: 40}
+      - {material: EXPERIENCE_BOTTLE, amount: 12-24, chance: 60}
+      - {material: TOTEM_OF_UNDYING, amount: 1, chance: 8}
+      - {crate-key: finality, amount: 1, chance: 4}
+      - {class-item: roll, amount: 1, chance: 5}
+      - {class-item: reset, amount: 1, chance: 2}
+  center:
+    min-items: 4
+    entries:
+      - {material: ENCHANTED_GOLDEN_APPLE, amount: 1, chance: 35}
+      - {material: GOLDEN_APPLE, amount: 4-8, chance: 90}
+      - {material: NETHERITE_SCRAP, amount: 1-2, chance: 30}
+      - {material: DIAMOND, amount: 4-10, chance: 70}
+      - {material: TOTEM_OF_UNDYING, amount: 1, chance: 25}
+      - {crate-key: finality, amount: 1, chance: 10}
+      - {class-item: roll, amount: 1, chance: 15}
+      - {class-item: upgrade, upgrade-chance: 50-80, amount: 1, chance: 4}
+      - {class-item: extra, amount: 1, chance: 1}
+hollow_king:
+  ring:
+    min-items: 3
+    entries:
+      - {material: GOLDEN_APPLE, amount: 3-6, chance: 70}
+      - {material: DIAMOND, amount: 3-8, chance: 50}
+      - {material: EXPERIENCE_BOTTLE, amount: 16-32, chance: 60}
+      - {material: NETHERITE_SCRAP, amount: 1, chance: 20}
+      - {material: WITHER_SKELETON_SKULL, amount: 1, chance: 10}
+      - {material: TOTEM_OF_UNDYING, amount: 1, chance: 12}
+      - {crate-key: finality, amount: 1, chance: 6}
+      - {class-item: roll, amount: 1, chance: 7}
+      - {class-item: reset, amount: 1, chance: 3}
+  center:
+    min-items: 5
+    entries:
+      - {material: ENCHANTED_GOLDEN_APPLE, amount: 1-2, chance: 50}
+      - {material: GOLDEN_APPLE, amount: 6-10, chance: 90}
+      - {material: NETHERITE_INGOT, amount: 1, chance: 25}
+      - {material: DIAMOND, amount: 6-12, chance: 70}
+      - {material: TOTEM_OF_UNDYING, amount: 1, chance: 35}
+      - {crate-key: finality, amount: 1, chance: 15}
+      - {crate-key: relic, amount: 1, chance: 8}
+      - {class-item: roll, amount: 1, chance: 20}
+      - {class-item: upgrade, upgrade-chance: 60-90, amount: 1, chance: 6}
+      - {class-item: extra, amount: 1, chance: 2}
