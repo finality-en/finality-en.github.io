@@ -1,29 +1,44 @@
-# Raid boss drops - textures only. Name, lore, enchants and powers come from
+# Raid boss drops - looks only. Name, lore, enchants and powers come from
 # FinalityBosses (config.yml -> boss-items). Give them with /fboss item <id> [player],
 # NOT /nexo give (that would give a plain copy without the powers).
+# The swords are Elf Candy Cane variants; Yeti Hide is a reskinned Glacier Chestplate.
 krampus_chain:
-  itemname: <b><#C21A1A>Krampus' Chain</b>
+  itemname: <b><gradient:#FF7A1A:#6B0E0E>ᴋʀᴀᴍᴘᴜꜱ' ᴄʜᴀɪɴ</gradient></b>
   material: NETHERITE_SWORD
   Pack:
-    model: finality_bosses/krampus_chain
+    parent_model: item/handheld
+    texture: finality_bosses/krampus_chain
+nutcracker_sabre:
+  itemname: <b><gradient:#FF4B5C:#FFD24A>ɴᴜᴛᴄʀᴀᴄᴋᴇʀ'ꜱ ꜱᴀʙʀᴇ</gradient></b>
+  material: NETHERITE_SWORD
+  Pack:
+    parent_model: item/handheld
+    texture: finality_bosses/nutcracker_sabre
+hex_wand:
+  itemname: <b><gradient:#D9A0FF:#6A2BD9>ʜᴇx ᴡᴀɴᴅ</gradient></b>
+  material: BLAZE_ROD
+  Pack:
+    parent_model: item/handheld
+    texture: finality_bosses/hex_wand
+soulreaper:
+  itemname: <b><gradient:#D8FDFF:#2BB8C9>ꜱᴏᴜʟʀᴇᴀᴘᴇʀ</gradient></b>
+  material: NETHERITE_AXE
+  Pack:
+    parent_model: item/handheld
+    texture: finality_bosses/soulreaper
 yeti_hide:
-  itemname: <b><#7FD4FF>Yeti Hide</b>
+  itemname: <b><gradient:#E6F7FF:#5BC8FF>ʏᴇᴛɪ ʜɪᴅᴇ</gradient></b>
   material: NETHERITE_CHESTPLATE
   Pack:
     parent_model: item/generated
     texture: finality_bosses/yeti_hide
-nutcracker_sabre:
-  itemname: <b><#E0303A>Nutcracker's Sabre</b>
-  material: NETHERITE_SWORD
-  Pack:
-    model: finality_bosses/nutcracker_sabre
-hex_wand:
-  itemname: <b><#A45CF0>Hex Wand</b>
-  material: BLAZE_ROD
-  Pack:
-    model: finality_bosses/hex_wand
-soulreaper:
-  itemname: <b><#BFFAFF>Soulreaper</b>
-  material: NETHERITE_AXE
-  Pack:
-    model: finality_bosses/soulreaper
+  trim_pattern: nexo:yeti
+  Components:
+    equippable:
+      slot: CHEST
+      asset_id: nexo:yeti
+    tooltip_display:
+    - minecraft:trim
+  CustomArmor:
+    id: yeti
+    layer1: finality_bosses/yeti_armor_layer_1
