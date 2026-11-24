@@ -1,0 +1,35 @@
+  koth_rewards:
+    type: bundle                 # gives everything below at once (no roll)
+    required-slots: 9            # empty inventory slots needed to claim (the voucher's own slot counts)
+    material: PAPER
+    glow: true
+    name: "&#FFB020&lKOTH Reward Voucher"
+    lore:
+      - "&7Everything you won from &6KOTH&7:"
+      - ""
+      - "&8• &f25,000 EXP"
+      - "&8• &63x Enchanted Golden Apple &7+ &664 Golden Apples"
+      - "&8• &e1,000 Coins"
+      - "&8• &#b36bffAstral Voucher &7+ &#7fdfffGlacier Voucher"
+      - "&8• &61x KOTH Key&7, &a4x Finality Key&7, &d1x Relic Key"
+      - "&8• &b2x Special Class Roll"
+      - "&8• &#7fdfff2x Glacial Shard"
+      - ""
+      - "&cNeeds 9 empty inventory slots"
+      - "&eRight-click to claim"
+    claim-title: "&6&lKOTH REWARDS"
+    claim-message: "&aYour KOTH rewards are in your inventory. GG!"
+    not-enough-space: "&cYou need &e{need} &cempty inventory slots to claim your KOTH rewards. You have &e{free}&c."
+    commands:
+      - "minecraft:experience add {player} 25000 points"
+      - "minecraft:give {player} minecraft:enchanted_golden_apple 3"
+      - "minecraft:give {player} minecraft:golden_apple 64"
+      - "coins give {player} 1000"
+      - "challenge voucher give {player} astral_voucher 1"
+      - "challenge voucher give {player} glacier_voucher 1"
+      - "ac key give {player} koth 1"
+      - "ac key give {player} finality 4"
+      - "ac key give {player} relic 1"
+      - "class roll give {player} 2"
+      - "challenge give {player} glacial_shard 2"
+
