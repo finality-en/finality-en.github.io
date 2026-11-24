@@ -8,6 +8,7 @@
 # ============================================================
 boss-items:
   krampus_chain:
+    nexo-id: krampus_chain                 # custom texture (Nexo item of the same id)
     material: NETHERITE_SWORD
     name: '&4&lKrampus'' Chain'
     lore: ['&7Torn from the hands of Krampus.', '', '&c⛓ Chain Pull &8- &7Full-strength hits have', '&7  a &f20% &7chance to drag your target in.', '&8Raid boss drop']
@@ -15,6 +16,7 @@ boss-items:
     on-hit:
       pull: {chance: 20, cooldown-seconds: 6, strength: 0.9, slow-seconds: 1.5}
   yeti_hide:
+    nexo-id: yeti_hide                 # custom texture (Nexo item of the same id)
     material: NETHERITE_CHESTPLATE
     name: '&b&lYeti Hide'
     lore: ['&7Thick white fur over netherite.', '', '&b❤ +2 Hearts', '&b🛡 Extra knockback resistance', '&8Raid boss drop']
@@ -25,6 +27,7 @@ boss-items:
       - 'knockback_resistance 0.15 add_number chest'
       - 'max_health 4 add_number chest'
   nutcracker_sabre:
+    nexo-id: nutcracker_sabre                 # custom texture (Nexo item of the same id)
     material: NETHERITE_SWORD
     name: '&c&lNutcracker''s Sabre'
     lore: ['&7The General''s parade sword.', '', '&6💥 CRACK &8- &7Full-strength hits have a &f15%', '&7  chance to deal &f+4 &7damage and Weakness.', '&8Raid boss drop']
@@ -32,6 +35,7 @@ boss-items:
     on-hit:
       crack: {chance: 15, cooldown-seconds: 8, bonus-damage: 4, seconds: 3}
   hex_wand:
+    nexo-id: hex_wand                 # custom texture (Nexo item of the same id)
     material: BLAZE_ROD
     name: '&5&lHex Wand'
     lore: ['&7Still crackling with frost magic.', '', '&5☠ Hits wither your target', '&d✦ Right click: &fHex Bolt &8(12s cooldown)', '&8Raid boss drop']
@@ -47,6 +51,7 @@ boss-items:
       effects: 'wither:60:1,slowness:40:1'
       cooldown-seconds: 12
   soulreaper:
+    nexo-id: soulreaper                 # custom texture (Nexo item of the same id)
     material: NETHERITE_AXE
     name: '&f&lSoulreaper'
     lore: ['&7The Hollow King''s axe.', '', '&3♥ Lifesteal &8- &7Heals you for &f15% &7of', '&7  the damage you deal &8(max 1.5 hearts a hit)', '&8Raid boss drop']
