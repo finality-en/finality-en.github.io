@@ -61,10 +61,12 @@ echo "===== 3c. Lag spikes no longer kick players (packet limit 500 -> 1000)"
 PG=$V/config/paper-global.yml; cp -p $PG $BK/
 sed -i "/^  all-packets:/,/max-packet-rate/ s/max-packet-rate: .*/max-packet-rate: 1000.0/" $PG && ok "packet limit 1000"
 
-echo "===== 3d. Leaf async entity tracker off (cause of the 18:58 freeze)"
+echo "===== 3d. Leaf: async entity tracker off (18:58 freeze) + full entity movement updates (railguns)"
 LG=$V/config/leaf-global.yml; cp -p $LG $BK/
 sed -i "/^  async-entity-tracker:/,/enabled:/ s/enabled: true/enabled: false/" $LG
 grep -A1 "^  async-entity-tracker:" $LG | grep -q "enabled: false" && ok "async-entity-tracker off" || no "check async-entity-tracker in leaf-global.yml"
+sed -i "s/^    reduce-entity-move-packets: true/    reduce-entity-move-packets: false/" $LG
+grep -q "^    reduce-entity-move-packets: false" $LG && ok "entity move packets not reduced (railgun arrows moved by pistons show properly)" || no "check reduce-entity-move-packets in leaf-global.yml"
 
 echo "===== 4. Warzone regen turns PvP off"
 S=$P/CMI/Settings/Schedules.yml
