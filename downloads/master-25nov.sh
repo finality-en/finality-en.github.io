@@ -27,11 +27,11 @@ jar FinalityItems  1.3.0 fc5197611489ccdf64df6f38057304304edbc20093e015af1f94630
 jar FinalityBosses 1.3.3 7d04d9f48747fd89858d9da04cffff7005ced85083cbc0690bdd880a2fbdf3b0
 jar FinalityBans   1.1.0 999f11ce43d5b6b27ae20ac16561faac11a8ebb59dbb4b8a3038d6d883655098
 FIC=$P/FinalityItems/config.yml
-if [ -f $FIC ] && ! grep -q "^perks:" $FIC; then cp -p $FIC $BK/; curl -fsSL $RAW/finality-items/perks-config.yml >> $FIC && ok "perks + kill tracker settings added to FinalityItems/config.yml"; else ok "FinalityItems config already has perks (or is new)"; fi
+if [ -f $FIC ] && ! grep -q "^perks:" $FIC; then cp -p $FIC $BK/; curl -fsSL "$RAW/finality-items/perks-config.yml?$(date +%s)" >> $FIC && ok "perks + kill tracker settings added to FinalityItems/config.yml"; else ok "FinalityItems config already has perks (or is new)"; fi
 
 echo "===== 3b. Boss weapons + armour: lore that explains them, fully enchanted"
 cp -p $P/FinalityBosses/config.yml $BK/fb-config.yml; NX=$(grep -rl '^elf_candy_cane:' $P/Nexo/items | head -1); [ -n "$NX" ] && cp -p "$NX" $BK/
-curl -fsSL $RAW/patch-boss-items.py -o $T/pbi.py && python3 $T/pbi.py $P || no "boss item patch failed (backups in $BK)"
+curl -fsSL "$RAW/patch-boss-items.py?$(date +%s)" -o $T/pbi.py && python3 $T/pbi.py $P || no "boss item patch failed (backups in $BK)"
 
 echo "===== 3c. Lag spikes no longer kick players (packet limit 500 -> 1000)"
 PG=$V/config/paper-global.yml; cp -p $PG $BK/
@@ -54,7 +54,7 @@ if [ "${KEEP_INSTANTBREW:-0}" = 1 ]; then echo "  kept (KEEP_INSTANTBREW=1)"
 else for j in $P/InstantBrew*.jar; do [ -f "$j" ] && mv "$j" $BK/ && ok "InstantBrew disabled (jar moved to $BK) - brewing is now normal speed unless you buy Insta Brew"; done; fi
 
 echo "===== 7. Ban suspects script"
-curl -fsSL $RAW/ban-candidates.py -o /root/ban-candidates.py && ok "/root/ban-candidates.py  (run: sudo python3 /root/ban-candidates.py 7)"
+curl -fsSL "$RAW/ban-candidates.py?$(date +%s)" -o /root/ban-candidates.py && ok "/root/ban-candidates.py  (run: sudo python3 /root/ban-candidates.py 7)"
 
 chown -R $OWN $P/FinalityItems $P/FinalityBosses $P/Nexo/items $P/CMI/Settings/Schedules.yml $P/ClickVillagers $V/config/paper-global.yml 2>/dev/null
 echo; echo "ALL DONE. Backups: $BK"
