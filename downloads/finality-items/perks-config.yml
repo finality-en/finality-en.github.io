@@ -1,0 +1,37 @@
+
+# ═════════════════════════════════════════════════════════════
+#  Perks (/perks - put it on an NPC at spawn). Bought with coins + EXP levels.
+#  speed: 2 = twice as fast, 4 = four times, 0 = instant.
+#  Applies to furnaces/smokers/blast furnaces/brewing stands the player placed or last opened.
+# ═════════════════════════════════════════════════════════════
+perks-menu:
+  title: "<dark_gray><b>✦ Finality Perks ✦</b>"
+  balance-placeholder: "%coinsengine_balance_raw_coins%"
+  take-coins-command: "coins take {player} {amount}"
+perks:
+  smelt:
+    enabled: true
+    name: "<gold><b>Insta Smelt"
+    icon: BLAST_FURNACE
+    description:
+      - "<gray>Your furnaces, smokers and"
+      - "<gray>blast furnaces cook faster."
+    tiers:
+      1: {speed: 2, coins: 2500, levels: 15}
+      2: {speed: 4, coins: 7500, levels: 30}
+      3: {speed: 0, coins: 20000, levels: 50}
+  brew:
+    enabled: true
+    name: "<light_purple><b>Insta Brew"
+    icon: BREWING_STAND
+    description:
+      - "<gray>Your brewing stands brew"
+      - "<gray>potions faster."
+    tiers:
+      1: {speed: 2, coins: 2500, levels: 15}
+      2: {speed: 4, coins: 7500, levels: 30}
+      3: {speed: 0, coins: 20000, levels: 50}
+
+# Kill Tracker (/fitems killtracker give <player>) - click onto a weapon to count its kills
+kill-tracker:
+  count-players: true
