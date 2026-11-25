@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Finality SMP - everything from 25 Nov in one go. Run as root on the game machine with the SMP STOPPED.
-#  1. FinalityItems 1.3.0: /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player
+#  1. FinalityItems 1.4.0: /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player,
+#     rename guard (no /itemname, /itemlore or anvil names that fake our items)
 #  2. FinalityBosses 1.3.3: /fboss warzonepvp, boss items fully enchanted with lore that explains them,
 #     /nexo give copies of boss items turn into the real thing
 #  3. FinalityBans 1.2.0: ban waves + /banwave menu (Vulcan suspects, X-ray mining stats, queue, run wave),
@@ -24,7 +25,7 @@ jar(){ # name version sha
 }
 
 echo "===== 1-3. Plugins"
-jar FinalityItems  1.3.0 fc5197611489ccdf64df6f38057304304edbc20093e015af1f946308fa76454c
+jar FinalityItems  1.4.0 b8d870bc3298c82f349a41a20278c9cc96fe82ecf2fd01f634f49d0972d032ba
 jar FinalityBosses 1.3.3 7d04d9f48747fd89858d9da04cffff7005ced85083cbc0690bdd880a2fbdf3b0
 jar FinalityBans   1.2.0 91876fbf652bc99e61ffcdbbca67c04fe943f9b10950b76df9b30cfb2cef4e30
 FIC=$P/FinalityItems/config.yml
@@ -39,6 +40,11 @@ if [ -n "$RD" ]; then cp -p "$RD" $BK/; curl -fsSL "$RAW/raid-drops/finality_rai
 echo "===== 3c. Lag spikes no longer kick players (packet limit 500 -> 1000)"
 PG=$V/config/paper-global.yml; cp -p $PG $BK/
 sed -i "/^  all-packets:/,/max-packet-rate/ s/max-packet-rate: .*/max-packet-rate: 1000.0/" $PG && ok "packet limit 1000"
+
+echo "===== 3d. Leaf async entity tracker off (cause of the 18:58 freeze)"
+LG=$V/config/leaf-global.yml; cp -p $LG $BK/
+sed -i "/^  async-entity-tracker:/,/enabled:/ s/enabled: true/enabled: false/" $LG
+grep -A1 "^  async-entity-tracker:" $LG | grep -q "enabled: false" && ok "async-entity-tracker off" || no "check async-entity-tracker in leaf-global.yml"
 
 echo "===== 4. Warzone regen turns PvP off"
 S=$P/CMI/Settings/Schedules.yml
@@ -59,7 +65,7 @@ else for j in $P/InstantBrew*.jar; do [ -f "$j" ] && mv "$j" $BK/ && ok "Instant
 echo "===== 7. Ban suspects script"
 curl -fsSL "$RAW/ban-candidates.py?$(date +%s)" -o /root/ban-candidates.py && ok "/root/ban-candidates.py  (run: sudo python3 /root/ban-candidates.py 7)"
 
-chown -R $OWN $P/FinalityItems $P/FinalityBosses $P/Nexo/items $P/CMI/Settings/Schedules.yml $P/ClickVillagers $V/config/paper-global.yml 2>/dev/null
+chown -R $OWN $P/FinalityItems $P/FinalityBosses $P/Nexo/items $P/CMI/Settings/Schedules.yml $P/ClickVillagers $V/config/paper-global.yml $V/config/leaf-global.yml 2>/dev/null
 echo; echo "ALL DONE. Backups: $BK"
 echo "Now start the SMP, then in console: nexo reload all"
 echo "Then: FinalityBans makes its config on first start - put your Discord webhook in plugins/FinalityBans/config.yml then /banwave reload"
