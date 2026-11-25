@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Finality SMP - everything from 25 Nov in one go. Run as root on the game machine with the SMP STOPPED.
 #  0. Weapon abilities that never triggered (full-strength hit check read 0% on 1.21.11) - fixed in both plugins
-#  1. FinalityItems 1.4.2: /fitems menu + tab complete + /fitems debug, Elf Candy Cane float ability repaired, /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player,
+#  1. FinalityItems 1.4.3: /fitems menu + tab complete + /fitems debug, Elf Candy Cane float ability repaired, /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player,
 #     rename guard (no /itemname, /itemlore or anvil names that fake our items)
-#  2. FinalityBosses 1.3.5: raid weapons much stronger (damage/speed/abilities all in config), /fboss warzonepvp,
+#  2. FinalityBosses 1.3.6: raid weapons much stronger (damage/speed/abilities all in config), /fboss warzonepvp,
 #     boss items fully enchanted with lore that explains them,
 #     /nexo give copies of boss items turn into the real thing
-#  3. FinalityBans 1.2.0: ban waves + /banwave menu (Vulcan suspects, X-ray mining stats, queue, run wave),
+#  3. FinalityBans 1.2.1: ban waves + /banwave menu (Vulcan suspects, X-ray mining stats, queue, run wave),
 #     bans 1 day -> 7 days -> permanent, announced in chat + Discord with the reason
 #  4. CMI schedule: Warzone regen turns PvP off for 45s (then back on + pvpmanager reload)
 #  5. ClickVillagers: claimed villagers can't be killed
@@ -27,11 +27,26 @@ jar(){ # name version sha
 }
 
 echo "===== 1-3. Plugins"
-jar FinalityItems  1.4.2 0cd491297b501fb96531e404f558a383ff07827c597e6e478a5d16e63fa9cd99
-jar FinalityBosses 1.3.5 494fc15222a060a93ccacf05a76d289dcf0ccfc2d9f70111aa6a37f626f99596
-jar FinalityBans   1.2.0 91876fbf652bc99e61ffcdbbca67c04fe943f9b10950b76df9b30cfb2cef4e30
+jar FinalityItems  1.4.3 0cecdbb1c093c0d2d2b52d348ee033976c37ba3e9814ce9bfa438dcf5e81eb3f || exit 1
+jar FinalityBosses 1.3.6 af7cbf1d5b57256a11cbed5fd23f5a4b1e5888a1d32d3be136b7703d0461df70 || exit 1
+jar FinalityBans   1.2.1 c1918e96c932e18ec781ebeaa7afcae6ce30d38a18a0236fd0baec916eb15283 || exit 1
 FIC=$P/FinalityItems/config.yml
-if [ -f $FIC ] && ! grep -q "^perks:" $FIC; then cp -p $FIC $BK/; curl -fsSL "$RAW/finality-items/perks-config.yml?$(date +%s)" >> $FIC && ok "perks + kill tracker settings added to FinalityItems/config.yml"; else ok "FinalityItems config already has perks (or is new)"; fi
+if [ -f $FIC ] && ! grep -q "^  keepxp:" $FIC; then
+  cp -p $FIC $BK/
+  # an earlier update may have added the first version of perks (2 perks, cheap) - take it out first
+  python3 - "$FIC" <<'PY'
+import sys, re
+p = sys.argv[1]; out = []; skip = False
+for ln in open(p, encoding="utf-8").read().split("\n"):
+    if re.match(r"^(perks|perks-menu):\s*$", ln): skip = True; continue
+    if skip and (ln.startswith(" ") or ln.strip() == ""): continue
+    skip = False; out.append(ln)
+open(p, "w", encoding="utf-8").write("\n".join(out).rstrip("\n") + "\n")
+PY
+  curl -fsSL "$RAW/finality-items/perks-config.yml?$(date +%s)" >> $FIC && ok "perks settings (7 perks) in FinalityItems/config.yml"
+else ok "FinalityItems config already has the 7 perks (or is new)"; fi
+FBC=$P/FinalityBans/config.yml
+[ -f $FBC ] && { cp -p $FBC $BK/fbans-config.yml; sed -i "s/^  post-instant-bans: false/  post-instant-bans: true/" $FBC; ok "FinalityBans: single bans post to Discord too (new settings get added on start)"; }
 
 echo "===== 3a. Elf Candy Cane float ability"
 [ -f $FIC ] && { cp -p $FIC $BK/fitems-config-before-onhit.yml; curl -fsSL "$RAW/fix-onhit.py?$(date +%s)" -o $T/fo.py && python3 $T/fo.py $FIC || no "on-hit repair failed"; }
@@ -70,7 +85,7 @@ else for j in $P/[Ii]nstant[Bb]rew*.jar; do [ -f "$j" ] && mv "$j" $BK/ && ok "I
 echo "===== 7. Ban suspects script"
 curl -fsSL "$RAW/ban-candidates.py?$(date +%s)" -o /root/ban-candidates.py && ok "/root/ban-candidates.py  (run: sudo python3 /root/ban-candidates.py 7)"
 
-chown -R $OWN $P/FinalityItems $P/FinalityBosses $P/Nexo/items $P/CMI/Settings/Schedules.yml $P/ClickVillagers $V/config/paper-global.yml $V/config/leaf-global.yml 2>/dev/null
+chown -R $OWN $P/FinalityItems $P/FinalityBans $P/FinalityBosses $P/Nexo/items $P/CMI/Settings/Schedules.yml $P/ClickVillagers $V/config/paper-global.yml $V/config/leaf-global.yml 2>/dev/null
 echo; echo "ALL DONE. Backups: $BK"
 echo "Now start the SMP, then in console: nexo reload all"
 echo "Then: FinalityBans makes its config on first start - put your Discord webhook in plugins/FinalityBans/config.yml then /banwave reload"
