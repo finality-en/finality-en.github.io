@@ -6,7 +6,7 @@
 #  2. FinalityBosses 1.3.6: raid weapons much stronger (damage/speed/abilities all in config), /fboss warzonepvp,
 #     boss items fully enchanted with lore that explains them,
 #     /nexo give copies of boss items turn into the real thing
-#  2a. FixDroopingLeafDupe: patches the Dripleaf Universal Dupe (Paper 1.17-26.1.2 bug, fixed upstream only in 26.2)
+#  2a. Leaf 1.21.11 168 -> 184: includes the fix for the dripleaf dupe ("Paper: Fix tree capture state leak", build 181+)
 #  2b. finality-classes 1.22.3: Class Upgrade Token craftable with crate/shop items (only real custom items are refused, with a message)
 #  3. FinalityBans 1.2.1: ban waves + /banwave menu (Vulcan suspects, X-ray mining stats, queue, run wave),
 #     bans 1 day -> 7 days -> permanent, announced in chat + Discord with the reason
@@ -32,7 +32,6 @@ echo "===== 1-3. Plugins"
 jar FinalityItems  1.5.2 d7a53364f98f4090d2fe6a2d24e21445d507a90bef0f440b5617fc337c0c2e4f || exit 1
 jar FinalityBosses 1.3.6 af7cbf1d5b57256a11cbed5fd23f5a4b1e5888a1d32d3be136b7703d0461df70 || exit 1
 jar finality-classes 1.22.3 5dff997efc0c8ba0859c4bcd53583ee032308212ce01a0cbc377de63cee26ae2 || exit 1
-jar FixDroopingLeafDupe 1.0-finality 9be6a05dffb7c829877048a1e55512b48715de89ef9e9794e977a6233fc2adaf || exit 1
 jar FinalityBans   1.2.1 c1918e96c932e18ec781ebeaa7afcae6ce30d38a18a0236fd0baec916eb15283 || exit 1
 FIC=$P/FinalityItems/config.yml
 if [ -f $FIC ] && ! grep -q "^  keepxp:" $FIC; then
@@ -51,6 +50,20 @@ PY
 else ok "FinalityItems config already has the 7 perks (or is new)"; fi
 FBC=$P/FinalityBans/config.yml
 [ -f $FBC ] && { cp -p $FBC $BK/fbans-config.yml; sed -i "s/^  post-instant-bans: false/  post-instant-bans: true/" $FBC; ok "FinalityBans: single bans post to Discord too (new settings get added on start)"; }
+
+echo "===== 2a. Leaf 1.21.11 update (dripleaf dupe fix is in build 181+)"
+LJ=$(ls $V/leaf-1.21.11*.jar 2>/dev/null | head -1)
+if [ -z "$LJ" ]; then no "couldn't find the leaf-1.21.11 jar in the server folder - update Leaf by hand (build 181 or newer)"
+else
+  URL=$(curl -fsSL https://api.github.com/repos/Winds-Studio/Leaf/releases/tags/ver-1.21.11 | grep -o '"browser_download_url": *"[^"]*leaf-1\.21\.11-[0-9]*\.jar"' | head -1 | cut -d'"' -f4)
+  BUILD=$(echo "$URL" | grep -o '1\.21\.11-[0-9]*' | cut -d- -f2)
+  if [ -z "$URL" ] || [ "${BUILD:-0}" -lt 181 ]; then no "couldn't find Leaf 1.21.11 build 181+ on GitHub (found: ${BUILD:-none}) - kept your current Leaf"
+  elif curl -fsSL "$URL" -o $T/leaf.jar && unzip -l $T/leaf.jar >/dev/null 2>&1; then
+    SUM=$(sha256sum $T/leaf.jar | cut -c1-64)
+    if [ "$BUILD" = 184 ] && [ "$SUM" != 7d2684d6801519015b78f946b5845609c06a5eb258d04574e8dd05a1156d46e8 ]; then no "Leaf 184 checksum mismatch - kept your current Leaf"
+    else cp -p "$LJ" $BK/; cp $T/leaf.jar "$LJ" && chown $OWN "$LJ" && ok "Leaf 1.21.11 build $BUILD installed as $(basename $LJ) (old one in $BK) - dripleaf dupe fixed"; fi
+  else no "Leaf download failed - kept your current Leaf"; fi
+fi
 
 echo "===== 3a. Elf Candy Cane float ability"
 [ -f $FIC ] && { cp -p $FIC $BK/fitems-config-before-onhit.yml; curl -fsSL "$RAW/fix-onhit.py?$(date +%s)" -o $T/fo.py && python3 $T/fo.py $FIC || no "on-hit repair failed"; }
