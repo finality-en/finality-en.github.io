@@ -3,7 +3,7 @@
 #  0. Weapon abilities that never triggered (full-strength hit check read 0% on 1.21.11) - fixed in both plugins
 #  1. FinalityItems 1.5.5: Santa Hat / wings hearts kept after relog, perks take coins properly, Demon Wings attach to chestplates (pinned to the back, /fitems wings to adjust), /fitems menu + tab complete + /fitems debug, Elf Candy Cane float ability repaired, /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player,
 #     rename guard (no /itemname, /itemlore or anvil names that fake our items)
-#  2. FinalityBosses 1.3.6: raid weapons much stronger (damage/speed/abilities all in config), /fboss warzonepvp,
+#  2. FinalityBosses 1.3.7: %finalitybosses_warzone_regen% countdown for TAB, raid weapons much stronger (damage/speed/abilities all in config), /fboss warzonepvp,
 #     boss items fully enchanted with lore that explains them,
 #     /nexo give copies of boss items turn into the real thing
 #  2a. Leaf 1.21.11 168 -> 184: includes the fix for the dripleaf dupe ("Paper: Fix tree capture state leak", build 181+)
@@ -30,7 +30,7 @@ jar(){ # name version sha
 
 echo "===== 1-3. Plugins"
 jar FinalityItems  1.5.5 949f2096e76d21aae778e3f546742aec933f884ea8817d1c881dd5f28520d30c || exit 1
-jar FinalityBosses 1.3.6 af7cbf1d5b57256a11cbed5fd23f5a4b1e5888a1d32d3be136b7703d0461df70 || exit 1
+jar FinalityBosses 1.3.7 67e741e13d64c360a64570eb6c79c1213646ab352c43bb7aae14dff7d9d0e404 || exit 1
 jar finality-classes 1.22.3 5dff997efc0c8ba0859c4bcd53583ee032308212ce01a0cbc377de63cee26ae2 || exit 1
 jar FinalityBans   1.2.1 c1918e96c932e18ec781ebeaa7afcae6ce30d38a18a0236fd0baec916eb15283 || exit 1
 FIC=$P/FinalityItems/config.yml
