@@ -53,7 +53,10 @@ def backup(f):
 lines = open(NPCS, encoding="utf-8").readlines()
 _t = "".join(lines)
 _m = re.search(r"\n    name: '?store'?\n(?:.*\n)*?    location:\n      world: (\S+)\n      x: (\S+)\n      y: (\S+)\n      z: (\S+)", _t)
-if _m: print(f"ℹ️  existing 'store' NPC is at {_m.group(1)} {float(_m.group(2)):.1f} {float(_m.group(3)):.1f} {float(_m.group(4)):.1f}")
+if _m:
+    print(f"ℹ️  existing 'store' NPC is at {_m.group(1)} {float(_m.group(2)):.1f} {float(_m.group(3)):.1f} {float(_m.group(4)):.1f}")
+    if _m.group(1) == "world" and abs(float(_m.group(2)) - 10.46) < 2 and abs(float(_m.group(4)) + 10.29) < 2:
+        sys.exit("✅ it's already at your /store spot - nothing to add")
 tpl = None
 existing = set()
 for s, e in blocks(lines, 2):
