@@ -6,6 +6,7 @@
 #  2. FinalityBosses 1.3.6: raid weapons much stronger (damage/speed/abilities all in config), /fboss warzonepvp,
 #     boss items fully enchanted with lore that explains them,
 #     /nexo give copies of boss items turn into the real thing
+#  2b. finality-classes 1.22.3: Class Upgrade Token craftable with crate/shop items (only real custom items are refused, with a message)
 #  3. FinalityBans 1.2.1: ban waves + /banwave menu (Vulcan suspects, X-ray mining stats, queue, run wave),
 #     bans 1 day -> 7 days -> permanent, announced in chat + Discord with the reason
 #  4. CMI schedule: Warzone regen turns PvP off for 45s (then back on + pvpmanager reload)
@@ -29,6 +30,7 @@ jar(){ # name version sha
 echo "===== 1-3. Plugins"
 jar FinalityItems  1.4.3 0cecdbb1c093c0d2d2b52d348ee033976c37ba3e9814ce9bfa438dcf5e81eb3f || exit 1
 jar FinalityBosses 1.3.6 af7cbf1d5b57256a11cbed5fd23f5a4b1e5888a1d32d3be136b7703d0461df70 || exit 1
+jar finality-classes 1.22.3 5dff997efc0c8ba0859c4bcd53583ee032308212ce01a0cbc377de63cee26ae2 || exit 1
 jar FinalityBans   1.2.1 c1918e96c932e18ec781ebeaa7afcae6ce30d38a18a0236fd0baec916eb15283 || exit 1
 FIC=$P/FinalityItems/config.yml
 if [ -f $FIC ] && ! grep -q "^  keepxp:" $FIC; then
