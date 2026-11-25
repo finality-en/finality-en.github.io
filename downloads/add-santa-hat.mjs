@@ -26,7 +26,7 @@ const existing = getPackage('santa-hat') || db.d.packages.find(p => !p.archived 
 const pkg = upsertPackage({
   id: existing?.id, name: 'Santa Hat', categoryId: cat.id, kind: 'standard', enabled: true, giftable: true,
   price: '6.50', compareAtPrice: '', monthlyPrice: '', badge: 'Christmas', image: 'assets/img/item-santa-hat.webp', guiIcon: 'RED_WOOL',
-  description: "## Get festive\nA proper 3D **Santa Hat** with a big fluffy bobble.\n\n- **+2 hearts** while you wear it\n- **Attach it to your helmet:** hold the hat on your cursor and click your helmet. You keep all your armour, enchants and durability, and everyone sees the Santa Hat instead\n- **Shift + right-click** the helmet to take the hat back off whenever you like\n> Fixed price. Sales and discount codes don't apply.",
+  description: "## Get festive\nA proper 3D **Santa Hat** with a big fluffy bobble.\n\n- **+2 hearts** while you wear it\n- **Attach it to your helmet:** hold the hat on your cursor and click your helmet. You keep all your armour, enchants and durability, and everyone sees the Santa Hat instead\n- **Right-click** the helmet to take the hat back off whenever you like\n> Fixed price. Sales and discount codes don't apply.",
   contentsTitle: '', contents: [], upgradeFrom: null, servers,
   commands: [
     { when: 'purchase', cmd: 'fitems santahat give {player} 1', requireOnline: true, servers: null },
