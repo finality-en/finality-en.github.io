@@ -65,7 +65,7 @@ if [ -f $CV ]; then cp -p $CV $BK/; sed -i 's/^claimed_damage: true/claimed_dama
 
 echo "===== 6. InstantBrew"
 if [ "${KEEP_INSTANTBREW:-0}" = 1 ]; then echo "  kept (KEEP_INSTANTBREW=1)"
-else for j in $P/InstantBrew*.jar; do [ -f "$j" ] && mv "$j" $BK/ && ok "InstantBrew disabled (jar moved to $BK) - brewing is now normal speed unless you buy Insta Brew"; done; fi
+else for j in $P/[Ii]nstant[Bb]rew*.jar; do [ -f "$j" ] && mv "$j" $BK/ && ok "InstantBrew disabled (jar moved to $BK) - brewing is now normal speed unless you buy Insta Brew"; done; fi
 
 echo "===== 7. Ban suspects script"
 curl -fsSL "$RAW/ban-candidates.py?$(date +%s)" -o /root/ban-candidates.py && ok "/root/ban-candidates.py  (run: sudo python3 /root/ban-candidates.py 7)"
