@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Finality SMP - everything from 25 Nov in one go. Run as root on the game machine with the SMP STOPPED.
-#  1. FinalityItems 1.4.1: /fitems menu + tab complete + /fitems debug, Elf Candy Cane float ability repaired, /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player,
+#  0. Weapon abilities that never triggered (full-strength hit check read 0% on 1.21.11) - fixed in both plugins
+#  1. FinalityItems 1.4.2: /fitems menu + tab complete + /fitems debug, Elf Candy Cane float ability repaired, /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player,
 #     rename guard (no /itemname, /itemlore or anvil names that fake our items)
-#  2. FinalityBosses 1.3.4: raid weapons much stronger (damage/speed/abilities all in config), /fboss warzonepvp,
+#  2. FinalityBosses 1.3.5: raid weapons much stronger (damage/speed/abilities all in config), /fboss warzonepvp,
 #     boss items fully enchanted with lore that explains them,
 #     /nexo give copies of boss items turn into the real thing
 #  3. FinalityBans 1.2.0: ban waves + /banwave menu (Vulcan suspects, X-ray mining stats, queue, run wave),
@@ -26,8 +27,8 @@ jar(){ # name version sha
 }
 
 echo "===== 1-3. Plugins"
-jar FinalityItems  1.4.1 3ad02f77be418f0841612d9fbd1c57bf5a14508b0f76b592a5febd8a10b2d779
-jar FinalityBosses 1.3.4 ce3ff6bdcc09356c5d07fe7b97297106efafbf54d8b14edbd8e289ecb685679d
+jar FinalityItems  1.4.2 0cd491297b501fb96531e404f558a383ff07827c597e6e478a5d16e63fa9cd99
+jar FinalityBosses 1.3.5 494fc15222a060a93ccacf05a76d289dcf0ccfc2d9f70111aa6a37f626f99596
 jar FinalityBans   1.2.0 91876fbf652bc99e61ffcdbbca67c04fe943f9b10950b76df9b30cfb2cef4e30
 FIC=$P/FinalityItems/config.yml
 if [ -f $FIC ] && ! grep -q "^perks:" $FIC; then cp -p $FIC $BK/; curl -fsSL "$RAW/finality-items/perks-config.yml?$(date +%s)" >> $FIC && ok "perks + kill tracker settings added to FinalityItems/config.yml"; else ok "FinalityItems config already has perks (or is new)"; fi
