@@ -41,4 +41,5 @@ yeti_hide:
     - minecraft:trim
   CustomArmor:
     id: yeti
-    layer1: finality_bosses/yeti_armor_layer_1
+    layer1: minecraft:finality_bosses/yeti_armor_layer_1
+    layer2: minecraft:finality_bosses/yeti_armor_layer_1

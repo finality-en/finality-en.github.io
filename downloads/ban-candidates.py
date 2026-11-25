@@ -10,7 +10,7 @@ import re, sys, os, collections, datetime
 
 DAYS = int(sys.argv[1]) if len(sys.argv) > 1 else 7
 PATH = sys.argv[2] if len(sys.argv) > 2 else "/var/lib/pterodactyl/volumes/9b618852-57d9-4326-b2ae-506798142a97/plugins/Vulcan/violations.txt"
-LINE = re.compile(r"^\[(\d\d)-(\d\d)-(\d{4})\] \[(\d\d:\d\d:\d\d)\] (\S+) failed (\w+) \(Type (\w+)\) \[VL: (\d+)\].*?\[Version: ([^\]]*)\]")
+LINE = re.compile(r"^\[(\d\d)-(\d\d)-(\d{4})\] \[(\d\d:\d\d:\d\d)\] (\S+) failed (.+?) \(Type (\w+)\) \[VL: (\d+)\].*?\[Version: ([^\]]*)\]")
 
 # category, weight per flag, VL that counts as "strong", reliable?
 CHECKS = {
@@ -27,6 +27,9 @@ CHECKS = {
     # other cheats
     "Baritone": ("Exploit", 4, 3, True), "Scaffold": ("Other", 2, 8, True), "Tower": ("Other", 2, 6, True),
     "Invalid": ("Other", 0.5, 20, False), "BadPackets": ("Other", 2, 10, True), "FastPlace": ("Other", 2, 8, True),
+    "GroundSpoof": ("Movement", 1, 15, False), "BoatFly": ("Movement", 2, 10, True), "EntitySpeed": ("Movement", 1, 15, False),
+    "WallClimb": ("Movement", 2, 8, True), "AntiLevitation": ("Movement", 1, 10, False),
+    "FastBreak": ("Other", 1, 15, False), "AirPlace": ("Other", 2, 8, True),
 }
 
 cut = datetime.datetime.now() - datetime.timedelta(days=DAYS)
@@ -39,6 +42,7 @@ with open(PATH, encoding="utf-8", errors="ignore") as f:
         m = LINE.match(line)
         if not m: continue
         mo, d, y, t, name, check, typ, vl, ver = m.groups()
+        check = check.replace(" ", "")
         when = datetime.datetime(int(y), int(mo), int(d), *map(int, t.split(":")))
         if when < cut: continue
         s = stats[name][check]

@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Finality SMP - everything from 25 Nov in one go. Run as root on the game machine with the SMP STOPPED.
-#  1. FinalityItems 1.2.0: /perks (Insta Smelt + Insta Brew), Kill Tracker, rank Santa Hat once per player
-#  2. FinalityBosses 1.3.2: /fboss warzonepvp - PvP is off while the Warzone regenerates
-#  3. FinalityBans 1.0.0: weekly ban waves -> Discord + finality-en.github.io/bans
+#  1. FinalityItems 1.3.0: /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player
+#  2. FinalityBosses 1.3.3: /fboss warzonepvp, boss items fully enchanted with lore that explains them,
+#     /nexo give copies of boss items turn into the real thing
+#  3. FinalityBans 1.1.0: ban waves + /banwave menu: Vulcan suspects, X-ray mining stats, queue, run wave
 #  4. CMI schedule: Warzone regen turns PvP off for 45s (then back on + pvpmanager reload)
 #  5. ClickVillagers: claimed villagers can't be killed
 #  6. InstantBrew disabled (brewing is now a perk). Set KEEP_INSTANTBREW=1 to skip this.
@@ -22,11 +23,19 @@ jar(){ # name version sha
 }
 
 echo "===== 1-3. Plugins"
-jar FinalityItems  1.2.0 68738aa6336f95bb64d7e522147c92ccffa031af7e65a3cdd9a889193d9085cd
-jar FinalityBosses 1.3.2 5b8133c0f0b8d254820a64b266a22e56e4d6d60cbde7699dfdcd520d2f96717b
-jar FinalityBans   1.0.0 44505be1ca153866c84ea864480837014c6f72221a2ac3cd34e31cf45df61c96
+jar FinalityItems  1.3.0 fc5197611489ccdf64df6f38057304304edbc20093e015af1f946308fa76454c
+jar FinalityBosses 1.3.3 7d04d9f48747fd89858d9da04cffff7005ced85083cbc0690bdd880a2fbdf3b0
+jar FinalityBans   1.1.0 999f11ce43d5b6b27ae20ac16561faac11a8ebb59dbb4b8a3038d6d883655098
 FIC=$P/FinalityItems/config.yml
 if [ -f $FIC ] && ! grep -q "^perks:" $FIC; then cp -p $FIC $BK/; curl -fsSL $RAW/finality-items/perks-config.yml >> $FIC && ok "perks + kill tracker settings added to FinalityItems/config.yml"; else ok "FinalityItems config already has perks (or is new)"; fi
+
+echo "===== 3b. Boss weapons + armour: lore that explains them, fully enchanted"
+cp -p $P/FinalityBosses/config.yml $BK/fb-config.yml; NX=$(grep -rl '^elf_candy_cane:' $P/Nexo/items | head -1); [ -n "$NX" ] && cp -p "$NX" $BK/
+curl -fsSL $RAW/patch-boss-items.py -o $T/pbi.py && python3 $T/pbi.py $P || no "boss item patch failed (backups in $BK)"
+
+echo "===== 3c. Lag spikes no longer kick players (packet limit 500 -> 1000)"
+PG=$V/config/paper-global.yml; cp -p $PG $BK/
+sed -i "/^  all-packets:/,/max-packet-rate/ s/max-packet-rate: .*/max-packet-rate: 1000.0/" $PG && ok "packet limit 1000"
 
 echo "===== 4. Warzone regen turns PvP off"
 S=$P/CMI/Settings/Schedules.yml
@@ -47,6 +56,7 @@ else for j in $P/InstantBrew*.jar; do [ -f "$j" ] && mv "$j" $BK/ && ok "Instant
 echo "===== 7. Ban suspects script"
 curl -fsSL $RAW/ban-candidates.py -o /root/ban-candidates.py && ok "/root/ban-candidates.py  (run: sudo python3 /root/ban-candidates.py 7)"
 
-chown -R $OWN $P/FinalityItems $P/CMI/Settings/Schedules.yml $P/ClickVillagers 2>/dev/null
+chown -R $OWN $P/FinalityItems $P/FinalityBosses $P/Nexo/items $P/CMI/Settings/Schedules.yml $P/ClickVillagers $V/config/paper-global.yml 2>/dev/null
 echo; echo "ALL DONE. Backups: $BK"
-echo "Now start the SMP. FinalityBans makes its config on first start - put your Discord webhook in plugins/FinalityBans/config.yml then /banwave reload"
+echo "Now start the SMP, then in console: nexo reload all"
+echo "Then: FinalityBans makes its config on first start - put your Discord webhook in plugins/FinalityBans/config.yml then /banwave reload"

@@ -1,36 +1,186 @@
 
 # ═════════════════════════════════════════════════════════════
-#  Perks (/perks - put it on an NPC at spawn). Bought with coins + EXP levels.
-#  speed: 2 = twice as fast, 4 = four times, 0 = instant.
-#  Applies to furnaces/smokers/blast furnaces/brewing stands the player placed or last opened.
+#  Finality Items — on-hit effects for custom weapons
+#  Keyed by Nexo item id. After editing, run /fitems reload.
+#
+#  chance:   % chance per hit (fully charged hits only)
+#  effect:   potion effect given to the player you hit
+#  level:    1 = Slowness I, 2 = Slowness II ...
+#  seconds:  how long it lasts
+#  cooldown: seconds before it can trigger again for the same attacker (0 = none)
+#  sound:    played at the target when it triggers ("" = none)
+# ═════════════════════════════════════════════════════════════
+on-hit:
+  astral_dagger:
+    chance: 20
+    effect: SLOWNESS
+    level: 2
+    seconds: 2
+    cooldown: 3
+    players-only: true
+    sound: {name: block.amethyst_block.chime, volume: 1.0, pitch: 0.7}
+    particle: true
+
+# ═════════════════════════════════════════════════════════════
+#  Renamed items: old Nexo id -> new id. Any old item a player still has
+#  (inventory, ender chest, chests they open, items they pick up) is swapped
+#  for the new one, keeping its wear and enchantments.
+# ═════════════════════════════════════════════════════════════
+rename:
+  "ferren_sword": glacier_blade
+  "axe": ferren_axe
+  "bow": ferren_bow
+  "pickaxe_tier1": glacier_pickaxe_1
+  "pickaxe_tier2": glacier_pickaxe_2
+  "pickaxe_tier3": glacier_pickaxe_3
+  "demon_sword": demonic_cleaver
+  "mage_assortment-mage_dagger": astral_dagger
+  "mage_assortment-mage_sword": astral_riftblade
+  "mage_assortment-bow": astral_bow
+  "mage_assortment-mage_axe": mage_axe
+  "mage_assortment-mage_hammer": mage_hammer
+  "mage_assortment-mage_staff": mage_staff
+  "mage_assortment-mage_bow": mage_bow
+  "mage_assortment-shield": mage_shield_basic
+  "mage_assortment-mage_shield": mage_shield
+
+# ═════════════════════════════════════════════════════════════
+#  Kits you hold and right-click to open. Give one with:
+#     /fitems give <player> <kit> [amount]      (e.g. from your store)
+#  guaranteed: always given.  random: "rolls" picks from the pool (never the same twice).
+#  %player% = the player opening it. Keep the item lore in sync with the rewards.
+# ═════════════════════════════════════════════════════════════
+kits:
+  starter_kit:
+    free-slots: 10
+    item:
+      material: CHEST
+      glow: true
+      name: "&6&l✦ Season Starter Kit ✦"
+      lore:
+        - "&7Everything you need to hit the ground"
+        - "&7running in a new Finality season."
+        - ""
+        - "&6&lGUARANTEED"
+        - "&8 • &b4× Glacial Shard &7(a Glacier Blade or Pickaxe)"
+        - "&8 • &bFinality Key"
+        - "&8 • &a3× Vote Key"
+        - "&8 • &e2× Totem of Undying"
+        - "&8 • &d1,000 Coins &7(cosmetics in /shop)"
+        - "&8 • &dKill Effect Lootbox"
+        - ""
+        - "&d&lPLUS 2 BONUS REWARDS &7(random, never the same)"
+        - "&8 • &6KOTH Key"
+        - "&8 • &5Class Reset Token"
+        - "&8 • &d4× Astral Crystal &7(1 Astral Shard)"
+        - "&8 • &fElytra"
+        - "&8 • &bGlacier Pickaxe I"
+        - "&8 • &bGlacier Armour Lootbox"
+        - "&8 • &6Special Class Roll &7(very rare)"
+        - ""
+        - "&eRight-click to open. &7Needs 10 free slots."
+    guaranteed:
+      - {name: "4× Glacial Shard", command: "n give glacial_shard 4 %player%"}
+      - {name: "Finality Key", command: "ac key give %player% finality 1"}
+      - {name: "3× Vote Key", command: "ac key give %player% vote 3"}
+      - {name: "2× Totem of Undying", command: "minecraft:give %player% totem_of_undying 2"}
+      - {name: "1,000 Coins", command: "coins give %player% 1000"}
+      - {name: "Kill Effect Lootbox", command: "el give %player% ke 1"}
+    random:
+      rolls: 2
+      pool:
+        - {name: "KOTH Key", weight: 25, command: "ac key give %player% koth 1"}
+        - {name: "Class Reset Token", weight: 18, command: "class token %player% 1"}
+        - {name: "4× Astral Crystal", weight: 18, command: "n give astral_crystal 4 %player%"}
+        - {name: "Elytra", weight: 12, command: "minecraft:give %player% elytra 1"}
+        - {name: "Glacier Pickaxe I", weight: 12, command: "n give glacier_pickaxe_1 1 %player%"}
+        - {name: "Glacier Armour Lootbox", weight: 10, command: "el give %player% glacier_set 1"}
+        - {name: "Special Class Roll", weight: 3, command: "class roll give %player% 1"}
+    messages:
+      header: "&6&l✦ Season Starter Kit opened! &7You got:"
+      broadcast: "&6&l✦ &e{player} &7opened a &6Season Starter Kit &7and pulled &d{bonus}&7!"
+
+# Santa Hat cosmetic (/fitems santahat give <player>). Wear it, or click it onto a helmet to attach it.
+santa-hat:
+  hearts: 2          # extra hearts while worn (on its own or attached to a helmet)
+
+# Riptide tridents can't be used while combat-tagged (PvPManager)
+riptide-in-combat:
+  block: true
+  message: "You can't use Riptide while in combat!"
+
+# ═════════════════════════════════════════════════════════════
+#  Perks (/perks - put it on an NPC at spawn; admins: /perks admin)
+#  Bought with coins + EXP levels. Per tier: value, coins, levels, label (shown in the menu).
+#  Set enabled: false to hide a perk. After editing: /fitems reload
 # ═════════════════════════════════════════════════════════════
 perks-menu:
   title: "<dark_gray><b>✦ Finality Perks ✦</b>"
   balance-placeholder: "%coinsengine_balance_raw_coins%"
   take-coins-command: "coins take {player} {amount}"
+  broadcast-max: true            # tell everyone when someone maxes a perk
 perks:
-  smelt:
+  smelt:                         # value = speed multiplier, 0 = instant
     enabled: true
     name: "<gold><b>Insta Smelt"
     icon: BLAST_FURNACE
-    description:
-      - "<gray>Your furnaces, smokers and"
-      - "<gray>blast furnaces cook faster."
+    description: ["<gray>Your furnaces, smokers and", "<gray>blast furnaces cook faster."]
     tiers:
-      1: {speed: 2, coins: 2500, levels: 15}
-      2: {speed: 4, coins: 7500, levels: 30}
-      3: {speed: 0, coins: 20000, levels: 50}
+      1: {value: 2, coins: 3000, levels: 30, label: "2x faster"}
+      2: {value: 4, coins: 8000, levels: 55, label: "4x faster"}
+      3: {value: 0, coins: 20000, levels: 85, label: "instant"}
   brew:
     enabled: true
     name: "<light_purple><b>Insta Brew"
     icon: BREWING_STAND
-    description:
-      - "<gray>Your brewing stands brew"
-      - "<gray>potions faster."
+    description: ["<gray>Your brewing stands brew", "<gray>potions faster."]
     tiers:
-      1: {speed: 2, coins: 2500, levels: 15}
-      2: {speed: 4, coins: 7500, levels: 30}
-      3: {speed: 0, coins: 20000, levels: 50}
+      1: {value: 2, coins: 3000, levels: 30, label: "2x faster"}
+      2: {value: 4, coins: 8000, levels: 55, label: "4x faster"}
+      3: {value: 0, coins: 20000, levels: 85, label: "instant"}
+  fuel:                          # value = burn time multiplier
+    enabled: true
+    name: "<red><b>Fuel Saver"
+    icon: COAL_BLOCK
+    description: ["<gray>Fuel in your furnaces", "<gray>burns for longer."]
+    tiers:
+      1: {value: 1.5, coins: 2000, levels: 25, label: "fuel lasts 1.5x longer"}
+      2: {value: 2, coins: 5000, levels: 45, label: "fuel lasts 2x longer"}
+      3: {value: 3, coins: 12000, levels: 70, label: "fuel lasts 3x longer"}
+  xp:                            # value = % extra EXP
+    enabled: true
+    name: "<green><b>Wisdom"
+    icon: EXPERIENCE_BOTTLE
+    description: ["<gray>Get more EXP from", "<gray>everything you do."]
+    tiers:
+      1: {value: 10, coins: 4000, levels: 30, label: "+10% EXP"}
+      2: {value: 20, coins: 10000, levels: 55, label: "+20% EXP"}
+      3: {value: 35, coins: 25000, levels: 85, label: "+35% EXP"}
+  autosmelt:                     # one tier - raw iron/gold/copper + ancient debris drop smelted
+    enabled: true
+    name: "<yellow><b>Smelter's Touch"
+    icon: RAW_GOLD
+    description: ["<gray>Ores you mine drop as ingots.", "<gray>Right-click to turn it off."]
+    tiers:
+      1: {value: 1, coins: 15000, levels: 60, label: "ores drop smelted"}
+  fishing:                       # value = % shorter wait for a bite
+    enabled: true
+    name: "<aqua><b>Angler"
+    icon: FISHING_ROD
+    description: ["<gray>Fish bite faster."]
+    tiers:
+      1: {value: 25, coins: 1500, levels: 20, label: "25% faster bites"}
+      2: {value: 45, coins: 4000, levels: 40, label: "45% faster bites"}
+      3: {value: 65, coins: 9000, levels: 65, label: "65% faster bites"}
+  keepxp:                        # value = % of levels kept on death
+    enabled: true
+    name: "<dark_aqua><b>Soul Keeper"
+    icon: TOTEM_OF_UNDYING
+    description: ["<gray>Keep some of your EXP", "<gray>levels when you die."]
+    tiers:
+      1: {value: 25, coins: 5000, levels: 35, label: "keep 25% of levels"}
+      2: {value: 50, coins: 12000, levels: 60, label: "keep 50% of levels"}
+      3: {value: 75, coins: 30000, levels: 90, label: "keep 75% of levels"}
 
 # Kill Tracker (/fitems killtracker give <player>) - click onto a weapon to count its kills
 kill-tracker:
