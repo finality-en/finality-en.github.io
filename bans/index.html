@@ -421,7 +421,7 @@ body { margin: 0; background: var(--fc-page); }
     list.innerHTML=rows.map(function(b){
       var head='https://mc-heads.net/avatar/'+encodeURIComponent(b.u||b.n)+'/40';
       return '<div class="bn-row"><img loading="lazy" alt="" src="'+head+'"><div><div class="bn-name">'+esc(b.n)+'</div><div class="bn-reason">'+esc(b.r)+'</div></div>'
-        +'<div class="bn-meta"><span class="bn-cat '+esc(b.c)+'">'+esc(b.c)+'</span><br>'+when(b.t)+(b.w?' · Wave #'+b.w:'')+(b.x?' · until '+when(b.x):'')+'</div></div>';
+        +'<div class="bn-meta"><span class="bn-cat '+esc(b.c)+'">'+esc(b.c)+'</span><br>'+when(b.t)+(b.w?' · Wave #'+b.w:'')+(b.o?' · '+['1st','2nd','3rd'][Math.min(b.o,3)-1]+(b.o>3?' ('+b.o+')':'')+' offence':'')+(b.x?(b.x<Date.now()?' · <span style="color:#7ee08a">ban served</span>':' · banned until '+when(b.x)):(b.o?' · <b>permanent</b>':''))+'</div></div>';
     }).join('');
   }
   fetch('../data/bans.json?'+Date.now()).then(function(r){return r.ok?r.json():{bans:[],waves:0}}).catch(function(){return {bans:[],waves:0}}).then(function(d){

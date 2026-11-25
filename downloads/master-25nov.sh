@@ -3,7 +3,8 @@
 #  1. FinalityItems 1.3.0: /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player
 #  2. FinalityBosses 1.3.3: /fboss warzonepvp, boss items fully enchanted with lore that explains them,
 #     /nexo give copies of boss items turn into the real thing
-#  3. FinalityBans 1.1.0: ban waves + /banwave menu: Vulcan suspects, X-ray mining stats, queue, run wave
+#  3. FinalityBans 1.2.0: ban waves + /banwave menu (Vulcan suspects, X-ray mining stats, queue, run wave),
+#     bans 1 day -> 7 days -> permanent, announced in chat + Discord with the reason
 #  4. CMI schedule: Warzone regen turns PvP off for 45s (then back on + pvpmanager reload)
 #  5. ClickVillagers: claimed villagers can't be killed
 #  6. InstantBrew disabled (brewing is now a perk). Set KEEP_INSTANTBREW=1 to skip this.
@@ -25,13 +26,15 @@ jar(){ # name version sha
 echo "===== 1-3. Plugins"
 jar FinalityItems  1.3.0 fc5197611489ccdf64df6f38057304304edbc20093e015af1f946308fa76454c
 jar FinalityBosses 1.3.3 7d04d9f48747fd89858d9da04cffff7005ced85083cbc0690bdd880a2fbdf3b0
-jar FinalityBans   1.1.0 999f11ce43d5b6b27ae20ac16561faac11a8ebb59dbb4b8a3038d6d883655098
+jar FinalityBans   1.2.0 91876fbf652bc99e61ffcdbbca67c04fe943f9b10950b76df9b30cfb2cef4e30
 FIC=$P/FinalityItems/config.yml
 if [ -f $FIC ] && ! grep -q "^perks:" $FIC; then cp -p $FIC $BK/; curl -fsSL "$RAW/finality-items/perks-config.yml?$(date +%s)" >> $FIC && ok "perks + kill tracker settings added to FinalityItems/config.yml"; else ok "FinalityItems config already has perks (or is new)"; fi
 
 echo "===== 3b. Boss weapons + armour: lore that explains them, fully enchanted"
 cp -p $P/FinalityBosses/config.yml $BK/fb-config.yml; NX=$(grep -rl '^elf_candy_cane:' $P/Nexo/items | head -1); [ -n "$NX" ] && cp -p "$NX" $BK/
 curl -fsSL "$RAW/patch-boss-items.py?$(date +%s)" -o $T/pbi.py && python3 $T/pbi.py $P || no "boss item patch failed (backups in $BK)"
+RD=$(grep -rl '^krampus_chain:' $P/Nexo/items | head -1)
+if [ -n "$RD" ]; then cp -p "$RD" $BK/; curl -fsSL "$RAW/raid-drops/finality_raid_drops.yml?$(date +%s)" -o "$RD" && ok "Nexo Raid Drops: lore + full enchants"; else no "Nexo raid drops file not found"; fi
 
 echo "===== 3c. Lag spikes no longer kick players (packet limit 500 -> 1000)"
 PG=$V/config/paper-global.yml; cp -p $PG $BK/
