@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Finality SMP - everything from 25 Nov in one go. Run as root on the game machine with the SMP STOPPED.
 #  0. Weapon abilities that never triggered (full-strength hit check read 0% on 1.21.11) - fixed in both plugins
-#  1. FinalityItems 1.5.0: Demon Wings attach to chestplates (look the same as in the offhand), /fitems menu + tab complete + /fitems debug, Elf Candy Cane float ability repaired, /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player,
+#  1. FinalityItems 1.5.1: small dripleaf bone meal exploit blocked, Demon Wings attach to chestplates (look the same as in the offhand), /fitems menu + tab complete + /fitems debug, Elf Candy Cane float ability repaired, /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player,
 #     rename guard (no /itemname, /itemlore or anvil names that fake our items)
 #  2. FinalityBosses 1.3.6: raid weapons much stronger (damage/speed/abilities all in config), /fboss warzonepvp,
 #     boss items fully enchanted with lore that explains them,
@@ -28,7 +28,7 @@ jar(){ # name version sha
 }
 
 echo "===== 1-3. Plugins"
-jar FinalityItems  1.5.0 749b53eafce5aa0088bd2e2e29afbf09b3e3d766ffbf21e744e1e85f5ea5a870 || exit 1
+jar FinalityItems  1.5.1 a2285f3946626b935f12751998565681bfd3f853a87383d46fa24cef09bf2e9b || exit 1
 jar FinalityBosses 1.3.6 af7cbf1d5b57256a11cbed5fd23f5a4b1e5888a1d32d3be136b7703d0461df70 || exit 1
 jar finality-classes 1.22.3 5dff997efc0c8ba0859c4bcd53583ee032308212ce01a0cbc377de63cee26ae2 || exit 1
 jar FinalityBans   1.2.1 c1918e96c932e18ec781ebeaa7afcae6ce30d38a18a0236fd0baec916eb15283 || exit 1
