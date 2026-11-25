@@ -2,7 +2,8 @@
 # Finality SMP - everything from 25 Nov in one go. Run as root on the game machine with the SMP STOPPED.
 #  1. FinalityItems 1.4.1: /fitems menu + tab complete + /fitems debug, Elf Candy Cane float ability repaired, /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player,
 #     rename guard (no /itemname, /itemlore or anvil names that fake our items)
-#  2. FinalityBosses 1.3.3: /fboss warzonepvp, boss items fully enchanted with lore that explains them,
+#  2. FinalityBosses 1.3.4: raid weapons much stronger (damage/speed/abilities all in config), /fboss warzonepvp,
+#     boss items fully enchanted with lore that explains them,
 #     /nexo give copies of boss items turn into the real thing
 #  3. FinalityBans 1.2.0: ban waves + /banwave menu (Vulcan suspects, X-ray mining stats, queue, run wave),
 #     bans 1 day -> 7 days -> permanent, announced in chat + Discord with the reason
@@ -26,7 +27,7 @@ jar(){ # name version sha
 
 echo "===== 1-3. Plugins"
 jar FinalityItems  1.4.1 3ad02f77be418f0841612d9fbd1c57bf5a14508b0f76b592a5febd8a10b2d779
-jar FinalityBosses 1.3.3 7d04d9f48747fd89858d9da04cffff7005ced85083cbc0690bdd880a2fbdf3b0
+jar FinalityBosses 1.3.4 ce3ff6bdcc09356c5d07fe7b97297106efafbf54d8b14edbd8e289ecb685679d
 jar FinalityBans   1.2.0 91876fbf652bc99e61ffcdbbca67c04fe943f9b10950b76df9b30cfb2cef4e30
 FIC=$P/FinalityItems/config.yml
 if [ -f $FIC ] && ! grep -q "^perks:" $FIC; then cp -p $FIC $BK/; curl -fsSL "$RAW/finality-items/perks-config.yml?$(date +%s)" >> $FIC && ok "perks + kill tracker settings added to FinalityItems/config.yml"; else ok "FinalityItems config already has perks (or is new)"; fi
@@ -34,7 +35,7 @@ if [ -f $FIC ] && ! grep -q "^perks:" $FIC; then cp -p $FIC $BK/; curl -fsSL "$R
 echo "===== 3a. Elf Candy Cane float ability"
 [ -f $FIC ] && { cp -p $FIC $BK/fitems-config-before-onhit.yml; curl -fsSL "$RAW/fix-onhit.py?$(date +%s)" -o $T/fo.py && python3 $T/fo.py $FIC || no "on-hit repair failed"; }
 
-echo "===== 3b. Boss weapons + armour: lore that explains them, fully enchanted"
+echo "===== 3b. Raid weapons: stronger, configurable, lore that explains them, fully enchanted"
 cp -p $P/FinalityBosses/config.yml $BK/fb-config.yml; NX=$(grep -rl '^elf_candy_cane:' $P/Nexo/items | head -1); [ -n "$NX" ] && cp -p "$NX" $BK/
 curl -fsSL "$RAW/patch-boss-items.py?$(date +%s)" -o $T/pbi.py && python3 $T/pbi.py $P || no "boss item patch failed (backups in $BK)"
 RD=$(grep -rl '^krampus_chain:' $P/Nexo/items | head -1)

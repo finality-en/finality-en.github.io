@@ -1,6 +1,7 @@
 # Raid boss drops. Powers + stats come from FinalityBosses (config.yml -> boss-items).
 # A copy from /nexo give or the Nexo menu turns into the real item (with its powers) as soon as
-# it's held, picked up or the inventory is opened. /fboss item <id> [player] gives the real one directly.
+# it's held, picked up or the inventory is opened. The lore here is only for the Nexo menu - the real
+# numbers live in FinalityBosses/config.yml (boss-items), so update both if you change them. /fboss item <id> [player] gives the real one directly.
 # The swords are Elf Candy Cane variants; Yeti Hide is a reskinned Glacier Chestplate.
 krampus_chain:
   itemname: <b><gradient:#FF7A1A:#6B0E0E>ᴋʀᴀᴍᴘᴜꜱ' ᴄʜᴀɪɴ</gradient></b>
@@ -13,12 +14,15 @@ krampus_chain:
     sweeping_edge: 3
     mending: 1
   lore:
+  - "<red>⚔ 15 Attack Damage"
+  - "<gray>⚡ 1.6 Attack Speed"
+  - ""
   - "<gray>Torn from the hands of Krampus."
   - ""
   - "<red>⛓ Chain Pull"
-  - "<gray>Full-strength hits have a <white>20%</white> chance to"
-  - "<gray>drag your target to you and slow them."
-  - "<dark_gray>(6 second cooldown)"
+  - "<gray>Full-strength hits have a <white>25%</white> chance to"
+  - "<gray>drag your target to you and slow them for <white>2s</white>."
+  - "<dark_gray>(5 second cooldown)"
   - ""
   - "<dark_gray>Raid boss drop"
   Pack:
@@ -35,12 +39,15 @@ nutcracker_sabre:
     sweeping_edge: 3
     mending: 1
   lore:
+  - "<red>⚔ 14 Attack Damage"
+  - "<gray>⚡ 1.8 Attack Speed"
+  - ""
   - "<gray>The General's parade sword."
   - ""
   - "<gold>💥 Crack"
-  - "<gray>Full-strength hits have a <white>15%</white> chance to"
-  - "<gray>deal <white>+4</white> damage and give <white>Weakness</white> for 3s."
-  - "<dark_gray>(8 second cooldown)"
+  - "<gray>Full-strength hits have a <white>25%</white> chance to"
+  - "<gray>deal <white>+6</white> damage and give <white>Weakness</white> for <white>4s</white>."
+  - "<dark_gray>(6 second cooldown)"
   - ""
   - "<dark_gray>Raid boss drop"
   Pack:
@@ -55,14 +62,16 @@ hex_wand:
     looting: 3
     unbreaking: 3
   lore:
+  - "<red>⚔ 13 Attack Damage"
+  - "<gray>⚡ 1.6 Attack Speed"
+  - ""
   - "<gray>Still crackling with frost magic."
   - ""
-  - "<dark_purple>☠ Hex <gray>- hits have a <white>30%</white> chance to"
-  - "<gray>  give <white>Wither II</white> for 3s <dark_gray>(4s cooldown)"
+  - "<dark_purple>☠ Hex <gray>- hits have a <white>35%</white> chance to"
+  - "<gray>  give <white>Wither 2</white> for <white>4s</white> <dark_gray>(4s cooldown)"
   - "<light_purple>✦ Right click: Hex Bolt <gray>- fires a bolt that"
-  - "<gray>  deals <white>6</white> damage, Withers and Slows"
-  - "<dark_gray>  (12 second cooldown)"
-  - "<gray>Hits as hard as a diamond sword."
+  - "<gray>  deals <white>8</white> damage, Withers and Slows"
+  - "<dark_gray>  (10 second cooldown)"
   - ""
   - "<dark_gray>Raid boss drop"
   Pack:
@@ -78,11 +87,14 @@ soulreaper:
     fortune: 3
     mending: 1
   lore:
+  - "<red>⚔ 17 Attack Damage"
+  - "<gray>⚡ 1.0 Attack Speed"
+  - ""
   - "<gray>The Hollow King's axe."
   - ""
   - "<dark_aqua>♥ Lifesteal"
-  - "<gray>Full-strength hits heal you for <white>15%</white>"
-  - "<gray>of the damage you deal <dark_gray>(max 1.5 hearts a hit)"
+  - "<gray>Full-strength hits heal you for <white>25%</white>"
+  - "<gray>of the damage you deal <dark_gray>(max 4 HP a hit)"
   - ""
   - "<dark_gray>Raid boss drop"
   Pack:
