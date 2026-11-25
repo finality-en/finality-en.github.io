@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Finality SMP - everything from 25 Nov in one go. Run as root on the game machine with the SMP STOPPED.
-#  1. FinalityItems 1.4.0: /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player,
+#  1. FinalityItems 1.4.1: /fitems menu + tab complete + /fitems debug, Elf Candy Cane float ability repaired, /perks (7 perks, player + admin menus), Kill Tracker, rank Santa Hat once per player,
 #     rename guard (no /itemname, /itemlore or anvil names that fake our items)
 #  2. FinalityBosses 1.3.3: /fboss warzonepvp, boss items fully enchanted with lore that explains them,
 #     /nexo give copies of boss items turn into the real thing
@@ -25,11 +25,14 @@ jar(){ # name version sha
 }
 
 echo "===== 1-3. Plugins"
-jar FinalityItems  1.4.0 b8d870bc3298c82f349a41a20278c9cc96fe82ecf2fd01f634f49d0972d032ba
+jar FinalityItems  1.4.1 3ad02f77be418f0841612d9fbd1c57bf5a14508b0f76b592a5febd8a10b2d779
 jar FinalityBosses 1.3.3 7d04d9f48747fd89858d9da04cffff7005ced85083cbc0690bdd880a2fbdf3b0
 jar FinalityBans   1.2.0 91876fbf652bc99e61ffcdbbca67c04fe943f9b10950b76df9b30cfb2cef4e30
 FIC=$P/FinalityItems/config.yml
 if [ -f $FIC ] && ! grep -q "^perks:" $FIC; then cp -p $FIC $BK/; curl -fsSL "$RAW/finality-items/perks-config.yml?$(date +%s)" >> $FIC && ok "perks + kill tracker settings added to FinalityItems/config.yml"; else ok "FinalityItems config already has perks (or is new)"; fi
+
+echo "===== 3a. Elf Candy Cane float ability"
+[ -f $FIC ] && { cp -p $FIC $BK/fitems-config-before-onhit.yml; curl -fsSL "$RAW/fix-onhit.py?$(date +%s)" -o $T/fo.py && python3 $T/fo.py $FIC || no "on-hit repair failed"; }
 
 echo "===== 3b. Boss weapons + armour: lore that explains them, fully enchanted"
 cp -p $P/FinalityBosses/config.yml $BK/fb-config.yml; NX=$(grep -rl '^elf_candy_cane:' $P/Nexo/items | head -1); [ -n "$NX" ] && cp -p "$NX" $BK/
