@@ -34,7 +34,8 @@ OVERWORLD = """  anti-xray:
     - deepslate_lapis_ore
     - redstone_ore
     - deepslate_redstone_ore
-    lava-obscures: false
+    # ores touching lava count as covered (otherwise lava "exposes" them to x-ray)
+    lava-obscures: true
     max-block-height: 64
     # not used in engine-mode 1
     replacement-blocks: []
@@ -48,7 +49,7 @@ NETHER = """  anti-xray:
     - ancient_debris
     - nether_gold_ore
     - nether_quartz_ore
-    lava-obscures: false
+    lava-obscures: true
     max-block-height: 128
     replacement-blocks: []
     update-radius: 2
@@ -57,7 +58,7 @@ NETHER = """  anti-xray:
 END = """  anti-xray:
     enabled: false
 """
-RTAX = """# Finality: stonar96's recommended ("optimized") settings.
+RTAX = """# Finality: strict settings - x-ray / freecam can't reveal valuables the player can't actually see.
 settings:
   anti-xray:
     update-ticks: 1
@@ -67,13 +68,14 @@ world-settings:
   default:
     anti-xray:
       ray-trace: true
+      # false = ores are only revealed from the player's real first-person eye, so F5 / freecam cameras reveal nothing
       ray-trace-third-person: false
-      ray-trace-distance: 64.0
-      rehide-blocks: false
-      rehide-distance: .inf
-      max-ray-trace-block-count-per-chunk: 30
+      ray-trace-distance: 80.0
+      # re-hide ores again once the player can no longer see them
+      rehide-blocks: true
+      rehide-distance: 76.0
+      max-ray-trace-block-count-per-chunk: 100
       ray-trace-blocks:
-      - chest
       - diamond_ore
       - deepslate_diamond_ore
       - emerald_ore
@@ -82,11 +84,16 @@ world-settings:
       - deepslate_gold_ore
       - lapis_ore
       - deepslate_lapis_ore
+      - chest
       - spawner
-  # ancient_debris never generates exposed to air - Paper's engine-mode 1 is enough there.
+      - mossy_cobblestone
   world_nether:
     anti-xray:
-      ray-trace: false
+      # debris in cave walls / next to tunnels other players dug stays hidden until you can see it
+      ray-trace: true
+      max-ray-trace-block-count-per-chunk: 60
+      ray-trace-blocks:
+      - ancient_debris
   world_the_end:
     anti-xray:
       ray-trace: false
@@ -147,7 +154,7 @@ rt = V + '/plugins/RayTraceAntiXray/config.yml'
 os.makedirs(os.path.dirname(rt), exist_ok=True)
 if not os.path.exists(rt) or open(rt, encoding='utf-8').read() != RTAX:
     backup(rt); open(rt, 'w', encoding='utf-8').write(RTAX)
-    print('✅ RayTraceAntiXray config set (recommended)')
+    print('✅ RayTraceAntiXray config set (strict)')
 else:
     print('= RayTraceAntiXray config already correct')
 print('= anti-xray configs done')
