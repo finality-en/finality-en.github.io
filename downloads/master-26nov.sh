@@ -14,7 +14,7 @@ jar FinalityBosses 1.4.0 08db5fe90fcb42991c9734a49377daf23e24fc3e61e2c43baa237bc
 jar FinalityBans 1.2.4 3529c5e1c18bf7aafa1992fdbe352eebfffd65c2825070fc03f1ce17ab59fcc6
 
 echo "== RayTraceAntiXray (Finality build: no ProtocolLib, works with PacketEvents)"
-dl RayTraceAntiXray-1.16.3-pe.jar b3cf7f59d6ab05535445d68d5093b93aa92bbba572cacdfad2705f295950e5b5 && { for f in $P/raytraceantixray-*.jar $P/RayTraceAntiXray-*.jar $P/.paper-remapped/raytraceantixray-*.jar $P/.paper-remapped/RayTraceAntiXray-*.jar; do [ -f "$f" ] && mv "$f" /root/old-jars/; done; cp "$T/RayTraceAntiXray-1.16.3-pe.jar" $P/ && chown --reference=$P $P/RayTraceAntiXray-1.16.3-pe.jar && echo "✅ RayTraceAntiXray 1.16.3-pe"; }
+dl RayTraceAntiXray-1.16.3-pe2.jar 493b4febf48fb3623d86b11feef4a42075b2451d4d04ec04a7e95f2e467d8b95 && { for f in $P/raytraceantixray-*.jar $P/RayTraceAntiXray-*.jar $P/.paper-remapped/raytraceantixray-*.jar $P/.paper-remapped/RayTraceAntiXray-*.jar; do [ -f "$f" ] && mv "$f" /root/old-jars/; done; cp "$T/RayTraceAntiXray-1.16.3-pe2.jar" $P/ && chown --reference=$P $P/RayTraceAntiXray-1.16.3-pe2.jar && echo "✅ RayTraceAntiXray 1.16.3-pe2"; }
 
 echo "== RaycastedAntiESP 0.7.2 (hides players/mobs/chests you can't see - anti freecam/ESP)"
 python3 - "$P" <<'PY'
