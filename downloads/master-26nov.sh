@@ -1,7 +1,7 @@
 #!/bin/bash
 # Finality master update 26 Nov - run with the SMP STOPPED:  sudo bash master-26nov.sh
 V=/var/lib/pterodactyl/volumes/9b618852-57d9-4326-b2ae-506798142a97; P=$V/plugins
-R=https://raw.githubusercontent.com/finality-en/finality-en.github.io/main/downloads
+R=${R:-https://raw.githubusercontent.com/finality-en/finality-en.github.io/main/downloads}
 T=$(mktemp -d); mkdir -p /root/old-jars
 pgrep -f "9b618852-57d9-4326-b2ae-506798142a97" >/dev/null && { echo "⚠️  The SMP still looks like it's running - stop it first (FancyNpcs would overwrite the NPCs)."; exit 1; }
 dl(){ curl -fsSL "$R/$1?$(date +%s)" -o "$T/$1" && echo "$2  $T/$1" | sha256sum -c --quiet - || { echo "❌ $1 download/checksum failed"; return 1; }; }
