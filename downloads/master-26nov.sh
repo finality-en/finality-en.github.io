@@ -10,7 +10,7 @@ py(){ dl "$1" "$2" && python3 "$T/$1" "${@:3}"; }
 
 echo "== plugins"
 jar FinalityItems 1.6.4 cda26c8d9a27613d8c1ed61f070a2946a7ad506c2e353ec9dd8239e6d46a47e6
-jar FinalityBosses 1.3.10 c4554a1f29f4291ea0f809ef26cfc9340e1fc9c5fe1a3c8fb63815ee763e8d2f
+jar FinalityBosses 1.3.11 53711f8f58020fd663fe005767193e572ccdd29456499f5923b5e84e2e5cabdd
 jar FinalityBans 1.2.2 de5027e154589594644ca47052e27631a4e47220ef81a2d1c1277faa33ef994b
 
 echo "== Demon Wings / items"
