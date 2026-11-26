@@ -36,7 +36,8 @@ OVERWORLD = """  anti-xray:
     - deepslate_redstone_ore
     # ores touching lava count as covered (otherwise lava "exposes" them to x-ray)
     lava-obscures: true
-    max-block-height: 64
+    # high enough for coal/iron/copper under hills too (diamonds, gold, lapis, redstone are all far below)
+    max-block-height: 128
     # not used in engine-mode 1
     replacement-blocks: []
     update-radius: 2
@@ -70,10 +71,11 @@ world-settings:
       ray-trace: true
       # false = ores are only revealed from the player's real first-person eye, so F5 / freecam cameras reveal nothing
       ray-trace-third-person: false
-      ray-trace-distance: 80.0
+      # maxed out: the whole view distance (server.properties view-distance x 16)
+      ray-trace-distance: {DIST}
       # re-hide ores again once the player can no longer see them
       rehide-blocks: true
-      rehide-distance: 76.0
+      rehide-distance: {REHIDE}
       max-ray-trace-block-count-per-chunk: 100
       ray-trace-blocks:
       - diamond_ore
@@ -98,6 +100,15 @@ world-settings:
     anti-xray:
       ray-trace: false
 """
+
+vd = 10
+try:
+    m = re.search(r'(?m)^view-distance=(\d+)', open(V + '/server.properties', encoding='utf-8').read())
+    if m: vd = max(2, int(m.group(1)))
+except FileNotFoundError:
+    pass
+RTAX = RTAX.replace('{DIST}', f'{vd * 16}.0').replace('{REHIDE}', f'{vd * 16 - 4}.0')
+print(f'= view-distance {vd} -> ray-trace distance {vd * 16} blocks')
 
 def backup(f):
     if os.path.exists(f):
