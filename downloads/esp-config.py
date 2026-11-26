@@ -32,6 +32,8 @@ def exempt(s, key, names):
     return s[:m.start()] + block + s[m.end():]
 s = exempt(s, 'warn-exempted-classes', ['AbstractChunkParser', 'EntitySpawnTask'])
 s = exempt(s, 'error-exempted-classes', ['PECacheablePacketReconciliationTask'])
+# only show RaycastedAntiESP's important messages (levels 1-2); the level-3 diagnostics above are noise
+s = re.sub(r'(?m)^(    (?:warn|error)-level:) *\d+', r'\1 2', s)
 if s != o:
     shutil.copy2(f, f + '.bak-' + time.strftime('%Y%m%d-%H%M%S'))
     open(f, 'w', encoding='utf-8').write(s)
