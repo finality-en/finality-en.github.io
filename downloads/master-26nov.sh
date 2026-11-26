@@ -11,7 +11,7 @@ py(){ dl "$1" "$2" && python3 "$T/$1" "${@:3}"; }
 echo "== plugins"
 jar FinalityItems 1.7.2 736477cefa802aad65e6f88ae4ca616535c20ceb103cded38db1e371510884ba
 jar FinalityBosses 1.4.0 08db5fe90fcb42991c9734a49377daf23e24fc3e61e2c43baa237bcbe36835a3
-jar FinalityBans 1.2.3 72ccb1412308d04f589bad21f9e85ec8fee7c5f211b06e9bb8f47faf4b240bff
+jar FinalityBans 1.2.4 3529c5e1c18bf7aafa1992fdbe352eebfffd65c2825070fc03f1ce17ab59fcc6
 
 echo "== boss weapons now live in FinalityItems (stats/lore/abilities copied over from FinalityBosses)"
 python3 - "$P" <<'PY'
@@ -87,5 +87,8 @@ py add-store-npc.py 1166fe5f8abccdb7361cc80c08f38225924c01db73fc54febe0a51e51f4c
 echo "== Accurate damage lores (Hex Wand 13 = Astral Riftblade +1)"
 py damage-lores.py 55582934c25f3ae7a23fde210a687c0c1dee0dec2fbe304fadc7a44ee5763024 $P
 
-chown -R --reference=$P $P/FinalityItems $P/FinalityBosses $P/FinalityChallenges $P/AdvancedCrates $P/TAB $P/FancyNpcs $P/FancyHolograms $P/Nexo/items 2>/dev/null
+echo "== Site links (never the GitHub address)"
+py site-urls.py 765041a8c2dae37b0d2928ded06b5be27432d0c215d03dce871871c6580cecc8 $P
+
+chown -R --reference=$P $P/FinalityItems $P/FinalityBosses $P/FinalityChallenges $P/AdvancedCrates $P/TAB $P/FancyNpcs $P/FancyHolograms $P/Nexo/items $P/FinalityBans $P/SeasonAbilities 2>/dev/null
 echo "== done - start the SMP"
