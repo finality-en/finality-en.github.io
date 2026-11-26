@@ -33,7 +33,7 @@ PY
 
 echo "== BetterTeams (update + no async scoreboard teams)"
 py betterteams-update.py 61b3f36f36e29953765639120ee29db2dc967975335ca8d4d49b68dd282f00f1 $P
-py esp-config.py a10c7712347ead5774237240ebb4645f3bc95c1a56cae601fffa234fa00af244 $P
+py esp-config.py 68f6447648bd523683a216510103f4a9e1c385d8795384d7046aefba48e8c589 $P
 py antixray-config.py ce0ee3ef03c94b3a2be253e4d37bcc756793b56fcb0d071d26bbf0f8861f3ed1 $V
 
 echo "== boss weapons now live in FinalityItems (stats/lore/abilities copied over from FinalityBosses)"
