@@ -9,7 +9,7 @@ jar(){ dl "$1-$2.jar" "$3" && { mv $P/$1-*.jar /root/old-jars/ 2>/dev/null; cp "
 py(){ dl "$1" "$2" && python3 "$T/$1" "${@:3}"; }
 
 echo "== plugins"
-jar FinalityItems 1.6.3 24692e0814581af2a7778ea180bea79957e2b17332b776ecfd70329a2ba8adf3
+jar FinalityItems 1.6.4 cda26c8d9a27613d8c1ed61f070a2946a7ad506c2e353ec9dd8239e6d46a47e6
 jar FinalityBosses 1.3.10 c4554a1f29f4291ea0f809ef26cfc9340e1fc9c5fe1a3c8fb63815ee763e8d2f
 jar FinalityBans 1.2.2 de5027e154589594644ca47052e27631a4e47220ef81a2d1c1277faa33ef994b
 
@@ -51,6 +51,9 @@ py relic-names.py 4b2fc1f33e8c61749d949a3b664bfb4d8fd665a806521f04f37d865c27d186
 py relic-odds.py 97b392b764fef86c277c59ac4a72188f6e91c249ca0a9185ca050b8505fed665 $P >/dev/null && echo "✅ Hex Wand in the Relic crate"
 py relic-order.py b3bbde53e32b6fede406e6b9a61ad46fff4657a75dcc1d9805c0a1d02df127ac $P | tail -1
 py relic-set.py 46c5a89bfa7371081ebcf53dbfe76eb9acdf51879da135a1149b0e6b7eb9b76b $P | head -1
+
+echo "== AdvancedCrates: animations always use fake (packet) items, never real ones"
+sed -i 's/^Max_Players_Per_Animation:.*/Max_Players_Per_Animation: 500/' $P/AdvancedCrates/config.yml && grep -n "^Max_Players_Per_Animation" $P/AdvancedCrates/config.yml
 
 echo "== TAB + NPCs"
 py tab-events.py e4fe27e5d3675fb7060a2b872a8fb93de545b5d9ed21a0d159a037c416fcee87 $P/TAB
