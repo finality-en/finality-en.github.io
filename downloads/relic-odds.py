@@ -14,7 +14,7 @@ HEX = """  hex_wand:
     Lores:
     - '§7Still crackling with frost magic.'
     - '§f'
-    - '§x§D§9§A§0§F§F+13 Attack Damage'
+    - '§x§D§9§A§0§F§F13 Attack Damage'
     - '§5☠ Hex §7- 35% chance on hit to give §fWither II §7for 4s'
     - '§d✦ Right click: Hex Bolt §7- 8 damage, Withers and Slows'
     - '§f'

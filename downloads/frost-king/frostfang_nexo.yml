@@ -18,7 +18,7 @@ frostfang:
     operation: ADD_NUMBER
     slot: MAINHAND
   lore:
-  - <#5BC8FF>+11 Attack Damage
+  - <#5BC8FF>12 Attack Damage
   - <#E6F7FF>15% chance to freeze your target
   - ''
   - <gray>Pried from the frozen grip

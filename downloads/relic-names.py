@@ -17,12 +17,12 @@ ITEMS = {
     "frostfang": dict(
         match=["frostfang"],
         name=grad("ꜰʀᴏꜱᴛꜰᴀɴɢ", ["5BC8FF", "E6F7FF", "F2C14E"]),
-        lore=["§x§5§B§C§8§F§F+11 Attack Damage", "§x§E§6§F§7§F§F20% chance to freeze your target", "§f",
+        lore=["§x§5§B§C§8§F§F12 Attack Damage", "§x§E§6§F§7§F§F20% chance to freeze your target", "§f",
               "§7Pried from the frozen grip", "§7of the §bFrost King§7. Cold to the touch."]),
     "elf_candy_cane": dict(
         match=["elf_candy_cane", "candy_cane", "candy cane"],
         name=grad("ᴇʟꜰ ᴄᴀɴᴅʏ ᴄᴀɴᴇ", ["FF4B5C", "FFF6F0", "FF4B5C"]),
-        lore=["§x§F§F§4§B§5§C+11 Attack Damage", "§x§F§F§F§6§F§015% chance to send your target floating", "§f",
+        lore=["§x§F§F§4§B§5§C12 Attack Damage", "§x§F§F§F§6§F§015% chance to send your target floating", "§f",
               "§7Ripped from the tiny, sticky hands", "§7of the §aEvil Elf§7. Peppermint scented."]),
 }
 

@@ -9,7 +9,7 @@ jar(){ dl "$1-$2.jar" "$3" && { mv $P/$1-*.jar /root/old-jars/ 2>/dev/null; cp "
 py(){ dl "$1" "$2" && python3 "$T/$1" "${@:3}"; }
 
 echo "== plugins"
-jar FinalityItems 1.7.1 29803d0b856733f14176453513f8833c88be0b72401b901a0afc64fc8440d532
+jar FinalityItems 1.7.2 736477cefa802aad65e6f88ae4ca616535c20ceb103cded38db1e371510884ba
 jar FinalityBosses 1.4.0 08db5fe90fcb42991c9734a49377daf23e24fc3e61e2c43baa237bcbe36835a3
 jar FinalityBans 1.2.2 de5027e154589594644ca47052e27631a4e47220ef81a2d1c1277faa33ef994b
 
@@ -36,18 +36,6 @@ for f in [P+'/FinalityBosses/config.yml']+glob.glob(P+'/AdvancedCrates/Crates/*.
 print(f'✅ {n} reward command(s) now use: fitems weapon give <player> <id>')
 PY
 
-echo "== Hex Wand = Astral Blade damage (12)"
-python3 - "$P" <<'PY'
-import re,sys,glob
-P=sys.argv[1]; f=P+'/FinalityItems/config.yml'; s=open(f,encoding='utf-8').read()
-s2=re.sub(r'(?ms)(^  hex_wand:\n(?:    .*\n)*?    damage: )\d+(\.\d+)?',r'\g<1>12',s)
-open(f,'w',encoding='utf-8').write(s2); print('✅ hex_wand damage 12' if s2!=s else '= hex_wand already 12')
-for c in glob.glob(P+'/AdvancedCrates/Crates/*.yml'):
-    t=open(c,encoding='utf-8').read()
-    t2=re.sub(r'(?s)(hex_wand.{0,1500}?)\b14( Attack Damage| attack damage| damage| dmg)',r'\g<1>12\2',t)
-    t2=re.sub(r'(?s)(hex_wand.{0,1500}?)\+14\b',r'\g<1>+12',t2)
-    if t2!=t: open(c,'w',encoding='utf-8').write(t2); print('✅ crate lore -> 12 in',c.split('/')[-1])
-PY
 
 echo "== Demon Wings / items"
 sed -i 's/^  mode: elytra.*/  mode: fake-offhand   # others see the 3D wings like the offhand/' $P/FinalityItems/config.yml
@@ -83,8 +71,8 @@ open(p,'w',encoding='utf-8').write(s); print('✅ water pickup regions:', want)
 PY
 
 echo "== Relic crate (names, Hex Wand, order, odds)"
-py relic-names.py 4b2fc1f33e8c61749d949a3b664bfb4d8fd665a806521f04f37d865c27d18658 $P
-py relic-odds.py daa6ab834c2d960fd0cbc745caa36754a3836dc53530fc67746654141adbae84 $P >/dev/null && echo "✅ Hex Wand in the Relic crate"
+py relic-names.py 89c474f48fdc567b15c4543cf73a686fbe4eb9498d5e8ea36603928deeee735f $P
+py relic-odds.py c737a12de7903b2d2ee3caf1ec8f0fa1bb74f90229d52eb494865784a099b56d $P >/dev/null && echo "✅ Hex Wand in the Relic crate"
 py relic-order.py b3bbde53e32b6fede406e6b9a61ad46fff4657a75dcc1d9805c0a1d02df127ac $P | tail -1
 py relic-set.py 46c5a89bfa7371081ebcf53dbfe76eb9acdf51879da135a1149b0e6b7eb9b76b $P | head -1
 
@@ -95,6 +83,9 @@ echo "== TAB + NPCs"
 py tab-events.py e4fe27e5d3675fb7060a2b872a8fb93de545b5d9ed21a0d159a037c416fcee87 $P/TAB
 py add-npcs.py 4e86c0f5399f0d6a3551791b72ec0f96ad9fd90c04c7702fb07ae4253757b13e $P
 py add-store-npc.py 1166fe5f8abccdb7361cc80c08f38225924c01db73fc54febe0a51e51f4c25eb $P
+
+echo "== Accurate damage lores (Hex Wand 13 = Astral Riftblade +1)"
+py damage-lores.py 55582934c25f3ae7a23fde210a687c0c1dee0dec2fbe304fadc7a44ee5763024 $P
 
 chown -R --reference=$P $P/FinalityItems $P/FinalityBosses $P/FinalityChallenges $P/AdvancedCrates $P/TAB $P/FancyNpcs $P/FancyHolograms $P/Nexo/items 2>/dev/null
 echo "== done - start the SMP"
