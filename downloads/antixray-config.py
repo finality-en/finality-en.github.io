@@ -64,7 +64,7 @@ settings:
   anti-xray:
     update-ticks: 1
     ms-per-ray-trace-tick: 50
-    ray-trace-threads: 2
+    ray-trace-threads: {THREADS}
 world-settings:
   default:
     anti-xray:
@@ -107,8 +107,10 @@ try:
     if m: vd = max(2, int(m.group(1)))
 except FileNotFoundError:
     pass
+thr = max(2, min(4, (os.cpu_count() or 8) // 4))
+RTAX = RTAX.replace('{THREADS}', str(thr))
 RTAX = RTAX.replace('{DIST}', f'{vd * 16}.0').replace('{REHIDE}', f'{vd * 16 - 4}.0')
-print(f'= view-distance {vd} -> ray-trace distance {vd * 16} blocks')
+print(f'= {thr} ray-trace threads'); print(f'= view-distance {vd} -> ray-trace distance {vd * 16} blocks')
 
 def backup(f):
     if os.path.exists(f):
