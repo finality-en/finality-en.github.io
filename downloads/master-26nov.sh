@@ -31,6 +31,7 @@ open(P+"/"+name,"wb").write(data); shutil.chown(P+"/"+name, os.stat(P).st_uid, o
 print("✅",name,"(Modrinth sha512 verified)")
 PY
 
+py esp-config.py a10c7712347ead5774237240ebb4645f3bc95c1a56cae601fffa234fa00af244 $P
 py antixray-config.py 4fcab10ead460aef78c6be6bfb7879f343d660b03f6e89f928abbfd642ec9095 $V
 
 echo "== boss weapons now live in FinalityItems (stats/lore/abilities copied over from FinalityBosses)"
