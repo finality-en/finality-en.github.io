@@ -16,8 +16,20 @@ while i < len(lines) and (lines[i].startswith(" ") or not lines[i].strip()):
         i = j
     else: i += 1
 if len(keys) < 3: sys.exit(f"❌ couldn't find all three prizes ({keys}) - nothing changed")
-try: cd = next(i for i, l in enumerate(lines) if l.rstrip() == "CustomDisplay:")
-except StopIteration: sys.exit("❌ no CustomDisplay in relic.yml - the preview uses the prize order, nothing to change")
+cd = next((i for i, l in enumerate(lines) if l.rstrip() == "CustomDisplay:"), None)
+if cd is None:
+    # no custom layout: the preview follows the prize order - move the Hex Wand block after the other two
+    def block(k):
+        a = next(i for i, l in enumerate(lines) if l.rstrip() == f"  {k}:")
+        b = a + 1
+        while b < len(lines) and (lines[b].startswith("   ") or not lines[b].strip()): b += 1
+        return a, b
+    a, b = block(keys["hex"]); hexb = lines[a:b]; del lines[a:b]
+    after = max(block(keys["ff"])[1], block(keys["ec"])[1])
+    lines[after:after] = hexb
+    shutil.copy2(f, f + ".bak-order-" + time.strftime("%Y%m%d-%H%M%S"))
+    open(f, "w", encoding="utf-8").writelines(lines)
+    print("✅ Hex Wand moved next to Frostfang and the Elf Candy Cane (prize order)"); sys.exit(0)
 page = [i for i in range(cd, len(lines)) if re.match(r"^\s+- \S", lines[i])]
 def items(l):
     m = re.match(r"^(\s+- )(['\"]?)(.*?)\2\s*$", l); return m.group(1), m.group(2), [x for x in m.group(3).split(",") if x]
