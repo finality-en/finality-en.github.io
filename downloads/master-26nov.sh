@@ -11,6 +11,7 @@ py(){ dl "$1" "$2" && python3 "$T/$1" "${@:3}"; }
 echo "== plugins"
 jar FinalityItems 1.6.2 5e162e907590fbfe583fc6fefc20eafb082bb72c5b32cd8aaec535d2e4e89193
 jar FinalityBosses 1.3.10 c4554a1f29f4291ea0f809ef26cfc9340e1fc9c5fe1a3c8fb63815ee763e8d2f
+jar FinalityBans 1.2.2 de5027e154589594644ca47052e27631a4e47220ef81a2d1c1277faa33ef994b
 
 echo "== Demon Wings / items"
 sed -i 's/^  mode: elytra.*/  mode: fake-offhand   # others see the 3D wings like the offhand/' $P/FinalityItems/config.yml
