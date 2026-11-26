@@ -9,16 +9,16 @@ def clean(s):
 # (match on the prize name, chance %) - checked in this order
 PLAN = [
     # mythic boss weapons
-    ("frostfang", 0.4), ("elf candy cane", 0.4), ("hex wand", 0.4),
+    ("frostfang", 2.0), ("elf candy cane", 2.0), ("hex wand", 1.0),
     # legendary
-    ("riftblade", 1.0), (r"pickaxe.*\[tier iii\]", 1.5),
+    ("riftblade", 2.0), (r"pickaxe.*\[tier iii\]", 1.5),
     # rare
     ("demon wings", 2.5), ("hellfire", 2.5), ("astral dagger", 2.0), ("extra class", 2.0),
     ("glacier boots", 2.5), ("glacier pants", 2.5), ("glacier leggings", 2.5), ("glacier chestplate", 2.5), ("glacier helmet", 2.5),
     # uncommon
     (r"pickaxe.*\[tier ii\]", 5.0), (r"pickaxe.*\[tier i\]", 8.0), ("glacier blade", 7.0), ("starfall", 4.5), ("class upgrade", 4.0),
     # common
-    ("glacial shard", 14.8), ("astral crystal", 12.0), ("astral shard", 6.0), ("class roll", 10.0), ("class reset", 6.0),
+    ("glacial shard", 12.0), ("astral crystal", 10.0), ("astral shard", 6.0), ("class roll", 10.0), ("class reset", 6.0),
 ]
 d = yaml.safe_load(open(f, encoding="utf-8"))
 lines = open(f, encoding="utf-8").readlines()
