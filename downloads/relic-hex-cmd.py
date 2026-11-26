@@ -21,11 +21,11 @@ while i < len(L) and (L[i].startswith(" ") or not L[i].strip()):
                     while k < j and re.match(r"^    - ", L[k]): k += 1
                     continue
                 out.append(x); k += 1
-            out += ["    GiveConfiguratedItem: false", "    Commands:", "    - fboss item hex_wand %player%"]
+            out += ["    GiveConfiguratedItem: false", "    Commands:", "    - fitems weapon give %player% hex_wand"]
             L[i + 1:j] = out
             shutil.copy2(f, f + ".bak-hexcmd-" + time.strftime("%Y%m%d-%H%M%S"))
             open(f, "w", encoding="utf-8").write("\n".join(L))
-            print("✅ Hex Wand prize now gives the real item by command: fboss item hex_wand %player%")
+            print("✅ Hex Wand prize now gives the real item by command: fitems weapon give %player% hex_wand")
             done = True
             break
         i = j

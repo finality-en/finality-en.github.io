@@ -23,7 +23,7 @@ HEX = """  hex_wand:
     GiveConfiguratedItem: false
     LinkedRewards: []
     Commands:
-    - fboss item hex_wand %player%
+    - fitems weapon give %player% hex_wand
     Chance: 0.4
     Name: '&x&D&9&A&0&F&F&lʜ&x&C&9&8&F&F&A&lᴇ&x&B&9&7&F&F&4&lx &x&9&A&5&D&E&9&lᴡ&x&8&A&4&C&E&4&lᴀ&x&7&A&3&C&D&E&lɴ&x&6&A&2&B&D&9&lᴅ'
 """

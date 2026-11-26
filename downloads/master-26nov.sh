@@ -9,9 +9,32 @@ jar(){ dl "$1-$2.jar" "$3" && { mv $P/$1-*.jar /root/old-jars/ 2>/dev/null; cp "
 py(){ dl "$1" "$2" && python3 "$T/$1" "${@:3}"; }
 
 echo "== plugins"
-jar FinalityItems 1.6.4 cda26c8d9a27613d8c1ed61f070a2946a7ad506c2e353ec9dd8239e6d46a47e6
-jar FinalityBosses 1.3.12 a54bea7e23cf4012dc86041e1e748c54221921a0f5405a4db2f62522f2ecaeef
+jar FinalityItems 1.7.0 e3dededbe8755c45a8044abc9aa0ad67118eb63ae3b627833f1857a4edfb59c5
+jar FinalityBosses 1.4.0 08db5fe90fcb42991c9734a49377daf23e24fc3e61e2c43baa237bcbe36835a3
 jar FinalityBans 1.2.2 de5027e154589594644ca47052e27631a4e47220ef81a2d1c1277faa33ef994b
+
+echo "== boss weapons now live in FinalityItems (stats/lore/abilities copied over from FinalityBosses)"
+python3 - "$P" <<'PY'
+import re,sys,shutil,time,glob
+P=sys.argv[1]
+b=open(P+'/FinalityBosses/config.yml',encoding='utf-8').read()
+it=P+'/FinalityItems/config.yml'; s=open(it,encoding='utf-8').read()
+if re.search(r'(?m)^boss-weapons:',s): print('= boss-weapons already in FinalityItems')
+else:
+    m=re.search(r'(?ms)^boss-items:\n.*?(?=^\S|\Z)',b)
+    if m:
+        shutil.copy2(it,it+'.bak-weapons-'+time.strftime('%Y%m%d-%H%M%S'))
+        open(it,'w',encoding='utf-8').write(s.rstrip('\n')+'\n\n# Boss weapons (moved from FinalityBosses boss-items)\n'+m.group(0).replace('boss-items:','boss-weapons:',1))
+        print('✅ copied your boss-items (incl. your tweaks) to FinalityItems boss-weapons')
+    else: print('= no boss-items in FinalityBosses config - FinalityItems defaults used')
+# give commands -> FinalityItems
+n=0
+for f in [P+'/FinalityBosses/config.yml']+glob.glob(P+'/AdvancedCrates/Crates/*.yml'):
+    t=open(f,encoding='utf-8').read()
+    t2=re.sub(r'fboss item (\w+) (\{player\}|%player%)',r'fitems weapon give \2 \1',t)
+    if t2!=t: open(f,'w',encoding='utf-8').write(t2); n+=t.count('fboss item ')
+print(f'✅ {n} reward command(s) now use: fitems weapon give <player> <id>')
+PY
 
 echo "== Demon Wings / items"
 sed -i 's/^  mode: elytra.*/  mode: fake-offhand   # others see the 3D wings like the offhand/' $P/FinalityItems/config.yml
@@ -48,7 +71,7 @@ PY
 
 echo "== Relic crate (names, Hex Wand, order, odds)"
 py relic-names.py 4b2fc1f33e8c61749d949a3b664bfb4d8fd665a806521f04f37d865c27d18658 $P
-py relic-odds.py 97b392b764fef86c277c59ac4a72188f6e91c249ca0a9185ca050b8505fed665 $P >/dev/null && echo "✅ Hex Wand in the Relic crate"
+py relic-odds.py daa6ab834c2d960fd0cbc745caa36754a3836dc53530fc67746654141adbae84 $P >/dev/null && echo "✅ Hex Wand in the Relic crate"
 py relic-order.py b3bbde53e32b6fede406e6b9a61ad46fff4657a75dcc1d9805c0a1d02df127ac $P | tail -1
 py relic-set.py 46c5a89bfa7371081ebcf53dbfe76eb9acdf51879da135a1149b0e6b7eb9b76b $P | head -1
 
