@@ -16,6 +16,8 @@ jar FinalityBans 1.2.4 3529c5e1c18bf7aafa1992fdbe352eebfffd65c2825070fc03f1ce17a
 echo "== RayTraceAntiXray (Finality build: no ProtocolLib, works with PacketEvents)"
 dl RayTraceAntiXray-1.16.3-pe.jar b3cf7f59d6ab05535445d68d5093b93aa92bbba572cacdfad2705f295950e5b5 && { for f in $P/raytraceantixray-*.jar $P/RayTraceAntiXray-*.jar $P/.paper-remapped/raytraceantixray-*.jar $P/.paper-remapped/RayTraceAntiXray-*.jar; do [ -f "$f" ] && mv "$f" /root/old-jars/; done; cp "$T/RayTraceAntiXray-1.16.3-pe.jar" $P/ && chown --reference=$P $P/RayTraceAntiXray-1.16.3-pe.jar && echo "✅ RayTraceAntiXray 1.16.3-pe"; }
 
+py antixray-config.py 55ccacd4d028d538fd9de1b878fee508dcf6aa70222d872e331e96d0b224bec3 $V
+
 echo "== boss weapons now live in FinalityItems (stats/lore/abilities copied over from FinalityBosses)"
 python3 - "$P" <<'PY'
 import re,sys,shutil,time,glob
@@ -93,5 +95,5 @@ py damage-lores.py 55582934c25f3ae7a23fde210a687c0c1dee0dec2fbe304fadc7a44ee5763
 echo "== Site links (never the GitHub address)"
 py site-urls.py 765041a8c2dae37b0d2928ded06b5be27432d0c215d03dce871871c6580cecc8 $P
 
-chown -R --reference=$P $P/FinalityItems $P/FinalityBosses $P/FinalityChallenges $P/AdvancedCrates $P/TAB $P/FancyNpcs $P/FancyHolograms $P/Nexo/items $P/FinalityBans $P/SeasonAbilities 2>/dev/null
+chown -R --reference=$P $P/FinalityItems $P/FinalityBosses $P/FinalityChallenges $P/AdvancedCrates $P/TAB $P/FancyNpcs $P/FancyHolograms $P/Nexo/items $P/FinalityBans $P/SeasonAbilities $P/RayTraceAntiXray $V/config $V/world_nether/paper-world.yml $V/world_the_end/paper-world.yml 2>/dev/null
 echo "== done - start the SMP"
