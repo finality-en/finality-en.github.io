@@ -9,7 +9,7 @@ jar(){ dl "$1-$2.jar" "$3" && { mv $P/$1-*.jar /root/old-jars/ 2>/dev/null; cp "
 py(){ dl "$1" "$2" && python3 "$T/$1" "${@:3}"; }
 
 echo "== plugins"
-jar FinalityItems 1.7.3 416e36de2a9e84c30b087e25fd40f184d897065de8faf16042eabefde5846851
+jar FinalityItems 1.7.4 15be240cfdc87baeea8dfe374ff5e712e187f809cdd4fa3e484ec4c1651c53b8
 jar FinalityBosses 1.4.0 08db5fe90fcb42991c9734a49377daf23e24fc3e61e2c43baa237bcbe36835a3
 jar FinalityBans 1.2.4 3529c5e1c18bf7aafa1992fdbe352eebfffd65c2825070fc03f1ce17ab59fcc6
 
