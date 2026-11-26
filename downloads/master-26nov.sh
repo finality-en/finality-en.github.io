@@ -11,7 +11,7 @@ py(){ dl "$1" "$2" && python3 "$T/$1" "${@:3}"; }
 echo "== plugins"
 jar FinalityItems 1.7.2 736477cefa802aad65e6f88ae4ca616535c20ceb103cded38db1e371510884ba
 jar FinalityBosses 1.4.0 08db5fe90fcb42991c9734a49377daf23e24fc3e61e2c43baa237bcbe36835a3
-jar FinalityBans 1.2.2 de5027e154589594644ca47052e27631a4e47220ef81a2d1c1277faa33ef994b
+jar FinalityBans 1.2.3 72ccb1412308d04f589bad21f9e85ec8fee7c5f211b06e9bb8f47faf4b240bff
 
 echo "== boss weapons now live in FinalityItems (stats/lore/abilities copied over from FinalityBosses)"
 python3 - "$P" <<'PY'
