@@ -11,33 +11,47 @@ OVERWORLD = """  anti-xray:
     enabled: true
     engine-mode: 1
     hidden-blocks:
-    # engine-mode 1 swaps these for stone/deepslate when fully covered;
-    # RayTraceAntiXray hides the ones exposed to air (caves) too.
-    - mossy_cobblestone
-    - spawner
-    - chest
+    # every ore, raw/storage block, spawners and chests - hidden until the player can really see them
     - coal_ore
     - deepslate_coal_ore
+    - iron_ore
+    - deepslate_iron_ore
     - copper_ore
     - deepslate_copper_ore
-    - raw_copper_block
+    - gold_ore
+    - deepslate_gold_ore
+    - redstone_ore
+    - deepslate_redstone_ore
+    - lapis_ore
+    - deepslate_lapis_ore
     - diamond_ore
     - deepslate_diamond_ore
     - emerald_ore
     - deepslate_emerald_ore
-    - gold_ore
-    - deepslate_gold_ore
-    - iron_ore
-    - deepslate_iron_ore
+    - nether_gold_ore
+    - nether_quartz_ore
+    - ancient_debris
+    - gilded_blackstone
     - raw_iron_block
-    - lapis_ore
-    - deepslate_lapis_ore
-    - redstone_ore
-    - deepslate_redstone_ore
+    - raw_copper_block
+    - raw_gold_block
+    - coal_block
+    - iron_block
+    - gold_block
+    - diamond_block
+    - emerald_block
+    - lapis_block
+    - redstone_block
+    - netherite_block
+    - spawner
+    - trial_spawner
+    - vault
+    - chest
+    - mossy_cobblestone
     # ores touching lava count as covered (otherwise lava "exposes" them to x-ray)
     lava-obscures: true
-    # high enough for coal/iron/copper under hills too (diamonds, gold, lapis, redstone are all far below)
-    max-block-height: 128
+    # the whole world height (mountain iron/coal/emerald too)
+    max-block-height: 320
     # not used in engine-mode 1
     replacement-blocks: []
     update-radius: 2
@@ -47,9 +61,42 @@ NETHER = """  anti-xray:
     enabled: true
     engine-mode: 1
     hidden-blocks:
-    - ancient_debris
+    - coal_ore
+    - deepslate_coal_ore
+    - iron_ore
+    - deepslate_iron_ore
+    - copper_ore
+    - deepslate_copper_ore
+    - gold_ore
+    - deepslate_gold_ore
+    - redstone_ore
+    - deepslate_redstone_ore
+    - lapis_ore
+    - deepslate_lapis_ore
+    - diamond_ore
+    - deepslate_diamond_ore
+    - emerald_ore
+    - deepslate_emerald_ore
     - nether_gold_ore
     - nether_quartz_ore
+    - ancient_debris
+    - gilded_blackstone
+    - raw_iron_block
+    - raw_copper_block
+    - raw_gold_block
+    - coal_block
+    - iron_block
+    - gold_block
+    - diamond_block
+    - emerald_block
+    - lapis_block
+    - redstone_block
+    - netherite_block
+    - spawner
+    - trial_spawner
+    - vault
+    - chest
+    - mossy_cobblestone
     lava-obscures: true
     max-block-height: 128
     replacement-blocks: []
@@ -76,26 +123,15 @@ world-settings:
       # re-hide ores again once the player can no longer see them
       rehide-blocks: true
       rehide-distance: {REHIDE}
-      max-ray-trace-block-count-per-chunk: 100
-      ray-trace-blocks:
-      - diamond_ore
-      - deepslate_diamond_ore
-      - emerald_ore
-      - deepslate_emerald_ore
-      - gold_ore
-      - deepslate_gold_ore
-      - lapis_ore
-      - deepslate_lapis_ore
-      - chest
-      - spawner
-      - mossy_cobblestone
+      max-ray-trace-block-count-per-chunk: 2000
+      # [] = trace every block in the Paper hidden-blocks list
+      ray-trace-blocks: []
   world_nether:
     anti-xray:
       # debris in cave walls / next to tunnels other players dug stays hidden until you can see it
       ray-trace: true
-      max-ray-trace-block-count-per-chunk: 60
-      ray-trace-blocks:
-      - ancient_debris
+      max-ray-trace-block-count-per-chunk: 2000
+      ray-trace-blocks: []
   world_the_end:
     anti-xray:
       ray-trace: false

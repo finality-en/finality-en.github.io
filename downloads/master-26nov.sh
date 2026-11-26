@@ -32,7 +32,7 @@ print("✅",name,"(Modrinth sha512 verified)")
 PY
 
 py esp-config.py a10c7712347ead5774237240ebb4645f3bc95c1a56cae601fffa234fa00af244 $P
-py antixray-config.py 142c528173c851a159cdc65188bac0870b6c18865dbb4e54ab4db47a4e06e666 $V
+py antixray-config.py ce0ee3ef03c94b3a2be253e4d37bcc756793b56fcb0d071d26bbf0f8861f3ed1 $V
 
 echo "== boss weapons now live in FinalityItems (stats/lore/abilities copied over from FinalityBosses)"
 python3 - "$P" <<'PY'
