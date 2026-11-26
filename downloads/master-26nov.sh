@@ -98,6 +98,7 @@ py relic-names.py 89c474f48fdc567b15c4543cf73a686fbe4eb9498d5e8ea36603928deeee73
 py relic-odds.py c737a12de7903b2d2ee3caf1ec8f0fa1bb74f90229d52eb494865784a099b56d $P >/dev/null && echo "✅ Hex Wand in the Relic crate"
 py relic-order.py b3bbde53e32b6fede406e6b9a61ad46fff4657a75dcc1d9805c0a1d02df127ac $P | tail -1
 py relic-set.py 46c5a89bfa7371081ebcf53dbfe76eb9acdf51879da135a1149b0e6b7eb9b76b $P | head -1
+py relic-santa.py 4d1aca75870cadfe42c5251b7f3e9b27dc724349e3b8d34bd362f4d7a72d9e65 $P
 
 echo "== AdvancedCrates: animations always use fake (packet) items, never real ones"
 sed -i 's/^Max_Players_Per_Animation:.*/Max_Players_Per_Animation: 500/' $P/AdvancedCrates/config.yml && grep -n "^Max_Players_Per_Animation" $P/AdvancedCrates/config.yml
