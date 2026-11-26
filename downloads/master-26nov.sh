@@ -9,7 +9,7 @@ jar(){ dl "$1-$2.jar" "$3" && { mv $P/$1-*.jar /root/old-jars/ 2>/dev/null; cp "
 py(){ dl "$1" "$2" && python3 "$T/$1" "${@:3}"; }
 
 echo "== plugins"
-jar FinalityItems 1.7.0 e3dededbe8755c45a8044abc9aa0ad67118eb63ae3b627833f1857a4edfb59c5
+jar FinalityItems 1.7.1 29803d0b856733f14176453513f8833c88be0b72401b901a0afc64fc8440d532
 jar FinalityBosses 1.4.0 08db5fe90fcb42991c9734a49377daf23e24fc3e61e2c43baa237bcbe36835a3
 jar FinalityBans 1.2.2 de5027e154589594644ca47052e27631a4e47220ef81a2d1c1277faa33ef994b
 
@@ -34,6 +34,19 @@ for f in [P+'/FinalityBosses/config.yml']+glob.glob(P+'/AdvancedCrates/Crates/*.
     t2=re.sub(r'fboss item (\w+) (\{player\}|%player%)',r'fitems weapon give \2 \1',t)
     if t2!=t: open(f,'w',encoding='utf-8').write(t2); n+=t.count('fboss item ')
 print(f'✅ {n} reward command(s) now use: fitems weapon give <player> <id>')
+PY
+
+echo "== Hex Wand = Astral Blade damage (12)"
+python3 - "$P" <<'PY'
+import re,sys,glob
+P=sys.argv[1]; f=P+'/FinalityItems/config.yml'; s=open(f,encoding='utf-8').read()
+s2=re.sub(r'(?ms)(^  hex_wand:\n(?:    .*\n)*?    damage: )\d+(\.\d+)?',r'\g<1>12',s)
+open(f,'w',encoding='utf-8').write(s2); print('✅ hex_wand damage 12' if s2!=s else '= hex_wand already 12')
+for c in glob.glob(P+'/AdvancedCrates/Crates/*.yml'):
+    t=open(c,encoding='utf-8').read()
+    t2=re.sub(r'(?s)(hex_wand.{0,1500}?)\b14( Attack Damage| attack damage| damage| dmg)',r'\g<1>12\2',t)
+    t2=re.sub(r'(?s)(hex_wand.{0,1500}?)\+14\b',r'\g<1>+12',t2)
+    if t2!=t: open(c,'w',encoding='utf-8').write(t2); print('✅ crate lore -> 12 in',c.split('/')[-1])
 PY
 
 echo "== Demon Wings / items"
